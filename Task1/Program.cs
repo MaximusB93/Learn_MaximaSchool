@@ -6,8 +6,7 @@ namespace Task1
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(" World!");
-            Console.WriteLine("Привет мир");
+            Console.WriteLine("Мастер");
         }
     }
 }
