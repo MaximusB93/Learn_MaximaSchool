@@ -61,25 +61,28 @@ namespace Project1
 
             Utils.OutputConsoleElement(quantityEven);
         }
-        
+
         /// <summary>
         /// Вывод положительных элементов в новый массив
         /// </summary>
         public static void PositiveElementArray()
         {
             int[] intArray = Utils.InputElementArray();
-            int[] PositiveArray = new int[0];
+            int QuantityPositivElement = 0;
             for (int i = 0; i < intArray.Length; i++)
-            {
-                
-                if (intArray[i] > 0 )
+                if (intArray[i] > 0)
                 {
-                    for (int j = 0; j < UPPER; j++)
-                    {
-                        PositiveArray[j] = intArray[i];
-                    }
+                    QuantityPositivElement++;
                 }
-            }
+
+            int a = 0;
+            int[] PositiveArray = new int[QuantityPositivElement];
+            for (int i = 0; i < intArray.Length; i++)
+                if (intArray[i] > 0)
+                {
+                    PositiveArray[a] = intArray[i];
+                    a++;
+                }
         }
     }
 }
