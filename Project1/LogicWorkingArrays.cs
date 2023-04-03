@@ -14,7 +14,7 @@ namespace Project1
 
             for (int i = 0; i < intArray.Length; i++)
                 summ += intArray[i];
-            Utils.OutputConsoleElement(summ);
+            Utils.OutputConsoleElement(summ / intArray.Length, "Сумма элементов массива");
         }
 
         /// <summary>
@@ -27,7 +27,7 @@ namespace Project1
             for (int i = 0; i < intArray.Length; i++)
                 summ += intArray[i];
 
-            Utils.OutputConsoleElement(summ / intArray.Length);
+            Utils.OutputConsoleElement(summ / intArray.Length, "Среднее арифметическое элементов массива");
         }
 
         /// <summary>
@@ -43,7 +43,7 @@ namespace Project1
                     minElement = intArray[i];
             }
 
-            Utils.OutputConsoleElement(minElement);
+            Utils.OutputConsoleElement(minElement,"Наименьший элемент массива");
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace Project1
                     quantityEven++;
             }
 
-            Utils.OutputConsoleElement(quantityEven);
+            Utils.OutputConsoleElement(quantityEven,"Количество четных чисел");
         }
 
         /// <summary>

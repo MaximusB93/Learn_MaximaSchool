@@ -12,10 +12,9 @@ namespace Project1
             return intArray;
         }
 
-        public static void OutputConsoleElement(double element)
+        public static void OutputConsoleElement(double element, string comment = "")
         {
-            Console.WriteLine(element);
-            Console.ReadLine();
+            Console.Write($"{comment} = {element}");
         }
     }
 }
