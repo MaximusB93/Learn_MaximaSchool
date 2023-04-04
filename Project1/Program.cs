@@ -8,29 +8,26 @@ namespace Project1
     {
         static void Main(string[] args)
         {
-            SquaresNaturalNumbers();
+            LogicWorkingArrays.PositiveElementArray();
         }
 
         /// <summary>
         /// Вывод квадратов натуральных чисел
         /// </summary>
-        static void SquaresNaturalNumbers()
+        public static void SquaresNaturalNumbers()
         {
-            Console.WriteLine("Введите предел квадрата чисел");
-            int N = Int32.Parse(Console.ReadLine());
-            for (int i = 1; i * i < N; i++)
+            int numberN = Utils.InputElement("Введите предел квадрата чисел");
+            for (int i = 1; i * i < numberN; i++)
                 Utils.OutputConsoleElement(i * i);
         }
 
         /// <summary>
         /// Кубы чисел от A до B
         /// </summary>
-        static void СubesNumbers()
+        public static void СubesNumbers()
         {
-            Console.WriteLine("Введите число А");
-            int numberA = Int32.Parse(Console.ReadLine());
-            Console.WriteLine("Введите число B");
-            int numberB = Int32.Parse(Console.ReadLine());
+            int numberA = Utils.InputElement("Введите число А");
+            int numberB = Utils.InputElement("Введите число B");
             for (; numberA <= numberB; numberA++)
                 Utils.OutputConsoleElement(numberA * numberA * numberA);
         }
@@ -38,19 +35,17 @@ namespace Project1
         /// <summary>
         /// Возведение числа в степень
         /// </summary>
-        static void ExponentiationNumber()
+        public static void ExponentiationNumber()
         {
-            Console.WriteLine("Введите число");
-            int number = Int32.Parse(Console.ReadLine());
-            Console.WriteLine("Введите степень числа");
-            int degreeNumber = Int32.Parse(Console.ReadLine());
+            int number = Utils.InputElement("Введите число");
+            int degreeNumber = Utils.InputElement("Введите степень числа");
             int result = number;
             for (int i = 1; i < degreeNumber; i++)
                 result *= number;
-            Utils.OutputConsoleElement(result, $"Степень числа {number}");
+            Utils.OutputConsoleElement(result, $"Степень числа {number} = ");
         }
 
-        /*/// <summary>
+        /// <summary>
         /// Вывод таблицы значений функции
         /// </summary>
         static void TableFunctionValues()
@@ -60,6 +55,6 @@ namespace Project1
                 double y = 5 - x * x / 2;
                 Utils.OutputConsoleElement(y, "x = ");
             }
-        }*/
+        }
     }
 }

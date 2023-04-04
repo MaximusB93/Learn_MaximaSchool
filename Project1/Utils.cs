@@ -4,7 +4,7 @@ namespace Project1
 {
     public class Utils
     {
-        public static int[] InputElementArray()
+        public static int[] InputElementArray(string inputElement = "")
         {
             Console.WriteLine("Введите элементы массива через запятую");
             string[] strArray = Console.ReadLine().Split(',');
@@ -12,9 +12,16 @@ namespace Project1
             return intArray;
         }
 
+        public static int InputElement(string inputElement = "")
+        {
+            Console.WriteLine(inputElement);
+            int element = Int32.Parse(Console.ReadLine());
+            return element;
+        }
+
         public static void OutputConsoleElement(double element, string comment = "")
         {
-            Console.Write($"{comment} = {element}");
+            Console.Write($"{comment}{element}");
         }
     }
 }

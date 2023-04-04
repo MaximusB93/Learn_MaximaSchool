@@ -14,7 +14,7 @@ namespace Project1
 
             for (int i = 0; i < intArray.Length; i++)
                 summ += intArray[i];
-            Utils.OutputConsoleElement(summ / intArray.Length, "Сумма элементов массива");
+            Utils.OutputConsoleElement(summ, "Сумма элементов массива");
         }
 
         /// <summary>
@@ -81,6 +81,7 @@ namespace Project1
                 if (intArray[i] > 0)
                 {
                     PositiveArray[a] = intArray[i];
+                    Utils.OutputConsoleElement(PositiveArray[a],",");
                     a++;
                 }
         }
