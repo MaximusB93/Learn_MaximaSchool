@@ -8,6 +8,10 @@ namespace Project1
     {
         static void Main(string[] args)
         {
+            /*SquaresNaturalNumbers();
+            СubesNumbers();
+            ExponentiationNumber();
+            TableFunctionValues();*/
             LogicWorkingArrays.PositiveElementArray();
         }
 
@@ -18,7 +22,15 @@ namespace Project1
         {
             int numberN = Utils.InputElement("Введите предел квадрата чисел");
             for (int i = 1; i * i < numberN; i++)
-                Utils.OutputConsoleElement(i * i);
+            {
+                if (i > numberN / (i + 2))
+                    Utils.OutputConsoleElement(i * i);
+                else
+                    Utils.OutputConsoleElement(i * i, "", ",");
+            }
+
+
+            Console.WriteLine();
         }
 
         /// <summary>
@@ -29,7 +41,14 @@ namespace Project1
             int numberA = Utils.InputElement("Введите число А");
             int numberB = Utils.InputElement("Введите число B");
             for (; numberA <= numberB; numberA++)
-                Utils.OutputConsoleElement(numberA * numberA * numberA);
+            {
+                if (numberA == numberB)
+                    Utils.OutputConsoleElement(numberA * numberA * numberA);
+                else
+                    Utils.OutputConsoleElement(numberA * numberA * numberA, "", ",");
+            }
+
+            Console.WriteLine();
         }
 
         /// <summary>
@@ -43,17 +62,20 @@ namespace Project1
             for (int i = 1; i < degreeNumber; i++)
                 result *= number;
             Utils.OutputConsoleElement(result, $"Степень числа {number} = ");
+            Console.WriteLine();
         }
 
         /// <summary>
-        /// Вывод таблицы значений функции
+        /// Вывод таблицы значений функций
         /// </summary>
         static void TableFunctionValues()
         {
-            for (double x = -5; x < 6; x += 0.5)
+            for (double x = -5; x <= 5; x += 0.5)
             {
                 double y = 5 - x * x / 2;
-                Utils.OutputConsoleElement(y, "x = ");
+                Utils.OutputConsoleElement(x, "x = ", " | ");
+                Utils.OutputConsoleElement(y, "y = ");
+                Console.WriteLine();
             }
         }
     }

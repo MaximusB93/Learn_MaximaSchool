@@ -19,9 +19,9 @@ namespace Project1
             return element;
         }
 
-        public static void OutputConsoleElement(double element, string comment = "")
+        public static void OutputConsoleElement(double element = 0, string comment = "", string separator = "")
         {
-            Console.Write($"{comment}{element}");
+            Console.Write($"{comment}{element}{separator}");
         }
     }
 }

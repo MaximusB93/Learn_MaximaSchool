@@ -14,7 +14,7 @@ namespace Project1
 
             for (int i = 0; i < intArray.Length; i++)
                 summ += intArray[i];
-            Utils.OutputConsoleElement(summ, "Сумма элементов массива");
+            Utils.OutputConsoleElement(summ, "Сумма элементов массива = ");
         }
 
         /// <summary>
@@ -26,8 +26,7 @@ namespace Project1
             int summ = 0;
             for (int i = 0; i < intArray.Length; i++)
                 summ += intArray[i];
-
-            Utils.OutputConsoleElement(summ / intArray.Length, "Среднее арифметическое элементов массива");
+            Utils.OutputConsoleElement(summ / intArray.Length, "Среднее арифметическое элементов массива = ");
         }
 
         /// <summary>
@@ -43,7 +42,7 @@ namespace Project1
                     minElement = intArray[i];
             }
 
-            Utils.OutputConsoleElement(minElement,"Наименьший элемент массива");
+            Utils.OutputConsoleElement(minElement, "Наименьший элемент массива = ");
         }
 
         /// <summary>
@@ -59,7 +58,7 @@ namespace Project1
                     quantityEven++;
             }
 
-            Utils.OutputConsoleElement(quantityEven,"Количество четных чисел");
+            Utils.OutputConsoleElement(quantityEven, "Количество четных чисел = ");
         }
 
         /// <summary>
@@ -71,19 +70,16 @@ namespace Project1
             int QuantityPositivElement = 0;
             for (int i = 0; i < intArray.Length; i++)
                 if (intArray[i] > 0)
-                {
                     QuantityPositivElement++;
-                }
-
-            int a = 0;
             int[] PositiveArray = new int[QuantityPositivElement];
-            for (int i = 0; i < intArray.Length; i++)
-                if (intArray[i] > 0)
+            for (int i = 0, a = 0; i < intArray.Length; i++)
+                if (intArray[i] > 0 && QuantityPositivElement != a + 1)
                 {
-                    PositiveArray[a] = intArray[i];
-                    Utils.OutputConsoleElement(PositiveArray[a],",");
+                    Utils.OutputConsoleElement(PositiveArray[a] = intArray[i], "", ",");
                     a++;
                 }
+                else if (intArray[i] > 0)
+                    Utils.OutputConsoleElement(PositiveArray[a] = intArray[i]);
         }
     }
 }
