@@ -12,7 +12,7 @@ namespace Project1
             СubesNumbers();
             ExponentiationNumber();
             TableFunctionValues();*/
-            LogicWorkingArrays.PositiveElementArray();
+            Calculator();
         }
 
         /// <summary>
@@ -77,6 +77,41 @@ namespace Project1
                 Utils.OutputConsoleElement(y, "y = ");
                 Console.WriteLine();
             }
+        }
+
+        /// <summary>
+        /// Калькулятор
+        /// </summary>
+        static void Calculator()
+        {
+            int x = Utils.InputElement("Введите первое число");
+            int y = Utils.InputElement("Введите второе число");
+            do
+                {
+                    Console.WriteLine("Введите операцию + - * / %");
+                    string operation = Console.ReadLine();
+                    switch (operation)
+                    {
+                        case "+":
+                            Utils.OutputConsoleElement(x + y,"Сложение чисел = ");
+                            break;
+                        case "-":
+                            Utils.OutputConsoleElement(x - y,"Вычитание числа = ");
+                            break;
+                        case "*":
+                            Utils.OutputConsoleElement(x * y,"Умножение чисел = ");
+                            break;
+                        case "/":
+                            Utils.OutputConsoleElement(x / y,"Деление числа = ");
+                            break;
+                        case "%":
+                            Utils.OutputConsoleElement(x % y,"Остаток от деления = ");
+                            break;
+                        default:
+                            Console.WriteLine("Введена неверная операция, попробуйте еще раз");
+                            break;
+                    }
+                } while (default);
         }
     }
 }
