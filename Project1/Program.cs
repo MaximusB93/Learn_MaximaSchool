@@ -128,17 +128,17 @@ namespace Project1
         public static void PositiveElementArray()
         {
             int[] intArray = Utils.InputElementArray();
-            int QuantityPositivElement = 0;
+            int quantityPositivElement = 0;
             for (int i = 0; i < intArray.Length; i++)
                 if (intArray[i] > 0)
-                    QuantityPositivElement++;
-            int[] PositiveArray = new int[QuantityPositivElement];
+                    quantityPositivElement++;
+            int[] positiveArray = new int[quantityPositivElement];
             Console.WriteLine("Положительные элементы массива");
             for (int i = 0, a = 0; i < intArray.Length; i++)
-                if (intArray[i] > 0 && QuantityPositivElement != a + 1)
-                    Utils.OutputConsoleElement(PositiveArray[a++] = intArray[i], "", ",");
+                if (intArray[i] > 0 && quantityPositivElement != a + 1)
+                    Utils.OutputConsoleElement(positiveArray[a++] = intArray[i], "", ",");
                 else if (intArray[i] > 0)
-                    Utils.OutputConsoleElement(PositiveArray[a] = intArray[i]);
+                    Utils.OutputConsoleElement(positiveArray[a] = intArray[i]);
         }
 
         /// <summary>

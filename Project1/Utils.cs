@@ -15,7 +15,7 @@ namespace Project1
         public static int InputElement(string inputElement = "")
         {
             Console.WriteLine(inputElement);
-            int element = Int32.Parse(Console.ReadLine());
+            int element = Int32.Parse(Console.ReadLine() ?? string.Empty);
             return element;
         }
 
