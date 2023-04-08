@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 
 namespace Project2
 {
@@ -6,16 +7,31 @@ namespace Project2
     {
         static void Main(string[] args)
         {
-            int N = Int32.Parse(Console.ReadLine());
+            /*int N = Int32.Parse(Console.ReadLine());
             int count = 0;
             int a = 0;
             Console.WriteLine(a);
             int b = 1;
             Console.WriteLine(b);
-            Recurs(N, a, b, count);
+            Recurs(N, a, b, count);*/
+            int a = 1;
+            int N = Int32.Parse(Console.ReadLine());
+            Recurs2(N, a);
         }
 
-        static void Recurs(int N, int a, int b, int count)
+        static void Recurs2(int N, int a)
+        {
+            if (a > N)
+            {
+                return;
+            }
+
+            Console.Write(a);
+            Recurs2(N, ++a);
+        }
+
+
+        /*static void Recurs(int N, int a, int b, int count)
         {
             if (count == N - 2)
             {
@@ -25,6 +41,6 @@ namespace Project2
             a = b - a;
             count++;
             Recurs(N, a, b, count);
-        }
+        }*/
     }
 }

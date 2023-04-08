@@ -4,32 +4,18 @@ namespace Project1
 {
     internal class Program
     {
-        static void Main(string[] args)
+        enum MyEnum
         {
-            Recurs(5);
+            Red = 1,
+            Yellow = 2,
+            Gren = 3
         }
 
-        static int Recurs(int n)
+        static void Main(string[] args)
         {
 
-            /*if (n >= 5)
-            {
-                return;
-            }
-            
-            Console.WriteLine(n);
-            n++;
-            Recurs(n);*/
-            
-            
-            if (n == 0)
-            {
-                return 1;
-            }
-            else
-            {
-                return Recurs(n - 1) * n;
-            }
+            bool a = Enum.IsDefined(typeof(MyEnum),5);
+                Console.WriteLine(a);
         }
 
 
