@@ -4,6 +4,8 @@ namespace Project1
 {
     internal class Program
     {
+        
+
         enum MyEnum
         {
             Red = 1,
@@ -13,7 +15,8 @@ namespace Project1
 
         static void Main(string[] args)
         {
-
+            Car car = new Car();
+            car.color
             bool a = Enum.IsDefined(typeof(MyEnum),5);
                 Console.WriteLine(a);
         }

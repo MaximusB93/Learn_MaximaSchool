@@ -5,7 +5,7 @@ namespace Project2
     /// <summary>
     /// Числа Фибоначчи(https://pas1.ru/fibonacci)
     /// </summary>
-    class Program
+    class  Program
     {
         static void Main()
         {
