@@ -11,16 +11,7 @@ namespace Project1
             White,
             Black
         }
-
-        public enum City
-        {
-            Лондон = 0,
-            Москва= 1,
-            Челябинск= 2,
-        }
-
-
-        private City city;
+        
         private CarColor _color;
         private int _year;
         private double _mileage;
@@ -46,37 +37,20 @@ namespace Project1
             return _fuel += refuel;
         }
 
-        public void FuelConsumption()
+        public (double, City) Drive(int NumberCity)
         {
-            Console.WriteLine($"Куда поедем?");
-            for (int i = 0; i < Enum.GetNames(typeof(City)).Length; i++)
-                Console.WriteLine($"{i + 1}. {Enum.GetName(typeof(City), i)}");
-
-            switch (city)
+            switch ((City)NumberCity)
             {
-                case 0:
-                    Console.WriteLine(0 ? 1 ? _fuel - 23:_fuel - 23);
-                    break;
-                case 1:
-                    Console.WriteLine(_fuel - 15);
-                    break;
-                case 2:
-                    Console.WriteLine(_fuel - 10);
-                    break;
-            }
+                case City.Лондон:
+                    return (_fuel - 15, (City)NumberCity);
+                case City.Москва:
+                    return (_fuel - 10, (City)NumberCity);
+                case City.Челябинск:
+                    return (_fuel - 8, (City)NumberCity);
+            } 
+
+            return (_fuel - 0, (City)NumberCity);
         }
-
-        /*public void FuelConsumption()
-        {
-
-            switch (City)
-            {
-                case 0:
-                    Console.WriteLine(_fuel - 23);
-                    break;
-            }
-
-        }*/
 
         public void GoMileage()
         {
