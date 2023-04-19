@@ -1,34 +1,27 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 
 namespace Project1
 {
     internal class Program
     {
-        
-
-        enum MyEnum
+        public static void Main()
         {
-            Red = 1,
-            Yellow = 2,
-            Gren = 3
+            Car car = new Car(Car.CarColor.Black, 2020, 45000, 12);
+
+
+            Console.WriteLine($"Текущий объем топлива: {car.CurrentFuel()} л");
+            Console.WriteLine($"Приехали на заправку, на сколько литров заправимся?");
+            car.RefuelCar(Double.Parse(Console.ReadLine()));
+            Console.WriteLine($"Новый объем топлива: {car.CurrentFuel()} л");
+            car.FuelConsumption();
+
+
+
+
+            /*/*Console.WriteLine($"1. {car}");#1#
+            car.GoMileage();
+            Console.WriteLine(car.ToString());*/
         }
-
-        static void Main(string[] args)
-        {
-            Car car = new Car();
-            car.color
-            bool a = Enum.IsDefined(typeof(MyEnum),5);
-                Console.WriteLine(a);
-        }
-
-
-        /*static (string, int, int[]) Print()
-        {
-            string a = "Привет";
-            int b = 0;
-            int[] c = new int[10];
-
-            return (a, b, c);
-        }*/
     }
 }
