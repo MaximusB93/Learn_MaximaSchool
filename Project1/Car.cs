@@ -16,8 +16,7 @@ namespace Project1
         private int _year;
         private double _mileage;
         private double _fuel;
-
-
+        
         public Car(CarColor color, int year, double mileage, double fuel)
         {
             _color = color;
@@ -33,23 +32,21 @@ namespace Project1
 
         public double RefuelCar(double refuel)
         {
-            Console.WriteLine($"Заправились на {refuel} л");
             return _fuel += refuel;
         }
 
-        public (double, City) Drive(int NumberCity)
+        public (double, City.NameCity) Drive(int NumberCity)
         {
-            switch ((City)NumberCity)
+            switch ((City.NameCity)NumberCity)
             {
-                case City.Лондон:
-                    return (_fuel - 15, (City)NumberCity);
-                case City.Москва:
-                    return (_fuel - 10, (City)NumberCity);
-                case City.Челябинск:
-                    return (_fuel - 8, (City)NumberCity);
-            } 
-
-            return (_fuel - 0, (City)NumberCity);
+                case City.NameCity.Лондон:
+                    return (_fuel - 15, (City.NameCity)NumberCity);
+                case City.NameCity.Москва:
+                    return (_fuel - 10, (City.NameCity)NumberCity);
+                case City.NameCity.Челябинск:
+                    return (_fuel - 8, (City.NameCity)NumberCity);
+            }
+            return (_fuel - 0, (City.NameCity)NumberCity);
         }
 
         public void GoMileage()
@@ -61,7 +58,6 @@ namespace Project1
         {
             return DateTime.Now.Year - _year;
         }
-
 
         public override string ToString()
         {
