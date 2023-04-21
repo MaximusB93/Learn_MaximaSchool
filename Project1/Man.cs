@@ -6,7 +6,8 @@ namespace Project1
         {
             Blue,
             Green,
-            Brown
+            Brown,
+            Brown2
         }
         
         private string _name;
