@@ -1,14 +1,12 @@
 ﻿using System;
-using System.Runtime.CompilerServices;
-
 
 namespace Project1
 {
     internal class Program
     {
-        public static void Main()
+        static void Main(string[] args)
         {
-            InformationCar.OutputInformationCar();
+            Console.WriteLine("Мастер2");
         }
     }
 }
