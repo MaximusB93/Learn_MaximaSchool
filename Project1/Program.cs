@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 
 namespace Project1
 {
@@ -6,17 +7,14 @@ namespace Project1
     {
         static void Main(string[] args)
         {
-            var Ivan = new Man("Ваня", 10, 140, 50, Man.Color.Blue);
-            var Ivan1 = new Man("Ваня", 10, 140, 50, Man.Color.Blue);
-            var Ivan2 = new Man("Ваня", 10, 140, 50, Man.Color.Blue);
-            var Ivan3 = new Man("Ваня", 10, 140, 50, Man.Color.Blue);
+            
+            HuMan Rustam = new HuMan(50);
+            var Ivan = new HuMan("Ivan", 10, 130, 40);
+            HuMan Max = new HuMan("Max", 30, 180, 80,Color.Blue);
+            HuMan German = new HuMan("German", 25, 190, 70,Color.Blue,new Car(Color.Black, 2020, 45000, 12));
+            HuMan Kirill = new HuMan();
             
             
-            
-            Console.WriteLine(Ivan.Age);
-            Ivan.Age = 99;
-            Console.WriteLine(Ivan.Age);
-            Console.WriteLine(Man.GetNumber());
         }
     }
 }
