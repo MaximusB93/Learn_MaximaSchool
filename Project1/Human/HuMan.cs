@@ -6,10 +6,6 @@ namespace Project1
     public class HuMan
     {
         //Поля класса
-
-        //Вынести в другой класс
-        private static int _number;
-
         private string _name;
         private byte _age;
         private int _height;
@@ -19,17 +15,11 @@ namespace Project1
 
 
         //Свойства
-
-        //Вынести в другой класс
-        public static int Number => _number;
-
-
         public Car Car => _car;
-        
 
         public byte Age
         {
-            get => _age;    
+            get => _age;
 
             set
             {
@@ -37,11 +27,10 @@ namespace Project1
                 {
                     _age = value;
                 }
-                
             }
         }
 
-
+        //Конструкторы
         public HuMan(byte age)
         {
             _age = age;
@@ -59,7 +48,7 @@ namespace Project1
                 throw new Exception("Некорректные данные");
             }
 
-            _number++;
+            HumanFabric.Number++;
             _name = name;
             _age = age;
             _height = height;
@@ -78,16 +67,7 @@ namespace Project1
             _car = car;
         }
 
-        //Вынести в другой класс
-        /// <summary>
-        /// Счетчик
-        /// </summary>
-        /// <returns></returns>
-        public static int GetNumber()
-        {
-            return _number;
-        }
-        
+
         /// <summary>
         /// Проверка
         /// </summary>

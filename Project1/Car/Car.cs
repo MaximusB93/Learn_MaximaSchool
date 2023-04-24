@@ -6,10 +6,41 @@ namespace Project1
     public class Car
     {
         //Поля класса
-        private Color _color;  
+        private BrandCar _brandCar;
+        private Color _color;
         private int _year;
         private double _mileage;
         private double _fuel;
+
+        //Свойства
+        public BrandCar BrandCar => _brandCar;
+        public Color Color => _color;
+        public int Year => _year;
+        public double Mileage => _mileage;
+
+        public double Fuel
+        {
+            get => _fuel;
+            set
+            {
+                if (_fuel > 45)
+                {
+                    
+                }
+            }
+        }
+
+
+        /// <summary>
+        /// Конструктор по умолчанию
+        /// </summary>
+        public Car()
+        {
+            _color = Color.Aqua;
+            _year = 2000;
+            _mileage = 254921;
+            GoMileage();
+        }
 
         /// <summary>
         /// Конструктор полей
@@ -27,6 +58,21 @@ namespace Project1
         }
 
         /// <summary>
+        /// Конструктор поля brandCar + this
+        /// </summary>
+        /// <param name="brandCar"></param>
+        /// <param name="color"></param>
+        /// <param name="year"></param>
+        /// <param name="mileage"></param>
+        /// <param name="fuel"></param>
+        public Car(BrandCar brandCar, Color color, int year, double mileage, double fuel)
+            : this(color, year, mileage, fuel)
+        {
+            _brandCar = brandCar;
+        }
+
+        //Методы
+        /// <summary>
         /// Количество топлива
         /// </summary>
         /// <returns></returns>
@@ -41,6 +87,12 @@ namespace Project1
         /// <returns></returns>
         public double RefuelCar(double refuel)
         {
+            if (_fuel + refuel > 45)
+            {
+                Console.WriteLine(
+                    $"Общий объем бака не может быть более 45 л, сейчас вы можете заправиться max на {45 - _fuel} л");
+            }
+
             return _fuel += refuel;
         }
 
