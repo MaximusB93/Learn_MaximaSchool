@@ -11,6 +11,8 @@ namespace Project1
         private int _year;
         private double _mileage;
         private double _fuel;
+        private double _averageFuelConsumption;
+        private double _powerReserve;
 
         //Свойства
         public BrandCar BrandCar => _brandCar;
@@ -24,11 +26,15 @@ namespace Project1
             set
             {
                 if (_fuel > 45)
-                {
-                    
-                }
+                    _fuel = 45;
+
+                _fuel = value;
             }
         }
+
+        public double AverageFuelConsumption => _averageFuelConsumption;
+
+        public double PowerReserve => _averageFuelConsumption * _fuel;
 
 
         /// <summary>
@@ -39,6 +45,8 @@ namespace Project1
             _color = Color.Aqua;
             _year = 2000;
             _mileage = 254921;
+            _fuel = 12;
+            _averageFuelConsumption = 8.2;
             GoMileage();
         }
 
@@ -137,10 +145,10 @@ namespace Project1
         /// Данные авто
         /// </summary>
         /// <returns></returns>
+
         public override string ToString()
         {
-            return
-                $"{nameof(_color)}: {_color}, {nameof(_year)}: {_year}, {nameof(_mileage)}: {_mileage}, {nameof(_fuel)}: {_fuel}";
+            return $"{nameof(BrandCar)}: {BrandCar}, {nameof(Color)}: {Color}, {nameof(Year)}: {Year}, {nameof(Mileage)}: {Mileage}, {nameof(Fuel)}: {Fuel}, {nameof(AverageFuelConsumption)}: {AverageFuelConsumption}, {nameof(PowerReserve)}: {PowerReserve}";
         }
     }
 }
