@@ -10,6 +10,8 @@ namespace Project1
             Car car = new Car();
             Console.WriteLine(car);
 
+            GeometricFigure geometricFigure = new GeometricFigure(20, 30, 15);
+            Console.WriteLine(geometricFigure.Square);
         }
     }
 }

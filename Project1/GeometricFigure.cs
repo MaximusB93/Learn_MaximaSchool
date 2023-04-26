@@ -18,6 +18,7 @@ namespace Project1
 
         private double _square;
         private double _perimeter;
+        private double _semiperimeter;
 
         //Свойства
         public double SideA => _sideA;
@@ -26,9 +27,15 @@ namespace Project1
 
         public double SideC => _sideC;
 
-        public double Square => Math.Sqrt(Perimeter / 2(Perimeter / 2 - SideA) * (Perimeter / 2 - SideB) * (Perimeter / 2 - SideC));
+        /// <summary>
+        /// Площадь треугольника по формуле Герона
+        /// </summary>
+        public double Square =>
+            Math.Sqrt(Semiperimeter * (Semiperimeter - SideA) * (Semiperimeter - SideB) * (Semiperimeter - SideC));
 
         public double Perimeter => SideA + SideB + SideC;
+
+        public double Semiperimeter => Perimeter / 2;
 
         //Конструкторы
         public GeometricFigure(double sideA, double sideB, double sideC)
@@ -37,6 +44,5 @@ namespace Project1
             _sideB = sideB;
             _sideC = sideC;
         }
-        
     }
 }
