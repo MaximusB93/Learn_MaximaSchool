@@ -6,7 +6,7 @@ namespace Project1
     public class Car
     {
         //Поля класса
-        private BrandCar _brandCar;
+        private readonly BrandCar _brandCar;
         private Color _color;
         private int _year;
         private double _mileage;
