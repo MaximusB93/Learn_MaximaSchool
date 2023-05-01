@@ -5,23 +5,29 @@ namespace Project1
 {
     public class InformationCar
     {
+        public static Car CreatingCar()
+        {
+            //Начальные характеристики автомобиля
+            Car car = new Car(BrandCar.Audi, Color.Black, 2020, 45000, 12);
+            return car;
+        }
+
+
         /// <summary>
         /// Вывод на консоль
         /// </summary>
         public static void OutputInformationCar()
         {
-            //Начальные характеристики автомобиля
-            Car car = new Car(Color.Black, 2020, 45000, 12);
-            Console.WriteLine($"Начальные характеристики автомобиля - {car.ToString()}");
-            Console.WriteLine($"Текущий объем топлива: {car.CurrentFuel()} л");
+            Console.WriteLine($"Начальные характеристики автомобиля - {CreatingCar().ToString()}");
+            Console.WriteLine($"Текущий объем топлива: {CreatingCar().CurrentFuel()} л");
             Console.WriteLine("Приехали на заправку, на сколько литров заправимся?");
-            car.RefuelCar(Double.Parse(Console.ReadLine()));
-            
-            Console.WriteLine($"Новый объем топлива: {car.CurrentFuel()} л");
+            CreatingCar().RefuelCar(Double.Parse(Console.ReadLine()));
+
+            Console.WriteLine($"Новый объем топлива: {CreatingCar().CurrentFuel()} л");
             Console.WriteLine("Куда поедем?");
             City.IteratingListCity();
-            
-            (double, City.NameCity) response = car.Drive(InputInformationCar());
+
+            (double, City.NameCity) response = CreatingCar().Drive(InputInformationCar());
             Console.WriteLine($"Доехали до {response.Item2}, у нас осталось {response.Item1} л топлива");
         }
 

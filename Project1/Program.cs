@@ -7,11 +7,13 @@ namespace Project1
     {
         static void Main(string[] args)
         {
-            Car car = new Car();
+            InformationCar.OutputInformationCar();
+
+            /*Car car = new Car();
             Console.WriteLine(car);
 
             GeometricFigure geometricFigure = new GeometricFigure(20, 30, 15);
-            Console.WriteLine(geometricFigure.Square);
+            Console.WriteLine(geometricFigure.Square);*/
         }
     }
 }

@@ -113,11 +113,11 @@ namespace Project1
         {
             switch ((City.NameCity)NumberCity)
             {
-                case City.NameCity.Лондон:
+                case City.NameCity.London:
                     return (_fuel - 15, (City.NameCity)NumberCity);
-                case City.NameCity.Москва:
+                case City.NameCity.Moscow:
                     return (_fuel - 10, (City.NameCity)NumberCity);
-                case City.NameCity.Челябинск:
+                case City.NameCity.Chelyabinsk:
                     return (_fuel - 8, (City.NameCity)NumberCity);
             }
 

@@ -9,9 +9,9 @@ namespace Project1
         /// </summary>
         public enum NameCity
         {
-            Лондон,
-            Москва,
-            Челябинск,
+            London,
+            Moscow,
+            Chelyabinsk
         }
 
         private NameCity nameCity;

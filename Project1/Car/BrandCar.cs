@@ -87,10 +87,10 @@ namespace Project1
         Volvo,
         ZAZ,
         Zotye,
-        ГАЗ,
-        Москвич,
-        ТагАЗ,
-        УАЗ
+        GAZ,
+        Moskvich,
+        Tagaz,
+        UAZ
 
     }
     

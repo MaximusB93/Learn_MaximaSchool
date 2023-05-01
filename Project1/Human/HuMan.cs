@@ -43,7 +43,7 @@ namespace Project1
 
         public HuMan(string name, byte age, int height, int wheight)
         {
-            if (!Check(age, height, wheight))
+            if (!CheckingHumanParameters(age, height, wheight))
             {
                 throw new Exception("Некорректные данные");
             }
@@ -69,13 +69,13 @@ namespace Project1
 
 
         /// <summary>
-        /// Проверка
+        /// Проверка параметров человека
         /// </summary>
         /// <param name="age"></param>
         /// <param name="height"></param>
         /// <param name="wheight"></param>
         /// <returns></returns>
-        private bool Check(byte age, int height, int wheight)
+        private bool CheckingHumanParameters(byte age, int height, int wheight)
         {
             if (age > 120)
                 return false;
