@@ -12,21 +12,34 @@ namespace Project1
             return car;
         }
 
-
+        public static void Start()
+        {
+            ViewDrive();
+            ViewAboutCar();
+            ViewRefuel();
+        }
+        
         /// <summary>
         /// Вывод на консоль
         /// </summary>
-        public static void OutputInformationCar()
+        public static void ViewAboutCar()
         {
             Console.WriteLine($"Начальные характеристики автомобиля - {CreatingCar().ToString()}");
             Console.WriteLine($"Текущий объем топлива: {CreatingCar().CurrentFuel()} л");
+        }
+
+        private static void ViewRefuel()
+        {
             Console.WriteLine("Приехали на заправку, на сколько литров заправимся?");
             CreatingCar().RefuelCar(Double.Parse(Console.ReadLine()));
 
             Console.WriteLine($"Новый объем топлива: {CreatingCar().CurrentFuel()} л");
             Console.WriteLine("Куда поедем?");
             City.IteratingListCity();
+        }
 
+        private static void ViewDrive()
+        {
             (double, City.NameCity) response = CreatingCar().Drive(InputInformationCar());
             Console.WriteLine($"Доехали до {response.Item2}, у нас осталось {response.Item1} л топлива");
         }

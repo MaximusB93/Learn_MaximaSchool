@@ -7,7 +7,7 @@ namespace Project1
     {
         static void Main(string[] args)
         {
-            InformationCar.OutputInformationCar();
+            InformationCar.Start();
 
             /*Car car = new Car();
             Console.WriteLine(car);
