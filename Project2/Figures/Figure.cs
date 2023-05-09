@@ -6,14 +6,25 @@ namespace Project2.Figures
     {
         public virtual double Area { get; set; }
         public virtual double Perimeter { get; set; }
+        public virtual FigureType FigureType { get; }
+        public int FigureId { get; }
 
-        public virtual string GetTitle()
+        public string Title => FigureType.ToString();
+
+        public Figure(int figureId)
         {
-            return "Unkown Figure";
+            FigureId = figureId;
         }
+
+        public string GetTitle()
+        {
+            return $"{FigureId}: {Title}";
+        }
+
+        
     }
 
-    enum FigureType
+    public enum FigureType
     {
         Circle,
         Square,
