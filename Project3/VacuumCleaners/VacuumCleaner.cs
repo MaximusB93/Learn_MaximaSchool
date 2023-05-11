@@ -9,13 +9,14 @@ namespace Project3.VacuumCleaners
         public string Title => rooms.ToString();
         
 
-        public virtual void StartCleaning()
+        public virtual string StartCleaning()
         {
-            Console.WriteLine("Началась уборка");
+            return "Началась уборка";
         }
 
         public virtual void StartCleaning(string Kitchen)
         {
+            
         }
 
 

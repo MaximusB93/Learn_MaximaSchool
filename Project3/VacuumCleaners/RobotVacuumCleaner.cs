@@ -2,13 +2,14 @@ using System;
 
 namespace Project3.VacuumCleaners
 {
-    public class RobotVacuumCleaner: VacuumCleaner
-    
+    public class RobotVacuumCleaner : VacuumCleaner
+
     {
         public override Model model { get; }
-        public override void StartCleaning()
+
+        public override string StartCleaning()
         {
-            Console.WriteLine($"Пылесос {model} начал уборку в {rooms} ");
+            return $"Пылесос {model} начал уборку в {rooms}";
         }
     }
 }

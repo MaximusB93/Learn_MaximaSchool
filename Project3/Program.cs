@@ -9,7 +9,20 @@ namespace Project3
         {
             VacuumCleaner[] vacuumCleaners =
                 { new BuildingVacuumCleaner(), new RobotVacuumCleaner(), new WashingVacuumCleaner() };
-            Console.WriteLine("Какой пылесос выберем?");
+            
+          
+            foreach (var element in vacuumCleaners)
+            {
+                element.StartCleaning("Комната");
+            }
+            
+            
+            
+            
+            
+            
+            
+            /*Console.WriteLine("Какой пылесос выберем?");
             for (int i = 0; i < vacuumCleaners.Length; i++)
             {
                 Console.WriteLine($"{i+1}) {vacuumCleaners[i]}");  
@@ -28,7 +41,7 @@ namespace Project3
                 case 1:
                     RobotVacuumCleaner RobotVacuumCleaner = new RobotVacuumCleaner() ;
                     break;
-            }
+            }*/
             
         }
     }

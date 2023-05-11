@@ -4,9 +4,9 @@ namespace Project3
 {
     public class BuildingVacuumCleaner: VacuumCleaner
     {
-        public override void StartCleaning()
+        public  string StartCleaning()
         {
-            base.StartCleaning();
+            return base.StartCleaning();
         }
     }
 }
