@@ -2,25 +2,28 @@ using System;
 
 namespace Project3.VacuumCleaners
 {
-    public class VacuumCleaner
+    public abstract class VacuumCleaner
     {
-        public virtual Model model { get; }
-        public Rooms rooms { get; }
+        public virtual Model model { get; protected set; }
+        public Rooms rooms { get; set; }
         public string Title => rooms.ToString();
-        
+
+        public VacuumCleaner(Model model)
+        {
+            this.model = model;
+        }
 
         public virtual string StartCleaning()
         {
             return "Началась уборка";
         }
 
-        public virtual void StartCleaning(string Kitchen)
+        public string StartCleaning(Rooms room)
         {
-            
+            return $"Пылесос {model} начал уборку в {room}";
         }
-
-
     }
+
     public enum Model
     {
         Samsung,

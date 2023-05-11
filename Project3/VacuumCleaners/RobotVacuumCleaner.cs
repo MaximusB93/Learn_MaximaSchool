@@ -3,13 +3,12 @@ using System;
 namespace Project3.VacuumCleaners
 {
     public class RobotVacuumCleaner : VacuumCleaner
-
     {
-        public override Model model { get; }
 
-        public override string StartCleaning()
+        public RobotVacuumCleaner(Model model) : base(model)
         {
-            return $"Пылесос {model} начал уборку в {rooms}";
+            this.model = model;
         }
+
     }
 }
