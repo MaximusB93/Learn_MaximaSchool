@@ -15,11 +15,10 @@ namespace Project3
             };
 
 
-            /*foreach (var element in vacuumCleaners)
-          {
-              Console.WriteLine(element.StartCleaning());
-          }*/
-
+            foreach (var element in vacuumCleaners)
+            {
+                Console.WriteLine(element.StartCleaning(Kitchen));
+            }
 
             /*Console.WriteLine("Какой пылесос выберем?");
             for (int i = 0; i < vacuumCleaners.Length; i++)
@@ -27,6 +26,7 @@ namespace Project3
                 Console.WriteLine($"{i + 1}) {vacuumCleaners[i]}");
             }*/
 
+            /*
             Console.WriteLine("Какую комнату желаете убрать?");
             int number = 1;
 
@@ -39,7 +39,9 @@ namespace Project3
 
             var roomIndex = Int32.Parse(Console.ReadLine()) - 1;
             var selectRoom = (Rooms)Enum.GetValues(typeof(Rooms)).GetValue(roomIndex);
-            Console.WriteLine(vacuumCleaners[1].StartCleaning(selectRoom));
+            Console.WriteLine(vacuumCleaners[1].StartCleaning(selectRoom));*/
         }
+
+        public static Rooms Kitchen { get; set; }
     }
 }

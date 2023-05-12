@@ -2,7 +2,7 @@ using System;
 
 namespace Project3.VacuumCleaners
 {
-    public abstract class VacuumCleaner
+    public class VacuumCleaner
     {
         public virtual Model model { get; protected set; }
         public Rooms rooms { get; set; }
