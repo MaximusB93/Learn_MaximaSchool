@@ -7,7 +7,10 @@ namespace Project3.VacuumCleaners
         public virtual Model model { get; protected set; }
         public Rooms rooms { get; set; }
         public string Title => rooms.ToString();
-
+        
+        public VacuumCleaner()
+        {
+        }
         public VacuumCleaner(Model model)
         {
             this.model = model;
