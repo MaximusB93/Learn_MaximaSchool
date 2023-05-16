@@ -1,9 +1,10 @@
 using System;
 
-namespace Project2.Figures
+namespace Library1
 {
     public class Circle : Figure
     {
+        private const int Angles = 0;
         private double _r;
 
         public double R => _r;
@@ -16,6 +17,11 @@ namespace Project2.Figures
         public Circle(double r, int figureId) : base( figureId)
         {
             this._r = r;
+        }
+        
+        public override int GetAnglesCount()
+        {
+            return Angles;
         }
         
     }

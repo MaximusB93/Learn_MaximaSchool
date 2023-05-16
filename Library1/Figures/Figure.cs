@@ -1,12 +1,12 @@
 using System;
 
-namespace Project2.Figures
+namespace Library1.Figures
 {
-    public class Figure
+    public abstract class Figure
     {
-        public virtual double Area { get; set; }
-        public virtual double Perimeter { get; set; }
-        public virtual FigureType FigureType { get; }
+        public abstract double Area { get; }
+        public abstract double Perimeter { get; }
+        public abstract FigureType FigureType { get; }
         public int FigureId { get; }
 
         public string Title => FigureType.ToString();
@@ -15,13 +15,18 @@ namespace Project2.Figures
         {
             FigureId = figureId;
         }
+        
+        public abstract int GetAnglesCount();
 
         public string GetTitle()
         {
             return $"{FigureId}: {Title}";
         }
 
-        
+        public override string ToString()
+        {
+            return GetTitle();
+        }
     }
 
     public enum FigureType

@@ -1,9 +1,11 @@
 using System;
 
-namespace Project2.Figures
+namespace Library1
 {
     public class Square : Figure
     {
+        
+        private const int Angles = 4;
         private double _side;
         public double Side => _side;
         
@@ -17,6 +19,11 @@ namespace Project2.Figures
         public Square(double side,int figureId): base( figureId)
         {
             this._side = side;
+        }
+        
+        public override int GetAnglesCount()
+        {
+            return Angles;
         }
 
     }

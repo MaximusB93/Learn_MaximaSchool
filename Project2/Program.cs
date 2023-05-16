@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Xml;
-using Project2.Figures;
+using Library1;
 
 namespace Project2
 {
@@ -10,6 +10,12 @@ namespace Project2
     {
         static void Main()
         {
+
+            Figures.Square square = new Figures.Square(55,3);
+            
+            Console.WriteLine(square.Area);
+            
+            
             Figure[] figures = { new Circle(4,1), new Square(55,3), new Circle(3,5), new Square(33,8), new Triangle(10,8,9,4) };
             /*Console.WriteLine("Площадь");
             Console.WriteLine(CalculateAreas(figures));
@@ -71,7 +77,7 @@ namespace Project2
 
             foreach (var figure in figures)
             {
-                Console.WriteLine(figure.GetTitle());
+                Console.WriteLine($"{figure.GetTitle()}: {figure.GetAnglesCount()}");
             }
             
         }
