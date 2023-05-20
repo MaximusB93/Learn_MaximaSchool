@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Library1\Library1.csproj" />
+    <ProjectReference Include="..\GeometryLibrary\GeometryLibrary.csproj" />
   </ItemGroup>
 
 </Project>

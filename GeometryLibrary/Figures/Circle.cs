@@ -1,6 +1,6 @@
 using System;
 
-namespace Library1
+namespace GeometryLibrary.Figures
 {
     public class Circle : Figure
     {
@@ -9,7 +9,7 @@ namespace Library1
 
         public double R => _r;
         public double Diameter => _r * 2;
-        public override FigureType FigureType => FigureType.Circle;
+        public override FigureType FigureType => this.FigureType.Circle;
 
         public override double Area => Math.PI * Math.Pow(_r, 2);
         public override double Perimeter => 2 * Math.PI * _r;

@@ -5,13 +5,13 @@ VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project1", "Project1\Project1.csproj", "{2C0367DF-0B9B-4674-AF55-16FF3865D1DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project2", "Project2\Project2.csproj", "{EA68AD88-FEEC-4439-8C2C-132812FEAA8C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeometryCalculator", "GeometryCalculator\GeometryCalculator.csproj", "{EA68AD88-FEEC-4439-8C2C-132812FEAA8C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project3", "Project3\Project3.csproj", "{B01FC292-8F50-4C31-ACBA-CB160654597A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project4", "Project4\Project4.csproj", "{5EDBFA75-9155-4101-9392-251E6870EDDD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library1", "Library1\Library1.csproj", "{4C5D7790-8413-44A4-9B14-B570953162E4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeometryLibrary", "GeometryLibrary\GeometryLibrary.csproj", "{4C5D7790-8413-44A4-9B14-B570953162E4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

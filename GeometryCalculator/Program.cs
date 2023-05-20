@@ -2,21 +2,16 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Xml;
-using Library1;
+using GeometryLibrary.Figures;
 
-namespace Project2
+namespace GeometryCalculator
 {
     class Program
     {
         static void Main()
         {
-
-            Figures.Square square = new Figures.Square(55,3);
-            
-            Console.WriteLine(square.Area);
-            
-            
-            Figure[] figures = { new Circle(4,1), new Square(55,3), new Circle(3,5), new Square(33,8), new Triangle(10,8,9,4) };
+            Figure[] figures =
+                { new Circle(4, 1), new Square(55, 3), new Circle(3, 5), new Square(33, 8), new Triangle(10, 8, 9, 4) };
             /*Console.WriteLine("Площадь");
             Console.WriteLine(CalculateAreas(figures));
             Console.WriteLine("Периметр");
@@ -79,11 +74,8 @@ namespace Project2
             {
                 Console.WriteLine($"{figure.GetTitle()}: {figure.GetAnglesCount()}");
             }
-            
         }
 
-        
-        
 
         static string CalculateAreas(List<Figure> figures)
         {

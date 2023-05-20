@@ -1,6 +1,4 @@
-using System;
-
-namespace Library1.Figures
+namespace GeometryLibrary.Figures
 {
     public abstract class Figure
     {

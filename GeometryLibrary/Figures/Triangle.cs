@@ -1,12 +1,11 @@
 using System;
-using System.Linq.Expressions;
 
-namespace Library1.Figures
+namespace GeometryLibrary.Figures
 {
     public class Triangle : Figure
     {
         private const int Angles = 3;
-        
+
         private double _a, _b, _c;
 
         public double A => _a;
@@ -14,7 +13,7 @@ namespace Library1.Figures
         public double B => _b;
 
         public double C => _c;
-        public override FigureType FigureType => FigureType.Triangle;
+        public override FigureType FigureType => this.FigureType.Triangle;
 
         public override void GetAnglesCount()
         {
@@ -31,4 +30,6 @@ namespace Library1.Figures
         public override double Area => throw new Exception("Не умею");
         public override double Perimeter => _a + _b + _c;
     }
+}
+
 }
