@@ -1,14 +1,15 @@
 using System;
+using GeometryLibrary.Figures.Abstract;
 
 namespace GeometryLibrary.Figures
 {
-    public class Square : Figure
+    public class Square : TwoDimensionFigures
     {
         private const int Angles = 4;
         private double _side;
         public double Side => _side;
 
-        public override FigureType FigureType => this.FigureType.Square;
+        public override FigureType FigureType => FigureType.Square;
 
         public double Diagonal => Math.Sqrt(2) * _side;
 

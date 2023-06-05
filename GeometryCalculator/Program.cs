@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Xml;
 using GeometryLibrary.Figures;
+using GeometryLibrary.Figures.Abstract;
 
 namespace GeometryCalculator
 {
@@ -11,7 +12,26 @@ namespace GeometryCalculator
         static void Main()
         {
             Figure[] figures =
-                { new Circle(4, 1), new Square(55, 3), new Circle(3, 5), new Square(33, 8), new Triangle(10, 8, 9, 4) };
+            {
+                new Circle(4, 1),
+                new Square(55, 3),
+                new Circle(3, 5),
+                new Square(33, 8),
+                new Triangle(10, 8, 9, 4),
+                new Cube(5, 50)
+            };
+
+            double summ = 0;
+
+            foreach (var figure in figures)
+            {
+                if (figure is ThreeDimensionFigures threeDimensionFigures)
+                {
+                    summ += threeDimensionFigures.Volume;
+                    Console.WriteLine(summ);
+                }
+            }
+
             /*Console.WriteLine("Площадь");
             Console.WriteLine(CalculateAreas(figures));
             Console.WriteLine("Периметр");
@@ -70,7 +90,7 @@ namespace GeometryCalculator
                 }
             }*/
 
-            foreach (var figure in figures)
+            /*foreach (var figure in figures)
             {
                 Console.WriteLine($"{figure.GetTitle()}: {figure.GetAnglesCount()}");
             }
@@ -99,6 +119,7 @@ namespace GeometryCalculator
             }
 
             return sb.ToString();
+        }*/
         }
     }
 }

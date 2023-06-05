@@ -1,8 +1,9 @@
 using System;
+using GeometryLibrary.Figures.Abstract;
 
 namespace GeometryLibrary.Figures
 {
-    public class Triangle : Figure
+    public class Triangle : TwoDimensionFigures
     {
         private const int Angles = 3;
 
@@ -13,9 +14,9 @@ namespace GeometryLibrary.Figures
         public double B => _b;
 
         public double C => _c;
-        public override FigureType FigureType => this.FigureType.Triangle;
+        public override FigureType FigureType => FigureType.Triangle;
 
-        public override void GetAnglesCount()
+        public override int GetAnglesCount()
         {
             return Angles;
         }
@@ -32,4 +33,3 @@ namespace GeometryLibrary.Figures
     }
 }
 
-}

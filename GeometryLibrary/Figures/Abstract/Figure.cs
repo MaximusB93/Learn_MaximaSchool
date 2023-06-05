@@ -1,4 +1,4 @@
-namespace GeometryLibrary.Figures
+namespace GeometryLibrary.Figures.Abstract
 {
     public abstract class Figure
     {
@@ -13,7 +13,7 @@ namespace GeometryLibrary.Figures
         {
             FigureId = figureId;
         }
-        
+
         public abstract int GetAnglesCount();
 
         public string GetTitle()
@@ -31,6 +31,7 @@ namespace GeometryLibrary.Figures
     {
         Circle,
         Square,
-        Triangle
+        Triangle,
+        Cube
     }
 }
