@@ -3,24 +3,32 @@ using GeometryLibrary.Figures.Abstract;
 
 namespace GeometryLibrary.Figures
 {
-    public class Cube : ThreeDimensionFigures
+    public class Cube : IThreeDimensionFigures
     {
+        
+        public string Name => "Куб";
         private double _a;
 
-        public Cube(int figureId, double a) : base(figureId)
+        public Cube(int figureId, double a)
         {
             _a = a;
         }
 
-        public override double Area => 6 * _a * _a;
-        public override double Perimeter => 8 * _a;
-        public override FigureType FigureType => FigureType.Cube;
+        public  double Area => 6 * _a * _a;
+        public  double Perimeter => 8 * _a;
+        public int FigureId { get; }
+        public INamable.FigureType figureType => INamable.FigureType.Cube;
 
-        public override int GetAnglesCount()
+        public  int GetAnglesCount()
         {
             return 8;
         }
 
-        public override double Volume => Math.Pow(_a, 3);
+        public  double Volume => Math.Pow(_a, 3);
+        
+        public double GetSquare()
+        {
+            return Area;
+        }
     }
 }  

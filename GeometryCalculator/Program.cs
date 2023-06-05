@@ -11,7 +11,21 @@ namespace GeometryCalculator
     {
         static void Main()
         {
-            Figure[] figures =
+
+            INamable rectangle = new Rectangle()
+            INamable [] rectangles = 
+            {
+                new Circle(4, 1),
+                new Square(55, 3),
+                new Circle(3, 5),
+                new Square(33, 8),
+                new Triangle(10, 8, 9, 4),
+                new Cube(5, 50)
+            };
+            
+            
+            
+            IFigure[] figures =
             {
                 new Circle(4, 1),
                 new Square(55, 3),
@@ -25,7 +39,7 @@ namespace GeometryCalculator
 
             foreach (var figure in figures)
             {
-                if (figure is ThreeDimensionFigures threeDimensionFigures)
+                if (figure is IThreeDimensionFigures threeDimensionFigures)
                 {
                     summ += threeDimensionFigures.Volume;
                     Console.WriteLine(summ);
