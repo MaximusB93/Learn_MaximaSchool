@@ -1,6 +1,6 @@
 using System;
 
-namespace Project1
+namespace CreatureCarAndHuman
 {
     /// <summary>
     /// Треугольник

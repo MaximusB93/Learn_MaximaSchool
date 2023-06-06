@@ -7,7 +7,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\GeometryLibrary\GeometryLibrary.csproj" />
-      <ProjectReference Include="..\Project1\Project1.csproj" />
+      <ProjectReference Include="..\CreatureCarAndHuman\CreatureCarAndHuman.csproj" />
     </ItemGroup>
 
 </Project>

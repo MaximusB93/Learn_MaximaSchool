@@ -1,7 +1,7 @@
 using System;
 using System.Drawing;
 
-namespace Project1
+namespace CreatureCarAndHuman
 {
     public class HuMan
     {

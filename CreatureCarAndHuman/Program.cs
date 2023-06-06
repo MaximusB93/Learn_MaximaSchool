@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Drawing;
 
-namespace Project1
+namespace CreatureCarAndHuman
 {
     internal class Program
     {

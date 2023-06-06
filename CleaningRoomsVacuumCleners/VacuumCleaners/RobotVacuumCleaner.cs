@@ -1,6 +1,6 @@
 using System;
 
-namespace Project3.VacuumCleaners
+namespace CleaningRoomsVacuumCleners.VacuumCleaners
 {
     public class RobotVacuumCleaner : VacuumCleaner
     {

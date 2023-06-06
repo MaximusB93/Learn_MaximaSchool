@@ -1,7 +1,7 @@
 ﻿using System;
-using Project3.VacuumCleaners;
+using CleaningRoomsVacuumCleners.VacuumCleaners;
 
-namespace Project3
+namespace CleaningRoomsVacuumCleners
 {
     class Program
     {

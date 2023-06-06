@@ -3,13 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project1", "Project1\Project1.csproj", "{2C0367DF-0B9B-4674-AF55-16FF3865D1DB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreatureCarAndHuman", "CreatureCarAndHuman\CreatureCarAndHuman.csproj", "{2C0367DF-0B9B-4674-AF55-16FF3865D1DB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeometryCalculator", "GeometryCalculator\GeometryCalculator.csproj", "{EA68AD88-FEEC-4439-8C2C-132812FEAA8C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project3", "Project3\Project3.csproj", "{B01FC292-8F50-4C31-ACBA-CB160654597A}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project4", "Project4\Project4.csproj", "{5EDBFA75-9155-4101-9392-251E6870EDDD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleaningRoomsVacuumCleners", "CleaningRoomsVacuumCleners\CleaningRoomsVacuumCleners.csproj", "{B01FC292-8F50-4C31-ACBA-CB160654597A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeometryLibrary", "GeometryLibrary\GeometryLibrary.csproj", "{4C5D7790-8413-44A4-9B14-B570953162E4}"
 EndProject
@@ -31,10 +29,6 @@ Global
 		{B01FC292-8F50-4C31-ACBA-CB160654597A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B01FC292-8F50-4C31-ACBA-CB160654597A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B01FC292-8F50-4C31-ACBA-CB160654597A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5EDBFA75-9155-4101-9392-251E6870EDDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5EDBFA75-9155-4101-9392-251E6870EDDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5EDBFA75-9155-4101-9392-251E6870EDDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5EDBFA75-9155-4101-9392-251E6870EDDD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4C5D7790-8413-44A4-9B14-B570953162E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4C5D7790-8413-44A4-9B14-B570953162E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4C5D7790-8413-44A4-9B14-B570953162E4}.Release|Any CPU.ActiveCfg = Release|Any CPU

@@ -1,6 +1,6 @@
-using Project3.VacuumCleaners;
+using CleaningRoomsVacuumCleners.VacuumCleaners;
 
-namespace Project3
+namespace CleaningRoomsVacuumCleners
 {
     public class WashingVacuumCleaner : VacuumCleaner
     {

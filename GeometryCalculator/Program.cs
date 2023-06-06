@@ -13,6 +13,8 @@ namespace GeometryCalculator
         {
 
             INamable rectangle = new Rectangle()
+                IFigure
+
             INamable [] rectangles = 
             {
                 new Circle(4, 1),
