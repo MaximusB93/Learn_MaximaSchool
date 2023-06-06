@@ -3,21 +3,22 @@ using GeometryLibrary.Figures.Abstract;
 
 namespace GeometryLibrary.Figures
 {
-    public class Square : ITwoDimensionFigures
+    public class Square : ITwoDimensionFigures<string>
     {
-        public string Name => "Квадрат";
         private const int Angles = 4;
         private double _side;
+        
+        public string Name => "Квадрат";
         public double Side => _side;
-        public int FigureId { get; }
-        public INamable.FigureType figureType => INamable.FigureType.Square;
+        public string FigureId { get; }
+        public INamable<string>.FigureType figureType => INamable<string>.FigureType.Square;
 
         public double Diagonal => Math.Sqrt(2) * _side;
 
         public  double Area => Math.Pow(_side, 2);
         public  double Perimeter => _side * 4;
 
-        public Square(double side, int figureId) 
+        public Square(double side, string figureId) 
         {
             this._side = side;
         }

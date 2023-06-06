@@ -12,21 +12,12 @@ namespace GeometryCalculator
         static void Main()
         {
 
-            INamable rectangle = new Rectangle()
-                IFigure
+            var tr1 = new Triangle<string>(1, 2, 3, "99");
+            var tr3 = new Triangle<string>(1, 2, 3, 99);
 
-            INamable [] rectangles = 
-            {
-                new Circle(4, 1),
-                new Square(55, 3),
-                new Circle(3, 5),
-                new Square(33, 8),
-                new Triangle(10, 8, 9, 4),
-                new Cube(5, 50)
-            };
+            var tr2 = new Triangle<T>[]{tr1, tr3};
             
-            
-            
+
             IFigure[] figures =
             {
                 new Circle(4, 1),

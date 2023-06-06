@@ -1,6 +1,6 @@
 namespace GeometryLibrary.Figures.Abstract
 {
-    public interface ITwoDimensionFigures : IFigure, INamable
+    public interface ITwoDimensionFigures<T> : IFigure, INamable<T>
     {
     }
 }

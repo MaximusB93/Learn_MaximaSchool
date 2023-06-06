@@ -3,17 +3,17 @@ using GeometryLibrary.Figures.Abstract;
 
 namespace GeometryLibrary.Figures
 {
-    public class Circle : ITwoDimensionFigures
+    public class Circle : ITwoDimensionFigures<int>
     {
-        public string Name => "Круг";
-
         private const int _angles = 0;
         private double _r;
 
+
+        public string Name => "Круг";
         public double R => _r;
         public double Diameter => _r * 2;
         public int FigureId { get; }
-        public INamable.FigureType figureType => INamable.FigureType.Circle;
+        public INamable<int>.FigureType figureType => INamable<int>.FigureType.Circle;
 
         public double Area => Math.PI * Math.Pow(_r, 2);
         public double Perimeter => 2 * Math.PI * _r;

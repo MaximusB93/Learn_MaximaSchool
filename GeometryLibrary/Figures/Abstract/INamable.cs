@@ -1,8 +1,8 @@
 namespace GeometryLibrary.Figures.Abstract
 {
-    public interface INamable
+    public interface INamable<T>
     {
-        public int FigureId { get; }
+        public T FigureId { get; }
         public FigureType figureType { get; }
         
         string Name { get; }
