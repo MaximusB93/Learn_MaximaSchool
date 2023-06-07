@@ -4,11 +4,12 @@ namespace CleaningRoomsVacuumCleners.VacuumCleaners
 {
     public class RobotVacuumCleaner : VacuumCleaner
     {
+        public override int MaxVolume  => 80;
         public RobotVacuumCleaner()
         {
         }
 
-        public RobotVacuumCleaner(Model model) : base(model)
+        public RobotVacuumCleaner(Model model, int dustVolume) : base(model, dustVolume)
         {
             this.model = model;
         }

@@ -3,15 +3,15 @@ using GeometryLibrary.Figures.Abstract;
 
 namespace GeometryCalculator
 {
-    public class Rectangle : ITwoDimensionFigures, IThreeDimensionFigures
+    public class Rectangle<T> : ITwoDimensionFigures<T>, IThreeDimensionFigures<T>
     {
         private int _a;
         private int _b;
         public double Area { get; }
         public double Perimeter { get; }
 
-        public int FigureId { get; }
-        public INamable.FigureType figureType { get; }
+        public T FigureId { get; }
+        public INamable<T>.FigureType figureType { get; }
         public string Name { get; }
 
         public Rectangle(string name, int a, int b)
