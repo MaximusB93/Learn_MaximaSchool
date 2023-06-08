@@ -12,7 +12,7 @@ namespace CleaningRoomsVacuumCleners
             return base.StartCleaning();
         }
 
-        public BuildingVacuumCleaner()
+        public BuildingVacuumCleaner(Model bosch)
         {
         }
 

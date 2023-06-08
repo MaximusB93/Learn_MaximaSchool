@@ -5,7 +5,7 @@ namespace CleaningRoomsVacuumCleners
     public class WashingVacuumCleaner : VacuumCleaner
     {
         public override int MaxVolume  => 90;
-        public WashingVacuumCleaner()
+        public WashingVacuumCleaner(Model samsung)
         {
         }
 

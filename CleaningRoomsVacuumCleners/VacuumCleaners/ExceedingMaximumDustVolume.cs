@@ -3,22 +3,23 @@ using System.Runtime.Serialization;
 
 namespace CleaningRoomsVacuumCleners.VacuumCleaners
 {
-    public class ExceedingMaximumDustVolume : ArithmeticException
+    public class ExceedingMaximumDustVolume : Exception
     {
-        public ExceedingMaximumDustVolume()
+        int DustVolume;
+        int MaxVolume;
+
+        public ExceedingMaximumDustVolume(int dustVolume, int maxVolume)
         {
+            DustVolume = dustVolume;
+            MaxVolume = maxVolume;
         }
 
-        protected ExceedingMaximumDustVolume(SerializationInfo info, StreamingContext context) : base(info, context)
-        {
-        }
+        public override string Message =>
+            $"Ошибка. Количество пыли в комнате {DustVolume}, а пылесос потребляет не более {MaxVolume}";
 
-        public ExceedingMaximumDustVolume(string message) : base(message)
+        /*public static string MessageException(int dustVolume,int maxVolume)
         {
-        }
-
-        public ExceedingMaximumDustVolume(string message, Exception innerException) : base(message, innerException)
-        {
-        }
+            return $"Ошибка. Количество пыли в комнате {dustVolume}, а пылесос потребляет не более {maxVolume}";
+        }*/
     }
 }
