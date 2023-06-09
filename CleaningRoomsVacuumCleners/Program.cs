@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using CleaningRoomsVacuumCleners.VacuumCleaners;
 
 namespace CleaningRoomsVacuumCleners
@@ -27,7 +28,9 @@ namespace CleaningRoomsVacuumCleners
         private static void OverloadMethod()
         {
             var rand = new Random();
-            VacuumCleaner[] vacuumCleaners =
+
+            List<int> vacuumCleanersList = new List<int>();
+            VacuumCleaner<string>[] vacuumCleaners =
             {
                 new BuildingVacuumCleaner(Model.Bosch, 70), new RobotVacuumCleaner(Model.Karcher, 90),
                 new WashingVacuumCleaner(Model.Samsung, 100)

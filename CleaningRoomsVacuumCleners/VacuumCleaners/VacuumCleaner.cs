@@ -2,9 +2,10 @@ using System;
 
 namespace CleaningRoomsVacuumCleners.VacuumCleaners
 {
-    public class VacuumCleaner
+    public class VacuumCleaner<T>
     {
         public int DustVolume { get; set; }
+        public virtual T Id { get; }
         public virtual Model model { get; protected set; }
         public Rooms rooms { get; set; }
         public string Title => rooms.ToString();

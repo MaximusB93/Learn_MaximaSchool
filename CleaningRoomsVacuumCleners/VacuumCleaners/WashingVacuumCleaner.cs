@@ -2,7 +2,7 @@ using CleaningRoomsVacuumCleners.VacuumCleaners;
 
 namespace CleaningRoomsVacuumCleners
 {
-    public class WashingVacuumCleaner : VacuumCleaner
+    public class WashingVacuumCleaner : VacuumCleaner<string>
     {
         public override int MaxVolume  => 90;
         public WashingVacuumCleaner(Model samsung)

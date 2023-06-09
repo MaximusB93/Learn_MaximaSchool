@@ -96,13 +96,13 @@ namespace GeometryCalculator
             
              MyClass1<int> myclass1 = new MyClass1<int>(1,"Бла",1);
 
-            Console.WriteLine(myclass1.Format());*/
+            Console.WriteLine(myclass1.Format());
 
 
             /*var tr1 = new Triangle<string>(1, 2, 3, "99");
             var tr3 = new Triangle<int>(1, 2, 3, 99);
 
-            var tr2 = new Triangle<T>[] { tr1, tr3 };
+            var tr2 = new Triangle<T>[] { tr1, tr3 };*/
 
 
             IFigure[] figures =
@@ -111,11 +111,11 @@ namespace GeometryCalculator
                 new Square(55, 3),
                 new Circle(3, 5),
                 new Square(33, 8),
-                new Triangle(10, 8, 9, 4),
+                new Triangle<int>(10, 8, 9, 4),
                 new Cube(5, 50)
             };
 
-            double summ = 0;
+            /*double summ = 0;
 
             foreach (var figure in figures)
             {

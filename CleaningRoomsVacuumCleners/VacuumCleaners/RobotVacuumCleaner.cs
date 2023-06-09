@@ -2,8 +2,10 @@ using System;
 
 namespace CleaningRoomsVacuumCleners.VacuumCleaners
 {
-    public class RobotVacuumCleaner : VacuumCleaner
+    public class RobotVacuumCleaner : VacuumCleaner<string>
     {
+        
+        public override string Id { get; }
         public override int MaxVolume  => 80;
         public RobotVacuumCleaner(Model karcher)
         {

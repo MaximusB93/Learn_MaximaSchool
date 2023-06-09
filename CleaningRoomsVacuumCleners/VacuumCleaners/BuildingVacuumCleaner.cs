@@ -2,7 +2,7 @@ using CleaningRoomsVacuumCleners.VacuumCleaners;
 
 namespace CleaningRoomsVacuumCleners
 {
-    public class BuildingVacuumCleaner : VacuumCleaner
+    public class BuildingVacuumCleaner : VacuumCleaner<string>
     {
         public override int MaxVolume  => 100;
 
