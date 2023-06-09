@@ -5,21 +5,16 @@ namespace CleaningRoomsVacuumCleners.VacuumCleaners
 {
     public class ExceedingMaximumDustVolume : Exception
     {
-        int DustVolume;
-        int MaxVolume;
+        private int _dustVolume;
+        private int _maxVolume;
 
         public ExceedingMaximumDustVolume(int dustVolume, int maxVolume)
         {
-            DustVolume = dustVolume;
-            MaxVolume = maxVolume;
+            _dustVolume = dustVolume;
+            _maxVolume = maxVolume;
         }
 
         public override string Message =>
-            $"Ошибка. Количество пыли в комнате {DustVolume}, а пылесос потребляет не более {MaxVolume}";
-
-        /*public static string MessageException(int dustVolume,int maxVolume)
-        {
-            return $"Ошибка. Количество пыли в комнате {dustVolume}, а пылесос потребляет не более {maxVolume}";
-        }*/
+            $"Ошибка. Количество пыли в комнате {_dustVolume}, а пылесос потребляет не более {_maxVolume}";
     }
 }

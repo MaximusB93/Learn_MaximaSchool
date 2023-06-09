@@ -29,15 +29,18 @@ namespace CleaningRoomsVacuumCleners
         {
             var rand = new Random();
 
-            List<int> vacuumCleanersList = new List<int>();
-            VacuumCleaner<string>[] vacuumCleaners =
+            VacuumCleaner<string>[] StrVacuumCleaners =
             {
-                new BuildingVacuumCleaner(Model.Bosch, 70), new RobotVacuumCleaner(Model.Karcher, 90),
+                new BuildingVacuumCleaner(Model.Bosch, 70),
                 new WashingVacuumCleaner(Model.Samsung, 100)
+            };
+            VacuumCleaner<int>[] IntvacuumCleaners =
+            {
+                new RobotVacuumCleaner(Model.Karcher, 90),
             };
 
 
-            foreach (var vacuumCleaner in vacuumCleaners)
+            foreach (var vacuumCleaner in StrVacuumCleaners)
 
                 try
                 {
@@ -50,7 +53,7 @@ namespace CleaningRoomsVacuumCleners
                 {
                     Console.WriteLine(e.Message);
                 }
-            
+
             Console.WriteLine("____________________");
             Console.ReadLine();
         }
