@@ -16,7 +16,7 @@ namespace CleaningRoomsVacuumCleners
         {
         }
 
-        public BuildingVacuumCleaner(Model model, int dustVolume) : base(model, dustVolume)
+        public BuildingVacuumCleaner(Model model, int dustVolume, string id) : base(model, dustVolume, id)
         {
             this.model = model;
         }

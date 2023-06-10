@@ -15,10 +15,11 @@ namespace CleaningRoomsVacuumCleners.VacuumCleaners
         {
         }
 
-        public VacuumCleaner(Model model, int dustVolume)
+        public VacuumCleaner(Model model, int dustVolume, T id)
         {
             this.model = model;
             DustVolume = dustVolume;
+            Id = id;
         }
 
         public virtual string StartCleaning()

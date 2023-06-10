@@ -8,37 +8,22 @@ namespace CleaningRoomsVacuumCleners
     {
         static void Main(string[] args)
         {
-            OverloadMethod();
-            /*DefaultMethod();
-            HiddenMethod();*/
+            Start();
         }
 
-        //Метод по умолчанию
-        /*private static void DefaultMethod()
-        {
-            VacuumCleaner[] vacuumCleaners2 =
-                { new BuildingVacuumCleaner(), new RobotVacuumCleaner(), new WashingVacuumCleaner() };
-            foreach (var vacuumCleaner in vacuumCleaners2)
-                Console.WriteLine(vacuumCleaner.StartCleaning());
-
-            Console.WriteLine("____________________");
-        }*/
-
-        //Перегрузка метода StartCleaning
-        private static void OverloadMethod()
+        private static void Start()
         {
             var rand = new Random();
 
             VacuumCleaner<string>[] StrVacuumCleaners =
             {
-                new BuildingVacuumCleaner(Model.Bosch, 70),
-                new WashingVacuumCleaner(Model.Samsung, 100)
+                new BuildingVacuumCleaner(Model.Bosch, 70, "Vaccum01"),
+                new WashingVacuumCleaner(Model.Samsung, 100, "Vaccum02")
             };
-            VacuumCleaner<int>[] IntvacuumCleaners =
+            VacuumCleaner<int>[] IntVacuumCleaners =
             {
-                new RobotVacuumCleaner(Model.Karcher, 90),
+                new RobotVacuumCleaner(Model.Karcher, 90, 03),
             };
-
 
             foreach (var vacuumCleaner in StrVacuumCleaners)
 
@@ -46,8 +31,6 @@ namespace CleaningRoomsVacuumCleners
                 {
                     Console.WriteLine(
                         vacuumCleaner.StartCleaning(Rooms.Bathroom));
-                    /*Console.WriteLine(
-                        vacuumCleaner.StartCleaning((Rooms)Enum.GetValues(typeof(Rooms)).GetValue(rand.Next(4))));*/
                 }
                 catch (ExceedingMaximumDustVolume e)
                 {
@@ -57,12 +40,5 @@ namespace CleaningRoomsVacuumCleners
             Console.WriteLine("____________________");
             Console.ReadLine();
         }
-
-        //Скрытый метод
-        /*private static void HiddenMethod()
-        {
-            WashingVacuumCleaner washingVacuumCleaner = new WashingVacuumCleaner();
-            Console.WriteLine(washingVacuumCleaner.StartCleaning(Rooms.Childish));
-        }*/
     }
 }
