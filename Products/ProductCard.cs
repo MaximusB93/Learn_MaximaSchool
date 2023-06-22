@@ -6,29 +6,34 @@ namespace Products
 {
     public class ProductCard
     {
-        
-        
         public List<Product> Items { get; }
 
-        public delegate void NotifyAdddedProduct(Product product);
+        //public delegate void NotifyAdddedProduct(Product product);
 
-        private readonly NotifyAdddedProduct _notifyAdddedProduct;
+        //public delegate void NitifyOfSalePercent(decimal sale, decimal summOfSale);
+        
+        
 
-        public ProductCard(NotifyAdddedProduct notifyAdddedProduct)
+        private readonly Action<Product> _notifyAdddedProduct;
+        private readonly Func<decimal,decimal> _nitifyOfSalePercent;
+
+        public ProductCard(Action<Product> notifyAdddedProduct, Func<decimal,decimal> nitifyOfSalePercent)
         {
             Items = new List<Product>();
             _notifyAdddedProduct = notifyAdddedProduct;
+            _nitifyOfSalePercent = nitifyOfSalePercent;
         }
 
-        public void AddProductCard(Product product )
+        public void AddProductCard(Product product)
         {
             Items.Add(product);
             _notifyAdddedProduct(product);
         }
- 
+
         public decimal GetTotalSumm()
         {
             decimal summ = 0;
+            decimal sale = 1M;
             foreach (var product in Items)
             {
                 summ += product.Price;
@@ -36,19 +41,21 @@ namespace Products
 
             if (summ > 1000)
             {
-                return summ * 095m;
+                 sale = 0.95m;
             }
 
-            if (summ > 100)
+           else if (summ > 100)
             {
-                return summ * 0975m;
+                sale = 0.975m;
             }
 
-            if (summ > 25)
+            else if (summ > 25)
             {
-                return summ * 099m;
+                sale = 0.99m;
             }
 
+            _nitifyOfSalePercent(1M - sale, summ-summ*(1m-sale));
+            
             return summ;
         }
 
