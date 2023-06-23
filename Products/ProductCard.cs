@@ -54,7 +54,7 @@ namespace Products
                 sale = 0.99m;
             }
 
-            _nitifyOfSalePercent(1M - sale, summ-summ*(1m-sale));
+            /*_nitifyOfSalePercent(1M - sale, summ-summ*(1m-sale));*/
             
             return summ;
         }
