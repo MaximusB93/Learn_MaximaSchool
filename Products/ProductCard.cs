@@ -11,17 +11,25 @@ namespace Products
         //public delegate void NotifyAdddedProduct(Product product);
 
         //public delegate void NitifyOfSalePercent(decimal sale, decimal summOfSale);
-        
-        
+
 
         private readonly Action<Product> _notifyAdddedProduct;
-        private readonly Func<decimal,decimal> _nitifyOfSalePercent;
 
-        public ProductCard(Action<Product> notifyAdddedProduct, Func<decimal,decimal> nitifyOfSalePercent)
+        private readonly Action<decimal, decimal> _nitifyOfSalePercent;
+        private readonly Func<decimal, decimal> _calculateSaleFunc;
+        private readonly Predicate<decimal> _presentGift;
+            
+            
+
+
+        public ProductCard(Action<Product> notifyAdddedProduct, Action<decimal, decimal> nitifyOfSalePercent,
+            Func<decimal, decimal> calculateSaleFunc, Predicate<decimal> presentGift)
         {
             Items = new List<Product>();
             _notifyAdddedProduct = notifyAdddedProduct;
             _nitifyOfSalePercent = nitifyOfSalePercent;
+            _calculateSaleFunc = calculateSaleFunc;
+            _presentGift = presentGift; 
         }
 
         public void AddProductCard(Product product)
@@ -30,7 +38,7 @@ namespace Products
             _notifyAdddedProduct(product);
         }
 
-        public decimal GetTotalSumm()
+        public void GetTotalSumm()
         {
             decimal summ = 0;
             decimal sale = 1M;
@@ -39,24 +47,15 @@ namespace Products
                 summ += product.Price;
             }
 
-            if (summ > 1000)
+            if (_presentGift(summ))
             {
-                 sale = 0.95m;
+              Console.WriteLine("Вам подарок");  
             }
 
-           else if (summ > 100)
-            {
-                sale = 0.975m;
-            }
+            sale = _calculateSaleFunc(summ);
+            decimal summOfSale = summ - summ * (1m - sale);
 
-            else if (summ > 25)
-            {
-                sale = 0.99m;
-            }
-
-            /*_nitifyOfSalePercent(1M - sale, summ-summ*(1m-sale));*/
-            
-            return summ;
+            _nitifyOfSalePercent(sale, summOfSale);
         }
 
         public string PrintAllProducts()
