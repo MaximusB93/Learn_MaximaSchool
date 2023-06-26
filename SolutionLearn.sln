@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Products", "Products\Produc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransportPayment", "TransportPayment\TransportPayment.csproj", "{C51FD0C2-C743-431F-8C51-507EEDD561AC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetMails", "GetMails\GetMails.csproj", "{5D9CE5B3-2A66-48EB-BFCA-ED22CC6F9514}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp1", "WpfApp1\WpfApp1.csproj", "{AFB0E936-33E3-4C4F-A8F4-394D5A98C58C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{C51FD0C2-C743-431F-8C51-507EEDD561AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C51FD0C2-C743-431F-8C51-507EEDD561AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C51FD0C2-C743-431F-8C51-507EEDD561AC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D9CE5B3-2A66-48EB-BFCA-ED22CC6F9514}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D9CE5B3-2A66-48EB-BFCA-ED22CC6F9514}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D9CE5B3-2A66-48EB-BFCA-ED22CC6F9514}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D9CE5B3-2A66-48EB-BFCA-ED22CC6F9514}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFB0E936-33E3-4C4F-A8F4-394D5A98C58C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFB0E936-33E3-4C4F-A8F4-394D5A98C58C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFB0E936-33E3-4C4F-A8F4-394D5A98C58C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFB0E936-33E3-4C4F-A8F4-394D5A98C58C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

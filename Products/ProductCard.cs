@@ -8,18 +8,20 @@ namespace Products
     {
         public List<Product> Items { get; }
 
-        //public delegate void NotifyAdddedProduct(Product product);
-
-        //public delegate void NitifyOfSalePercent(decimal sale, decimal summOfSale);
-
 
         private readonly Action<Product> _notifyAdddedProduct;
 
         private readonly Action<decimal, decimal> _nitifyOfSalePercent;
         private readonly Func<decimal, decimal> _calculateSaleFunc;
         private readonly Predicate<decimal> _presentGift;
-            
-            
+
+        public event EventHandler<ProductAddEventArgs> ProductAddedEvent;
+
+        public void OnProductAddedEvent(Product addedProduct)
+        {
+            ProductAddedEvent?.Invoke(this, new ProductAddEventArgs(addedProduct));
+
+        }
 
 
         public ProductCard(Action<Product> notifyAdddedProduct, Action<decimal, decimal> nitifyOfSalePercent,
@@ -29,14 +31,24 @@ namespace Products
             _notifyAdddedProduct = notifyAdddedProduct;
             _nitifyOfSalePercent = nitifyOfSalePercent;
             _calculateSaleFunc = calculateSaleFunc;
-            _presentGift = presentGift; 
+            _presentGift = presentGift;
         }
 
         public void AddProductCard(Product product)
         {
             Items.Add(product);
+            OnProductAddedEvent(product);
             _notifyAdddedProduct(product);
         }
+
+        public void AddProducts(params Product[] products)
+        {
+            foreach (var product in products)
+            {
+                AddProductCard(product);
+            }
+        }
+
 
         public void GetTotalSumm()
         {
@@ -49,7 +61,7 @@ namespace Products
 
             if (_presentGift(summ))
             {
-              Console.WriteLine("Вам подарок");  
+                Console.WriteLine("Вам подарок");
             }
 
             sale = _calculateSaleFunc(summ);

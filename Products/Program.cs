@@ -4,42 +4,28 @@ namespace Products
 {
     class Program
     {
+        public static EventHandler<ProductAddEventArgs> cardOnProductAddedEvent()
+        {
+            return (sender, eventArgs) =>
+            {
+                var product = eventArgs.AddedProduct;
+                Console.WriteLine($"Добавлен продукт - {product}");
+            };
+        }
+
         static void Main()
         {
             var pr1 = new Product(10000, "pr1");
             var pr2 = new Product(90, "pr2");
             var pr3 = new Product(75, "pr3");
 
+            var card = new ProductCard(NotifyMagnit, NotifyOfSale, CalculateSaleMagnit, obj => true);
+            card.ProductAddedEvent += cardOnProductAddedEvent(); ;
+            card.AddProducts(new []{pr1,pr2,pr3});
+            card.ProductAddedEvent -= cardOnProductAddedEvent();
 
-            /*Console.WriteLine("Перекресток");
-            var productCardPerekrestok = new ProductCard(NotifyPerekrestok, NotifyOfSale, CalculateSaleMagnit);
-            productCardPerekrestok.AddProductCard(pr1);
-            productCardPerekrestok.AddProductCard(pr2);
-            productCardPerekrestok.AddProductCard(pr3);
-            productCardPerekrestok.GetTotalSumm();
-
-            Console.WriteLine("Дикси");
-            var productCardDiksi = new ProductCard(NotifyDiksi, NotifyOfSale, CalculateSaleMagnit);
-            productCardDiksi.AddProductCard(pr1);
-            productCardDiksi.AddProductCard(pr2);
-            productCardDiksi.AddProductCard(pr3);
-
-            Console.WriteLine("Магнит");
-            var productCardMagnit = new ProductCard(NotifyMagnit, NotifyOfSale, CalculateSaleMagnit);
-            productCardMagnit.AddProductCard(pr1);*/
-            Console.WriteLine("Перекресток");
-            var card1 = new ProductCard(NotifyPerekrestok, 
-                NotifyOfSale, 
-                arg => { return 0.9m; },
-                summ =>
-                {
-                    if (summ > 1000) return true;
-                    return false;
-                });
-
-            card1.AddProductCard(pr1);
-            card1.GetTotalSumm();
         }
+
 
         public static void NotifyPerekrestok(Product product)
         {
