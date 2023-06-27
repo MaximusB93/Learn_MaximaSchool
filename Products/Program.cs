@@ -16,6 +16,8 @@ namespace Products
         {
             Program program = new Program();
 
+            Product product = new Product();
+
             /*string withParameter = program.WithPParameterMetod("Вася", "Петя");
             
             withParameter += WithParameterStaticMetod("Максим", "Лето");

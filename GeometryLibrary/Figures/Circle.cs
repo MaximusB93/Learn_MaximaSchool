@@ -3,6 +3,7 @@ using GeometryLibrary.Figures.Abstract;
 
 namespace GeometryLibrary.Figures
 {
+    [Authot("Максим", "27.09.2022")]
     public class Circle : ITwoDimensionFigures<int>
     {
         private const int _angles = 0;
