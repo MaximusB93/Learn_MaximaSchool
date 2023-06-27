@@ -7,6 +7,9 @@ namespace TransportPayment
     {
         public delegate string NotifyOperation(decimal amount, decimal balance);
 
+        public event NotifyOperation notifyOperationEvent;
+
+
         public Func<string> notifyCashback;
 
         public NotifyOperation notifyOperation;
