@@ -57,7 +57,7 @@ namespace GeometryCalculator
 
     class Program
     {
-        public static double Diving(double a, double b)
+        /*public static double Diving(double a, double b)
         {
             if (b == 0)
             {
@@ -65,16 +65,29 @@ namespace GeometryCalculator
             }
 
             return a / b;
-        }
+        }*/
 
         public static void Main()
         {
+            var typeOfCircle = typeof(Circle);
+            foreach (var att in typeOfCircle.GetCustomAttributes(true))
+            {
+                if (att is AuthotAttribute authotAttribute)
+                {
+                    Console.WriteLine($"Наш атрибут - {authotAttribute}");
+                }
+            }
+            
+            return;
+            
+            
+            /*
             int a = 10;
             int b = 0;
             try
             {
-                /*double result = Diving(10, 0);*/
-                /*int result = a / b;*/
+                /*double result = Diving(10, 0);#1#
+                /*int result = a / b;#1#
                 Console.WriteLine(a / b);
             }
             catch (DivideByZeroException e)
@@ -102,7 +115,7 @@ namespace GeometryCalculator
             /*var tr1 = new Triangle<string>(1, 2, 3, "99");
             var tr3 = new Triangle<int>(1, 2, 3, 99);
 
-            var tr2 = new Triangle<T>[] { tr1, tr3 };*/
+            var tr2 = new Triangle<T>[] { tr1, tr3 };#1#
 
 
             IFigure[] figures =
@@ -113,7 +126,7 @@ namespace GeometryCalculator
                 new Square(33, 8),
                 new Triangle<int>(10, 8, 9, 4),
                 new Cube(5, 50)
-            };
+            };*/
 
             /*double summ = 0;
 

@@ -1,5 +1,9 @@
+using System;
+using System.Reflection;
+
 namespace Products
 {
+    [Obsolete("Логика устарела")]
     public class Product
     {
         public int Price { get; }
