@@ -3,16 +3,16 @@ using System.Collections.Generic;
 
 namespace TransportPayment
 {
-    public class TransportCard
+    public partial class TransportCard
     {
         public delegate string NotifyOperation(decimal amount, decimal balance);
 
-        public event NotifyOperation notifyOperationEvent;
-
-
-        public Func<string> notifyCashback;
-
         public NotifyOperation notifyOperation;
+        public event NotifyOperation notifyOperationEvent; //разобраться
+
+        public Func<decimal, decimal, string> notifyCashback;
+        public Predicate<decimal> predicate; //разобраться
+
 
         public decimal Balance { get; set; }
 
@@ -21,28 +21,6 @@ namespace TransportPayment
             Balance += amount;
             Console.WriteLine(notifyOperation(amount, Balance));
             return Balance;
-        }
-
-        public decimal Payment()
-        {
-            decimal fare = 30M;
-            if (Balance < 30)
-            {
-                Console.WriteLine($"Недостаточно средств для оплаты проезда.\r\nТекущий баланс - {Balance} руб.");
-                return Balance;
-            }
-
-            Balance -= fare;
-            Console.WriteLine(notifyOperation(fare, Balance));
-            Console.WriteLine(notifyCashback());
-            return Balance;
-        }
-
-        public decimal GetCashback()
-        {
-            decimal cashback = 30M * 0.1M;
-            Balance += cashback;
-            return cashback;
         }
     }
 }
