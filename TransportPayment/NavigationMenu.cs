@@ -6,7 +6,7 @@ namespace TransportPayment
     {
         private TransportCard _transportCard = new TransportCard();
         private Notifications _notifications = new Notifications();
-        
+
         readonly string[] _menu = new[]
         {
             "Пополнить карту",
@@ -25,13 +25,12 @@ namespace TransportPayment
 
             int selectingItem = int.Parse(Console.ReadLine()); //Выбор пункта меню
 
-            switch (selectingItem)
+            /*switch (selectingItem)
             {
                 case 1:
-                    _transportCard.notifyOperation += _notifications.NotifyReplenishment;
-                    _transportCard.Replenishment(50);
-                    _transportCard.notifyOperation -= _notifications.NotifyReplenishment;
-                    ReturnToMenu();
+                    _transportCard.notifyOperation += _notifications.NotifyAdd;
+                    _transportCard.Add(50);
+                    _transportCard.notifyOperation -= _notifications.NotifyAdd;
                     break;
                 case 2:
                     _transportCard.notifyOperation += _notifications.NotifyPayment;
@@ -39,22 +38,35 @@ namespace TransportPayment
                     _transportCard.Payment(30);
                     _transportCard.notifyOperation -= _notifications.NotifyPayment;
                     _transportCard.notifyCashback -= _notifications.NotifyCashback;
-                    ReturnToMenu();
                     break;
                 case 3:
                     PaymentHistory.ViewHistory();
-                    ReturnToMenu();
+                    break;
+     
+            }*/
+            switch (selectingItem)
+            {
+                case 1:
+                    _transportCard.Add(50);
+                    break;
+                case 2:
+
+                    _transportCard.Payment(30);
+                    break;
+                case 3:
+                    PaymentHistory.ViewHistory();
                     break;
             }
 
+            ReturnToMenu();
+        }
 
-            void ReturnToMenu()
-            {
-                Console.WriteLine("Вернуться в меню - 1");
-                int a = int.Parse(Console.ReadLine());
-                Console.Clear();
-                Navigation();
-            }
+        public void ReturnToMenu()
+        {
+            Console.WriteLine("Вернуться в меню - 1");
+            int a = int.Parse(Console.ReadLine());
+            Console.Clear();
+            Navigation();
         }
     }
 }

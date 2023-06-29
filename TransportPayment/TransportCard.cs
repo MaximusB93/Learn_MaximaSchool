@@ -5,6 +5,8 @@ namespace TransportPayment
 {
     public partial class TransportCard
     {
+        public delegate void OnAddMoney(decimal count, decimal balance);
+        public static OnAddMoney onAddMoney;
         public delegate string NotifyOperation(decimal amount, decimal balance);
 
         public NotifyOperation notifyOperation;
@@ -12,14 +14,13 @@ namespace TransportPayment
 
         public Func<decimal, decimal, string> notifyCashback;
         public Predicate<decimal> predicate; //разобраться
-
-
+        
         public decimal Balance { get; set; }
 
-        public decimal Replenishment(decimal amount)
+        public decimal Add(decimal amount)
         {
             Balance += amount;
-            Console.WriteLine(notifyOperation(amount, Balance));
+            onAddMoney?.Invoke(amount, Balance);
             return Balance;
         }
     }
