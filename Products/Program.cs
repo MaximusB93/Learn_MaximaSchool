@@ -4,6 +4,7 @@ namespace Products
 {
     class Program
     {
+        /*
         public delegate string WithParameter(string name1, string name2);
 
         public delegate void WithParameter? WithParameterWithParameter();
@@ -11,17 +12,18 @@ namespace Products
         public delegate void WithParameter2 WithParameterWithParameter2();
 
         public delegate void WithParameter2();
+        */
 
         static void Main(string[] args)
         {
-            Program program = new Program();
+            /*Program program = new Program();
 
             Product product = new Product();
 
             /*string withParameter = program.WithPParameterMetod("Вася", "Петя");
             
             withParameter += WithParameterStaticMetod("Максим", "Лето");
-            withParameter -= WithParameterStaticMetod("Максим", "Лето");*/
+            withParameter -= WithParameterStaticMetod("Максим", "Лето");#1#
             WithParameterWithParameter2 withParameterWithParameter2 = delegate { };
             WithParameterWithParameter += WithParameterStaticMetod;
             var result = WithParameterWithParameter?.Invoke("Вася", "Жора");
@@ -37,10 +39,11 @@ namespace Products
             withParameter2();
             withParameter2 -= WithPParameterMetod3;
             withParameter2();
-            */
+            #1#
 
 
             Console.ReadLine();
+            */
 
 
             /*var pr1 = new Product(100, "pr1");
