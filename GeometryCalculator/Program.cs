@@ -4,6 +4,7 @@ using System.Text;
 using System.Xml;
 using GeometryLibrary.Figures;
 using GeometryLibrary.Figures.Abstract;
+using Products;
 
 namespace GeometryCalculator
 {
@@ -69,164 +70,181 @@ namespace GeometryCalculator
 
         public static void Main()
         {
-            var typeOfCircle = typeof(Circle);
-            foreach (var att in typeOfCircle.GetCustomAttributes(true))
+            Product milk = new Product(100, "Milk");
+            Product milk1 = new Product(100, "Milk");
+            Product pr1 = new Product(80, "1") { IsNew = true };
+            Product pr2 = new Product(90, "2");
+            Product pr3 = new Product(70, "3"){ IsNew = true };
+            Product pr4 = new Product(70, "4");
+
+
+            List<Product> list = new List<Product>();
+
+            list.Add(milk);
+            list.Add(milk1);
+            list.Add(pr1);
+            list.Add(pr2);
+            list.Add(pr3);
+            list.Add(pr4);
+
+            var NewProduct = new List<string>();
+
+            foreach (var product in list)
             {
-                if (att is AuthotAttribute authotAttribute)
+                if (product.IsNew)
                 {
-                    Console.WriteLine($"Наш атрибут - {authotAttribute}");
+                    NewProduct.Add(product.Title);
                 }
             }
             
-            return;
-            
-            
-            /*
-            int a = 10;
-            int b = 0;
-            try
-            {
-                /*double result = Diving(10, 0);#1#
-                /*int result = a / b;#1#
-                Console.WriteLine(a / b);
-            }
-            catch (DivideByZeroException e)
-            {
-                Console.WriteLine(e.Message);
-            }
-            catch (ArgumentException e)
-            {
-                Console.WriteLine(e);
-            }
-
-            Console.ReadLine();
-            /*Obj<int, string> [] me1 = {new MyClass1<int>(1,"Бла",1), new MyClass2<string>(1,"Бла",1)};
-
-            foreach (var me in me1)
-            {
-                Console.WriteLine(me.Format());
-            }
-            
-             MyClass1<int> myclass1 = new MyClass1<int>(1,"Бла",1);
-
-            Console.WriteLine(myclass1.Format());
-
-
-            /*var tr1 = new Triangle<string>(1, 2, 3, "99");
-            var tr3 = new Triangle<int>(1, 2, 3, 99);
-
-            var tr2 = new Triangle<T>[] { tr1, tr3 };#1#
-
-
-            IFigure[] figures =
-            {
-                new Circle(4, 1),
-                new Square(55, 3),
-                new Circle(3, 5),
-                new Square(33, 8),
-                new Triangle<int>(10, 8, 9, 4),
-                new Cube(5, 50)
-            };*/
-
-            /*double summ = 0;
-
-            foreach (var figure in figures)
-            {
-                if (figure is IThreeDimensionFigures threeDimensionFigures)
-                {
-                    summ += threeDimensionFigures.Volume;
-                    Console.WriteLine(summ);
-                }
-            }*/
-
-            /*Console.WriteLine("Площадь");
-            Console.WriteLine(CalculateAreas(figures));
-            Console.WriteLine("Периметр");
-            Console.WriteLine(CalculatePerimeter(figures));*/
-
-            /*List<Figure> figures = new List<Figure>();
-            int number = 0;
-            while (true)
-            {
-                string str = Console.ReadLine();
-
-                if (str == "EXIT")
-                {
-                    
-                    break;
-                }
-
-                string[] arguments = str.Split(":");
-                string title = arguments[0];
-
-                if (Enum.TryParse(typeof(FigureType), title, true, out var temp))
-                {
-                    FigureType figureType = (FigureType)temp;
-                    Figure figure = null;
-
-                    string[] strValue = arguments[1].Split(",");
-                    double[] values = new double [strValue.Length];
-
-                    for (int i = 0; i < strValue.Length; i++)
-                    {
-                        values[i] = Double.Parse(strValue[i]);
-                    }
-
-                    switch (figureType)
-                    {
-                        case FigureType.Circle:
-                            figure = new Circle(values[0],number);
-                            break;
-                        case FigureType.Square:
-                            figure = new Square(values[0],number);
-                            break;
-                        case FigureType.Triangle:
-                            figure = new Triangle(values[0], values[1], values[2],number);
-                            break;
-                        default:
-                            throw new Exception();
-                    }
-
-                    number++;  
-                    figures.Add(figure);
-                    
-                }
-                else
-                {
-                    Console.WriteLine("Нет такой фигуры");
-                }
-            }*/
-
-            /*foreach (var figure in figures)
-            {
-                Console.WriteLine($"{figure.GetTitle()}: {figure.GetAnglesCount()}");
-            }
+            Console.WriteLine(String.Join(",", NewProduct));
         }
 
-
-        static string CalculateAreas(List<Figure> figures)
+        /*
+        int a = 10;
+        int b = 0;
+        try
         {
-            StringBuilder sb = new StringBuilder();
-            foreach (var figure in figures)
-            {
-                var str = $"{figure.GetTitle()}:{figure.Area:F1}\r\n";
-                sb.Append(str);
-            }
-
-            return sb.ToString();
+            /*double result = Diving(10, 0);#1#
+            /*int result = a / b;#1#
+            Console.WriteLine(a / b);
+        }
+        catch (DivideByZeroException e)
+        {
+            Console.WriteLine(e.Message);
+        }
+        catch (ArgumentException e)
+        {
+            Console.WriteLine(e);
         }
 
-        static string CalculatePerimeter(List<Figure> figures)
-        {
-            StringBuilder sb = new StringBuilder();
-            foreach (var figure in figures)
-            {
-                var str = $"{figure.GetTitle()}:{figure.Perimeter:F1}\r\n";
-                sb.Append(str);
-            }
+        Console.ReadLine();
+        /*Obj<int, string> [] me1 = {new MyClass1<int>(1,"Бла",1), new MyClass2<string>(1,"Бла",1)};
 
-            return sb.ToString();
+        foreach (var me in me1)
+        {
+            Console.WriteLine(me.Format());
+        }
+        
+         MyClass1<int> myclass1 = new MyClass1<int>(1,"Бла",1);
+
+        Console.WriteLine(myclass1.Format());
+
+
+        /*var tr1 = new Triangle<string>(1, 2, 3, "99");
+        var tr3 = new Triangle<int>(1, 2, 3, 99);
+
+        var tr2 = new Triangle<T>[] { tr1, tr3 };#1#
+
+
+        IFigure[] figures =
+        {
+            new Circle(4, 1),
+            new Square(55, 3),
+            new Circle(3, 5),
+            new Square(33, 8),
+            new Triangle<int>(10, 8, 9, 4),
+            new Cube(5, 50)
+        };*/
+
+        /*double summ = 0;
+
+        foreach (var figure in figures)
+        {
+            if (figure is IThreeDimensionFigures threeDimensionFigures)
+            {
+                summ += threeDimensionFigures.Volume;
+                Console.WriteLine(summ);
+            }
         }*/
+
+        /*Console.WriteLine("Площадь");
+        Console.WriteLine(CalculateAreas(figures));
+        Console.WriteLine("Периметр");
+        Console.WriteLine(CalculatePerimeter(figures));*/
+
+        /*List<Figure> figures = new List<Figure>();
+        int number = 0;
+        while (true)
+        {
+            string str = Console.ReadLine();
+
+            if (str == "EXIT")
+            {
+                
+                break;
+            }
+
+            string[] arguments = str.Split(":");
+            string title = arguments[0];
+
+            if (Enum.TryParse(typeof(FigureType), title, true, out var temp))
+            {
+                FigureType figureType = (FigureType)temp;
+                Figure figure = null;
+
+                string[] strValue = arguments[1].Split(",");
+                double[] values = new double [strValue.Length];
+
+                for (int i = 0; i < strValue.Length; i++)
+                {
+                    values[i] = Double.Parse(strValue[i]);
+                }
+
+                switch (figureType)
+                {
+                    case FigureType.Circle:
+                        figure = new Circle(values[0],number);
+                        break;
+                    case FigureType.Square:
+                        figure = new Square(values[0],number);
+                        break;
+                    case FigureType.Triangle:
+                        figure = new Triangle(values[0], values[1], values[2],number);
+                        break;
+                    default:
+                        throw new Exception();
+                }
+
+                number++;  
+                figures.Add(figure);
+                
+            }
+            else
+            {
+                Console.WriteLine("Нет такой фигуры");
+            }
+        }*/
+
+        /*foreach (var figure in figures)
+        {
+            Console.WriteLine($"{figure.GetTitle()}: {figure.GetAnglesCount()}");
         }
+    }
+
+
+    static string CalculateAreas(List<Figure> figures)
+    {
+        StringBuilder sb = new StringBuilder();
+        foreach (var figure in figures)
+        {
+            var str = $"{figure.GetTitle()}:{figure.Area:F1}\r\n";
+            sb.Append(str);
+        }
+
+        return sb.ToString();
+    }
+
+    static string CalculatePerimeter(List<Figure> figures)
+    {
+        StringBuilder sb = new StringBuilder();
+        foreach (var figure in figures)
+        {
+            var str = $"{figure.GetTitle()}:{figure.Perimeter:F1}\r\n";
+            sb.Append(str);
+        }
+
+        return sb.ToString();
+    }*/
     }
 }
