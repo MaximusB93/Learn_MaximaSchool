@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Xml;
 using GeometryLibrary.Figures;
@@ -56,6 +57,19 @@ namespace GeometryCalculator
         }
     }*/
 
+
+    class LinqResult
+    {
+        public int Price { get; set; }
+        public string Title { get; set; }
+
+        public LinqResult(int price, string title)
+        {
+            Price = Price;
+            Title = title;
+        }
+    }
+
     class Program
     {
         /*public static double Diving(double a, double b)
@@ -74,7 +88,7 @@ namespace GeometryCalculator
             Product milk1 = new Product(100, "Milk");
             Product pr1 = new Product(80, "1") { IsNew = true };
             Product pr2 = new Product(90, "2");
-            Product pr3 = new Product(70, "3"){ IsNew = true };
+            Product pr3 = new Product(70, "3") { IsNew = true };
             Product pr4 = new Product(70, "4");
 
 
@@ -87,6 +101,21 @@ namespace GeometryCalculator
             list.Add(pr3);
             list.Add(pr4);
 
+            var card1 = new ProductCard(new List<Product>() { milk, milk1, pr1 });
+            var card2 = new ProductCard(new List<Product>() { pr2, pr3, pr4 });
+            var card3 = new ProductCard(new List<Product>() { milk, milk1, pr1 });
+
+            var listOfCard = new List<ProductCard>() { card1, card2, card3 };
+
+            var newProd = listOfCard
+                .SelectMany(x => x.Items)
+                .Where(x =>x.IsNew)
+                .Select(x=>new {x.Price,x.Title})
+                .ToArray();
+            
+            
+            list = list.Skip(4).ToList();
+
             var NewProduct = new List<string>();
 
             foreach (var product in list)
@@ -96,8 +125,21 @@ namespace GeometryCalculator
                     NewProduct.Add(product.Title);
                 }
             }
-            
-            Console.WriteLine(String.Join(",", NewProduct));
+
+            var v = new { Amount = 108, Message = "Hello" };
+
+            Console.WriteLine(string.Join(",", NewProduct));
+
+            var prod = list.Where(x => x.IsNew == true).ToArray();
+
+            var newProductByLinq = list
+                .Where(x => x.IsNew == true)
+                .Select(x => new LinqResult(x.Price, x.Title))
+                .ToArray();
+
+
+
+            Console.WriteLine(newProductByLinq[0].Price);
         }
 
         /*
