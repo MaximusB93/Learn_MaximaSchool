@@ -17,11 +17,11 @@ namespace Products
         private readonly Action<Product> _notifyAdddedProduct;
         private readonly Func<decimal,decimal> _nitifyOfSalePercent;
 
-        public ProductCard(Action<Product> notifyAdddedProduct, Func<decimal,decimal> nitifyOfSalePercent)
+        public ProductCard(List<Product> list)
         {
-            Items = new List<Product>();
-            _notifyAdddedProduct = notifyAdddedProduct;
-            _nitifyOfSalePercent = nitifyOfSalePercent;
+            Items = list;
+            /*_notifyAdddedProduct = notifyAdddedProduct;
+            _nitifyOfSalePercent = nitifyOfSalePercent;*/
         }
 
         public void AddProductCard(Product product)
