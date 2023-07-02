@@ -14,15 +14,15 @@ namespace GeometryLibrary.Figures
 
         public double Diagonal => Math.Sqrt(2) * _side;
 
-        public  double Area => Math.Pow(_side, 2);
-        public  double Perimeter => _side * 4;
+        public double Area => Math.Pow(_side, 2);
+        public double Perimeter => _side * 4;
 
-        public Square(double side, int figureId) 
+        public Square(double side, int figureId)
         {
             this._side = side;
         }
 
-        public  int GetAnglesCount()
+        public int GetAnglesCount()
         {
             return Angles;
         }

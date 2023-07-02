@@ -4,7 +4,7 @@ namespace GeometryLibrary.Figures.Abstract
     {
         public int FigureId { get; }
         public FigureType figureType { get; }
-        
+
         string Name { get; }
 
         public string Title => figureType.ToString();
@@ -19,6 +19,7 @@ namespace GeometryLibrary.Figures.Abstract
             Circle,
             Square,
             Triangle,
+            Rectangle,
             Cube
         }
     }

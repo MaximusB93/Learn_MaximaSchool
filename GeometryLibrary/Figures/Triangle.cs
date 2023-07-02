@@ -18,7 +18,7 @@ namespace GeometryLibrary.Figures
         public int FigureId { get; }
         public INamable.FigureType figureType => INamable.FigureType.Triangle;
 
-        public  int GetAnglesCount()
+        public int GetAnglesCount()
         {
             return Angles;
         }
@@ -30,13 +30,12 @@ namespace GeometryLibrary.Figures
             _c = c;
         }
 
-        public  double Area => throw new Exception("Не умею");
-        public  double Perimeter => _a + _b + _c;
-        
+        public double Area => throw new Exception("Не умею");
+        public double Perimeter => _a + _b + _c;
+
         public double GetSquare()
         {
             return Area;
         }
     }
 }
-

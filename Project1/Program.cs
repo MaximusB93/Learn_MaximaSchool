@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using GeometryLibrary.Figures.Abstract;
 
 namespace Project1
 {
@@ -12,6 +13,7 @@ namespace Project1
 
             GeometricFigure geometricFigure = new GeometricFigure(20, 30, 15);
             Console.WriteLine(geometricFigure.Square);
+            
         }
     }
 }
