@@ -85,8 +85,8 @@ namespace GeometryCalculator
         public static void Main()
         {
             Product milk = new Product(100, "Milk");
-            Product milk1 = new Product(100, "Milk");
-            Product pr1 = new Product(80, "1") { IsNew = true };
+            Product milk1 = new Product(120, "Milk1");
+            Product pr1 = new Product(80, "Milk2") { IsNew = true };
             Product pr2 = new Product(90, "2");
             Product pr3 = new Product(70, "3") { IsNew = true };
             Product pr4 = new Product(70, "4");
@@ -105,6 +105,14 @@ namespace GeometryCalculator
             var card2 = new ProductCard(new List<Product>() { pr2, pr3, pr4 });
             var card3 = new ProductCard(new List<Product>() { milk, milk1, pr1 });
 
+            card1.Items.Reverse();
+
+            var item = card1.Items
+                .OrderByDescending(x => x.Price)
+                .ThenBy(x => x.Title)
+                .ToArray();
+   
+            return;
             var listOfCard = new List<ProductCard>() { card1, card2, card3 };
 
             var newProd = listOfCard
