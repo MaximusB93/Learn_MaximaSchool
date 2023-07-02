@@ -7,7 +7,7 @@ namespace TransportPayment
         private TransportCard _transportCard = new TransportCard();
         private Notifications _notifications = new Notifications();
 
-        readonly string[] _menu = new[]
+        readonly string[] _arrayMenu = new[]
         {
             "Пополнить карту",
             "Оплатить проезд",
@@ -18,43 +18,36 @@ namespace TransportPayment
         {
             Console.WriteLine("Выберите пункт меню:");
 
-            for (int i = 0; i < _menu.Length; i++)
+            for (int i = 0; i < _arrayMenu.Length; i++)
             {
-                Console.WriteLine($"{i + 1}) {_menu[i]}");
+                Console.WriteLine($"{i + 1}) {_arrayMenu[i]}");
             }
 
-            int selectingItem = int.Parse(Console.ReadLine()); //Выбор пункта меню
+            int selectingItem = int.Parse(Console.ReadLine() ?? string.Empty); //Выбор пункта меню
 
-            /*switch (selectingItem)
-            {
-                case 1:
-                    _transportCard.notifyOperation += _notifications.NotifyAdd;
-                    _transportCard.Add(50);
-                    _transportCard.notifyOperation -= _notifications.NotifyAdd;
-                    break;
-                case 2:
-                    _transportCard.notifyOperation += _notifications.NotifyPayment;
-                    _transportCard.notifyCashback += _notifications.NotifyCashback;
-                    _transportCard.Payment(30);
-                    _transportCard.notifyOperation -= _notifications.NotifyPayment;
-                    _transportCard.notifyCashback -= _notifications.NotifyCashback;
-                    break;
-                case 3:
-                    PaymentHistory.ViewHistory();
-                    break;
-     
-            }*/
             switch (selectingItem)
             {
                 case 1:
-                    _transportCard.Add(50);
+                    _transportCard.NotifyOperation += _notifications.NotifyAdd;
+                    _transportCard.Add(_transportCard.DepositАmount());
+                    _transportCard.NotifyOperation -= _notifications.NotifyAdd;
                     break;
                 case 2:
-
+                    _transportCard.NotifyError += _notifications.NotifyЕrror;
+                    _transportCard.NotifyOperation += _notifications.NotifyPayment;
+                    _transportCard.NotifyCashback += _notifications.NotifyCashback;
                     _transportCard.Payment(30);
+                    _transportCard.NotifyError -= _notifications.NotifyЕrror;
+                    _transportCard.NotifyOperation -= _notifications.NotifyPayment;
+                    _transportCard.NotifyCashback -= _notifications.NotifyCashback;
                     break;
                 case 3:
                     PaymentHistory.ViewHistory();
+                    break;
+                default:
+                    Console.Clear();
+                    _notifications.NotifyReturnToMenu();
+                    Navigation();
                     break;
             }
 
@@ -64,9 +57,18 @@ namespace TransportPayment
         public void ReturnToMenu()
         {
             Console.WriteLine("Вернуться в меню - 1");
-            int a = int.Parse(Console.ReadLine());
+            int number = int.Parse(Console.ReadLine() ?? string.Empty);
             Console.Clear();
-            Navigation();
+            switch (number)
+            {
+                case 1:
+                    Navigation();
+                    break;
+                default:
+                    _notifications.NotifyReturnToMenu();
+                    Navigation();
+                    break;
+            }
         }
     }
 }

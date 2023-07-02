@@ -1,29 +1,28 @@
-using System;
-
 namespace TransportPayment
 {
     public partial class TransportCard
     {
-        public decimal Payment(decimal fare)
+        public void Payment(decimal fare)
         {
-            if (Balance < 30)
+            if (Balance < fare)
             {
-                Console.WriteLine($"Недостаточно средств для оплаты проезда.\r\nТекущий баланс - {Balance} руб.");
-                return Balance;
+                NotifyError?.Invoke(Balance);
             }
-
-            Balance -= fare;
-            Console.WriteLine(notifyOperation(fare, Balance));
-            PaymentHistory.AddPayInHistory(fare);
-            GetCashback();
-            return Balance;
+            else
+            {
+                Balance -= fare;
+                NotifyOperation?.Invoke(fare, Balance);
+                PaymentHistory.AddPayInHistory(fare);
+                GetCashback(fare);
+            }
         }
 
-        public void GetCashback()
+        public void GetCashback(decimal fare)
         {
-            decimal cashback = 30M * 0.1M;
+            decimal percentСashback = 0.1M;
+            decimal cashback = fare * percentСashback;
             Balance += cashback;
-            Console.WriteLine(notifyCashback(cashback, Balance));
+            NotifyCashback(cashback, Balance);
         }
     }
 }
