@@ -10,6 +10,7 @@ namespace TransportPayment
         public static void AddPayInHistory(decimal fare)
         {
             ListPaymentHistory.Add(fare);
+            ListPaymentHistory.Clear();
         }
 
         public static void ViewHistory()
@@ -26,5 +27,10 @@ namespace TransportPayment
                 }
             }
         }
+        public static void RemoveHistory()
+        {
+            ListPaymentHistory.RemoveAll();
+        }
+        
     }
 }

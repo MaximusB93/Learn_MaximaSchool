@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Products
 {
@@ -15,13 +16,27 @@ namespace Products
 
         static void Main()
         {
-            var pr1 = new Product(10000, "pr1");
-            var pr2 = new Product(90, "pr2");
-            var pr3 = new Product(75, "pr3");
+            var milk = new Product(60, "Milk");
+            var cheese = new Product(75, "Cheese");
+            var curd = new Product(75, "Curd");
 
+            var bananas = new Product(75, "Bananas");
+            var apples = new Product(75, "Apples");
+            var pears = new Product(75, "Pears");
+            
+            var cucumbers = new Product(75, "cucumbers");
+            var tomatoes = new Product(75, "tomatoes");
+            var pepper = new Product(75, "Pepper");
+            
+            /*Dairy products
+            fruits
+                vegetables*/
+                    
+            var dairyProducts = new ProductCard(new List<Product>(){milk, cheese, curd});
+            
             var card = new ProductCard(NotifyMagnit, NotifyOfSale, CalculateSaleMagnit, obj => true);
             card.ProductAddedEvent += cardOnProductAddedEvent(); ;
-            card.AddProducts(new []{pr1,pr2,pr3});
+            /*card.AddProducts(new []{pr1,pr2,pr3});*/
             card.ProductAddedEvent -= cardOnProductAddedEvent();
 
         }
