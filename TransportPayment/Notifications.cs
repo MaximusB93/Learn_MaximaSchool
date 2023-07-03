@@ -28,5 +28,9 @@ namespace TransportPayment
         {
             Console.WriteLine($"Команда не распознана, возврат в меню.\r\n");
         }
+        public void NotifyCancelLastPayment(decimal lastPayment)
+        {
+            Console.WriteLine($"Платеж {lastPayment} отменен\r\n");
+        }
     }
 }

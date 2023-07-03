@@ -1,4 +1,4 @@
-namespace TransportPayment
+ namespace TransportPayment
 {
     public partial class TransportCard
     {
