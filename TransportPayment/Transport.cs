@@ -4,6 +4,12 @@ namespace TransportPayment
 {
     public class Transport
     {
+        private static NavigationMenu _navigationMenu = new NavigationMenu();
+        private static Notifications _notifications = new Notifications();
+
+        public string TypeTransport { get; set; }
+        public decimal Fare { get; set; }
+
         private readonly string[] _typeTransport =
         {
             "Bus",
@@ -12,9 +18,8 @@ namespace TransportPayment
             "Taxi"
         };
 
-        public decimal GetTransport()
+        public (decimal, string) GetTransport()
         {
-            decimal fare = 0;
             Console.WriteLine("Выберите транспорт:");
 
             for (int i = 0; i < _typeTransport.Length; i++)
@@ -22,26 +27,31 @@ namespace TransportPayment
                 Console.WriteLine($"{i + 1}) {_typeTransport[i]}");
             }
 
-            int selectingItem = int.Parse(Console.ReadLine() ?? string.Empty);
+            int selectingItem = int.Parse(Console.ReadLine() ?? string.Empty)-1;
 
             switch (selectingItem)
             {
+                case 0:
+                    Fare = 30;
+                    break;
                 case 1:
-                    return fare = 30;
+                    Fare = 100;
                     break;
                 case 2:
-                    return fare = 100;
+                    Fare = 50;
                     break;
                 case 3:
-                    return fare = 50;
-                    break;
-                case 4:
-                    return fare = 170;
+                    Fare = 170;
                     break;
                 default:
-                    return fare;
+                    Console.Clear();
+                    _notifications.NotifyReturnToMenu();
+                    _navigationMenu.Navigation();
                     break;
             }
+
+            TypeTransport = _typeTransport[selectingItem];
+            return (Fare, TypeTransport);
         }
     }
 }

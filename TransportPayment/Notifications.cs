@@ -30,7 +30,11 @@ namespace TransportPayment
         }
         public void NotifyCancelLastPayment(decimal lastPayment)
         {
-            Console.WriteLine($"Платеж {lastPayment} отменен\r\n");
+            Console.WriteLine($"Платеж на {lastPayment} руб. отменен\r\n");
+        }
+        public void NotifyClearHistoryPayment()
+        {
+            Console.WriteLine($"История платежей очищена\r\n");
         }
     }
 }

@@ -6,14 +6,14 @@ namespace TransportPayment
     {
         private TransportCard _transportCard = new TransportCard();
         private Notifications _notifications = new Notifications();
+        private PaymentHistory _paymentHistory = new PaymentHistory();
         private Transport _transport = new Transport();
 
         readonly string[] _arrayMenu = new[]
         {
             "Пополнить карту",
             "Оплатить проезд",
-            "Просмотр истории платежей",
-            "Отменить последний платеж"
+            "История платежей",
         };
 
         public void Navigation()
@@ -38,18 +38,13 @@ namespace TransportPayment
                     _transportCard.NotifyError += _notifications.NotifyЕrror;
                     _transportCard.NotifyOperation += _notifications.NotifyPayment;
                     _transportCard.NotifyCashback += _notifications.NotifyCashback;
-                    _transportCard.Payment(_transport.GetTransport());
+                    _transportCard.Payment(_transport.GetTransport().Item1, _transport.GetTransport().Item2);
                     _transportCard.NotifyError -= _notifications.NotifyЕrror;
                     _transportCard.NotifyOperation -= _notifications.NotifyPayment;
                     _transportCard.NotifyCashback -= _notifications.NotifyCashback;
                     break;
                 case 3:
-                    PaymentHistory.ViewHistory();
-                    break;
-                case 4:
-                    _transportCard.NotifyError += _notifications.NotifyCancelLastPayment;
-                    PaymentHistory.CancelLastPayment();
-                    _transportCard.NotifyError -= _notifications.NotifyCancelLastPayment;
+                    _paymentHistory.GetHistory();
                     break;
                 default:
                     Console.Clear();
