@@ -23,22 +23,32 @@ namespace Products
             var bananas = new Product(75, "Bananas");
             var apples = new Product(75, "Apples");
             var pears = new Product(75, "Pears");
-            
+
             var cucumbers = new Product(75, "cucumbers");
             var tomatoes = new Product(75, "tomatoes");
             var pepper = new Product(75, "Pepper");
+
+            /*Product[] milkProductArray = new[] { milk, cheese, curd };
+            Product[] fruitsArray = new[] { bananas, apples, pears };
+            Product[] vegetablesArray = new[] { cucumbers, tomatoes, pepper };
+            List<Product> milkProduct = new List<Product>();
+            milkProduct.AddRange(milkProductArray);
+            List<Product> fruits = new List<Product>();
+            fruits.AddRange(fruitsArray);
+            List<Product> vegetables = new List<Product>();
+            vegetables.AddRange(vegetablesArray);*/
             
-            /*Dairy products
-            fruits
-                vegetables*/
-                    
-            var dairyProducts = new ProductCard(new List<Product>(){milk, cheese, curd});
-            
+            var milkProduct = new ProductCard(new List<Product>() { milk, cheese, curd });
+            var fruits = new ProductCard(new List<Product>() { bananas, apples, pears });
+            var vegetables = new ProductCard(new List<Product>() { cucumbers, tomatoes, pepper });
+            var listCard = new List<ProductCard> { milkProduct, fruits, vegetables };
+
+
             var card = new ProductCard(NotifyMagnit, NotifyOfSale, CalculateSaleMagnit, obj => true);
-            card.ProductAddedEvent += cardOnProductAddedEvent(); ;
+            card.ProductAddedEvent += cardOnProductAddedEvent();
+            ;
             /*card.AddProducts(new []{pr1,pr2,pr3});*/
             card.ProductAddedEvent -= cardOnProductAddedEvent();
-
         }
 
 
@@ -59,7 +69,7 @@ namespace Products
 
         public static void NotifyOfSale(decimal sale, decimal summOfSale)
         {
-            Console.WriteLine($"Скидка составила {1M -sale:P}, итоговая сумма - {summOfSale}");
+            Console.WriteLine($"Скидка составила {1M - sale:P}, итоговая сумма - {summOfSale}");
         }
 
         public static decimal CalculateSaleMagnit(decimal summ)

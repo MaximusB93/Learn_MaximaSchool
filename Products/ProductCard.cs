@@ -34,6 +34,11 @@ namespace Products
             _presentGift = presentGift;
         }
 
+        public ProductCard(List<Product> notifyAdddedProduct)
+        {
+            throw new NotImplementedException();
+        }
+
         public void AddProductCard(Product product)
         {
             Items.Add(product);
