@@ -20,7 +20,6 @@ namespace Products
         public void OnProductAddedEvent(Product addedProduct)
         {
             ProductAddedEvent?.Invoke(this, new ProductAddEventArgs(addedProduct));
-
         }
 
 
@@ -34,9 +33,9 @@ namespace Products
             _presentGift = presentGift;
         }
 
-        public ProductCard(List<Product> notifyAdddedProduct)
+        public ProductCard(List<Product> list)
         {
-            throw new NotImplementedException();
+            Items = list;
         }
 
         public void AddProductCard(Product product)
