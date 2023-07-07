@@ -6,7 +6,7 @@ namespace Products
 {
     public class ProductCard
     {
-        public List<Product> Items { get; }
+        public List<Product> Products { get; }
 
 
         private readonly Action<Product> _notifyAdddedProduct;
@@ -26,21 +26,21 @@ namespace Products
         public ProductCard(Action<Product> notifyAdddedProduct, Action<decimal, decimal> nitifyOfSalePercent,
             Func<decimal, decimal> calculateSaleFunc, Predicate<decimal> presentGift)
         {
-            Items = new List<Product>();
+            Products = new List<Product>();
             _notifyAdddedProduct = notifyAdddedProduct;
             _nitifyOfSalePercent = nitifyOfSalePercent;
             _calculateSaleFunc = calculateSaleFunc;
             _presentGift = presentGift;
         }
 
-        public ProductCard(List<Product> list)
+        public ProductCard(List<Product> products)
         {
-            Items = list;
+            Products = products;
         }
 
         public void AddProductCard(Product product)
         {
-            Items.Add(product);
+            Products.Add(product);
             OnProductAddedEvent(product);
             _notifyAdddedProduct(product);
         }
@@ -58,7 +58,7 @@ namespace Products
         {
             decimal summ = 0;
             decimal sale = 1M;
-            foreach (var product in Items)
+            foreach (var product in Products)
             {
                 summ += product.Price;
             }
@@ -78,7 +78,7 @@ namespace Products
         {
             StringBuilder stringBuilder = new StringBuilder();
 
-            foreach (var product in Items)
+            foreach (var product in Products)
             {
                 stringBuilder.AppendLine(product.ToString());
             }

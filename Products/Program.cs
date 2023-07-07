@@ -37,32 +37,34 @@ namespace Products
             var listCard = new List<ProductCard> { milkProduct, fruits, vegetables };
 
 
-            // Выбрать такие корзины,в которых сумма всех продуктов больше 100
-            var a = listCard.Where(x => listCard.Sum(x=>x.Items));
-
+            // Выбрать такие корзины,в которых сумма всех продуктов больше 500
+            var sumCardMore100 = listCard.Select(x => x.Products.Sum(x => x.Price)).ToList().Where();
             // Выбрать для каждой корзины продукт с максимальной ценой в рамках данной корзины
-            // Посчитать сумму всех продуктов в рамках каждой корзины
 
 
             return;
 
-            // Выбрать такие корзины, у которых более 4 продуктов 
-            var cardMoreFourProducts = listCard.Where(x => x.Items.Count > 3)
-                .SelectMany(x => x.Items)
+            // Посчитать сумму всех продуктов в рамках каждой корзины
+            var sums = listCard.Select(x => x.Products.Sum(x => x.Price))
                 .ToList();
-            
+
+            // Выбрать такие корзины, у которых более 4 продуктов 
+            var cardMoreFourProducts = listCard.Where(x => x.Products.Count > 3)
+                .SelectMany(x => x.Products)
+                .ToList();
+
             // Выбрать такие продукты, у которых название длинее 5 символов и цена больше 60
-            var productsTitleMore5AndPriceMore60 = listCard.SelectMany(x => x.Items)
+            var productsTitleMore5AndPriceMore60 = listCard.SelectMany(x => x.Products)
                 .Where(x => x.Price > 60 && x.Title.Length > 5)
                 .ToList();
-            
+
             // Выбрать продукты из всех корзин, у которых цена в интервале от 10 до 100
-            var sumCardPrice = listCard.SelectMany(x => x.Items)
+            var sumCardPrice = listCard.SelectMany(x => x.Products)
                 .Where(x => x.Price > 10 && x.Price < 100)
                 .ToList();
 
             // Посчитать сумму всех продуктов для всех корзин суммарно
-            var sumAllPrice = listCard.SelectMany(x => x.Items)
+            var sumAllPrice = listCard.SelectMany(x => x.Products)
                 .Sum(x => x.Price);
 
 
