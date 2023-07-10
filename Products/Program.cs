@@ -37,12 +37,28 @@ namespace Products
             var listCard = new List<ProductCard> { milkProduct, fruits, vegetables };
 
 
-            // Выбрать такие корзины,в которых сумма всех продуктов больше 500
-            var sumCardMore100 = listCard.Select(x => x.Products.Sum(x => x.Price)).ToList().Where();
-            // Выбрать для каждой корзины продукт с максимальной ценой в рамках данной корзины
+            var prods = listCard.SelectMany(x => x.Products)
+                .Where(x => x.Price > 50 && x.Price < 100)
+                .OrderBy(x => x.Price)
+                .Select(x => x.Title)
+                .ToList();
 
+
+            var prods2 = listCard.SelectMany(x => x.Products)
+                .GroupBy(x => x.Price)
+                .Select(x => new { Price = x.Key, Count = x.Count() })
+                .ToList();
 
             return;
+
+
+            // Выбрать такие корзины,в которых сумма всех продуктов больше 500
+            var sumCardMore100 = listCard.Where(x => x.Products.Sum(x => x.Price) > 500)
+                .ToList();
+
+            // Выбрать для каждой корзины продукт с максимальной ценой в рамках данной корзины
+            var productMaxPriceInCard = listCard.Select(x => x.Products.Max(x => x.Price))
+                .ToList();
 
             // Посчитать сумму всех продуктов в рамках каждой корзины
             var sums = listCard.Select(x => x.Products.Sum(x => x.Price))
