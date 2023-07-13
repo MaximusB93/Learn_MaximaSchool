@@ -30,12 +30,20 @@ namespace Products
             var tomatoes = new Product(200, "Tomatoes");
             var pepper = new Product(350, "Pepper");
 
-            var milkProduct = new ProductCard(new List<Product>() { milk, cheese, curd });
-            var fruits = new ProductCard(new List<Product>() { bananas, apples, pears, orange });
-            var vegetables = new ProductCard(new List<Product>() { cucumbers, tomatoes, pepper });
+            var milkProduct = new ProductCard(new List<Product>() { milk, cheese, curd, curd });
+            var fruits = new ProductCard(new List<Product>() { bananas, apples, pears, orange, milk });
+
+            var linq = milkProduct.Products.Intersect(fruits.Products).ToList();
+            var linq1 = milkProduct.Products.Except(fruits.Products).ToList();
+            var linq2 = milkProduct.Products.Union(fruits.Products).ToList();
+            var linq3 = milkProduct.Products.Concat(fruits.Products).ToList();
+            var linq4 = milkProduct.Products.ElementAtOrDefault(5);
+            
+            var vegetables = new ProductCard(new List<Product>() { cucumbers, tomatoes, pepper, cheese });
 
             var listCard = new List<ProductCard> { milkProduct, fruits, vegetables };
-
+            var aaaa = listCard.SelectMany(x => x.Products)
+                .ElementAtOrDefault(7);
 
             var prods = listCard.SelectMany(x => x.Products)
                 .Where(x => x.Price > 50 && x.Price < 100)
@@ -48,6 +56,10 @@ namespace Products
                 .GroupBy(x => x.Price)
                 .Select(x => new { Price = x.Key, Count = x.Count() })
                 .ToList();
+
+            var prods3 = listCard.SelectMany(x => x.Products)
+                .ToList();
+
 
             return;
 

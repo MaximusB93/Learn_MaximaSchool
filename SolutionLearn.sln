@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetMails", "GetMails\GetMai
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp1", "WpfApp1\WpfApp1.csproj", "{AFB0E936-33E3-4C4F-A8F4-394D5A98C58C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThreadTest", "ThreadTest\ThreadTest.csproj", "{F66F96B3-C30E-414D-BEAA-198002E53115}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{AFB0E936-33E3-4C4F-A8F4-394D5A98C58C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AFB0E936-33E3-4C4F-A8F4-394D5A98C58C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AFB0E936-33E3-4C4F-A8F4-394D5A98C58C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F66F96B3-C30E-414D-BEAA-198002E53115}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F66F96B3-C30E-414D-BEAA-198002E53115}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F66F96B3-C30E-414D-BEAA-198002E53115}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F66F96B3-C30E-414D-BEAA-198002E53115}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -29,7 +29,7 @@ namespace TransportPayment
         }
         public static void RemoveHistory()
         {
-            ListPaymentHistory.RemoveAll();
+            ListPaymentHistory.RemoveAll(null);
         }
         
     }

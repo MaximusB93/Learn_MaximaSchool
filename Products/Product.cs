@@ -13,6 +13,11 @@ namespace Products
             Title = title;
         }
 
+        public Product(int price)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public override string ToString()
         {
             return $"{Title}: {Price:C0}";
