@@ -6,7 +6,8 @@ namespace Products
     {
         public int Price { get; }
         public string Title { get; }
-        
+
+
         public Product(int price, string title)
         {
             Price = price;

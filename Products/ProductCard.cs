@@ -7,6 +7,7 @@ namespace Products
     public class ProductCard
     {
         public List<Product> Products { get; }
+        public string CategoryName { get; }
 
 
         private readonly Action<Product> _notifyAdddedProduct;
@@ -33,9 +34,10 @@ namespace Products
             _presentGift = presentGift;
         }
 
-        public ProductCard(List<Product> products)
+        public ProductCard(List<Product> products, string categoryName)
         {
             Products = products;
+            CategoryName = categoryName;
         }
 
         public void AddProductCard(Product product)
