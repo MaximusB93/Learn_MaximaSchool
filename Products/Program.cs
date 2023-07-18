@@ -21,48 +21,6 @@ namespace Products
         {
 
 
-            // ● Даны целые числа K1 и K2 и целочисленные последовательности A и B. Получить последовательность,
-            //     содержащую все числа из A, большие K1, и все числа из B, меньшие K2. Отсортировать полученную
-            // последовательность по возрастанию.
-
-            int K1 = 3;
-            int K2 = 5;
-
-            var arrayAA = new[] { 1, 2,7,6,3,4,85,48,473,146 };
-            var arrayBB = new[] { 7,6,2,45,4654,4,1641,21, };
-
-            var aaa = arrayAA.Where(x => x > K1).ToList();
-            var bbb = arrayBB.Where(x => x < K2).ToList();
-            var ddd = aaa.Concat(bbb).ToList();
-            
-            List<int> ccc = new List<int>();
-                ccc.AddRange(aaa);
-                ccc.AddRange(bbb);
-            
-                return;
-            
-            //     ● Исходная последовательность содержит сведения об абитуриентах. Каждый элемент
-            // последовательности включает следующие поля:
-            //     <Фамилия> <Год поступления> <Номер школы>
-            //     Для каждой школы вывести общее число абитуриентов за все годы и фамилию первого из абитуриентов
-            // этой школы, содержащихся в исходном наборе данных (вначале указывать номер школы, затем число
-            //     абитуриентов, затем фамилию). Сведения о каждой школе выводить на новой строке и упорядочивать
-            // по возрастанию номеров школ.*/
-
-            
-            
-            // Дано целое число K (> 0) и целочисленная последовательность A. Найти теоретико-множественную
-            // разность двух фрагментов A: первый содержит все четные числа, а второй — все числа с порядковыми
-            //     номерами, большими K. В полученной последовательности (не содержащей одинаковых элементов)
-            // поменять порядок элементов на обратный.
-            int K = 7;
-            Random random = new Random();
-            var arrayA = Enumerable.Range(0, 10)
-                .ToArray();
-
-            var arrayA1 = arrayA.Where(x => x % 2 == 0).ToArray();
-            var arrayA2 = arrayA.Where(x => x > K);
-            var differenceA = arrayA1.Except(arrayA2).ToArray();
 
 
             return;
@@ -71,7 +29,7 @@ namespace Products
             var cheese = new Product(75, "item_cheese");
             var curd = new Product(90, "item_curd");
 
-            var bananas = new Product(90, "Bananas");
+            var bananas = new Product(90, "Bananas");   
             var apples = new Product(120, "Apples");
             var pears = new Product(200, "Pears");
             var orange = new Product(130, "Orange");
