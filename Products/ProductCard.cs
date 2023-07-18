@@ -1,10 +1,11 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Products
 {
-    public class ProductCard
+    public class ProductCard : IEnumerable
     {
         public List<Product> Products { get; }
         public string CategoryName { get; }
@@ -86,6 +87,11 @@ namespace Products
             }
 
             return stringBuilder.ToString();
+        }
+
+        public IEnumerator GetEnumerator()
+        {
+            throw new NotImplementedException();
         }
     }
 }

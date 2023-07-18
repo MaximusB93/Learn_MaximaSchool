@@ -6,8 +6,9 @@ using System.Xml.XPath;
 
 namespace Products
 {
-    class Program
+    public class Program
     {
+        private static Localization _localization = new Localization();
         public static EventHandler<ProductAddEventArgs> cardOnProductAddedEvent()
         {
             return (sender, eventArgs) =>
@@ -16,201 +17,49 @@ namespace Products
                 Console.WriteLine($"Добавлен продукт - {product}");
             };
         }
-
-        static void Main()
+        public static List<ProductCard> CreateProduct()
         {
-
-
-            // ● Даны целые числа K1 и K2 и целочисленные последовательности A и B. Получить последовательность,
-            //     содержащую все числа из A, большие K1, и все числа из B, меньшие K2. Отсортировать полученную
-            // последовательность по возрастанию.
-
-            int K1 = 3;
-            int K2 = 5;
-
-            var arrayAA = new[] { 1, 2,7,6,3,4,85,48,473,146 };
-            var arrayBB = new[] { 7,6,2,45,4654,4,1641,21, };
-
-            var aaa = arrayAA.Where(x => x > K1).ToList();
-            var bbb = arrayBB.Where(x => x < K2).ToList();
-            var ddd = aaa.Concat(bbb).ToList();
-            
-            List<int> ccc = new List<int>();
-                ccc.AddRange(aaa);
-                ccc.AddRange(bbb);
-            
-                return;
-            
-            //     ● Исходная последовательность содержит сведения об абитуриентах. Каждый элемент
-            // последовательности включает следующие поля:
-            //     <Фамилия> <Год поступления> <Номер школы>
-            //     Для каждой школы вывести общее число абитуриентов за все годы и фамилию первого из абитуриентов
-            // этой школы, содержащихся в исходном наборе данных (вначале указывать номер школы, затем число
-            //     абитуриентов, затем фамилию). Сведения о каждой школе выводить на новой строке и упорядочивать
-            // по возрастанию номеров школ.*/
-
-            
-            
-            // Дано целое число K (> 0) и целочисленная последовательность A. Найти теоретико-множественную
-            // разность двух фрагментов A: первый содержит все четные числа, а второй — все числа с порядковыми
-            //     номерами, большими K. В полученной последовательности (не содержащей одинаковых элементов)
-            // поменять порядок элементов на обратный.
-            int K = 7;
-            Random random = new Random();
-            var arrayA = Enumerable.Range(0, 10)
-                .ToArray();
-
-            var arrayA1 = arrayA.Where(x => x % 2 == 0).ToArray();
-            var arrayA2 = arrayA.Where(x => x > K);
-            var differenceA = arrayA1.Except(arrayA2).ToArray();
-
-
-            return;
-
             var milk = new Product(60, "item_milk");
             var cheese = new Product(75, "item_cheese");
             var curd = new Product(90, "item_curd");
 
-            var bananas = new Product(90, "Bananas");
-            var apples = new Product(120, "Apples");
-            var pears = new Product(200, "Pears");
-            var orange = new Product(130, "Orange");
+            var bananas = new Product(90, "item_bananas");
+            var apples = new Product(120, "item_apples");
+            var pears = new Product(200, "item_pears");
+            var orange = new Product(130, "item_orange");
 
-            var cucumbers = new Product(160, "Cucumbers");
-            var tomatoes = new Product(200, "Tomatoes");
-            var pepper = new Product(350, "Pepper");
+            var cucumbers = new Product(160, "item_cucumbers");
+            var tomatoes = new Product(200, "item_tomatoes");
+            var pepper = new Product(350, "item_pepper");
 
-            var milkProduct = new ProductCard(new List<Product>() { milk, cheese, curd }, "Молочная продукция");
+            var milkProducts = new ProductCard(new List<Product>() { milk, cheese, curd }, "Молочная продукция");
             var fruits = new ProductCard(new List<Product>() { bananas, apples, pears, orange }, "Фрукты");
             var vegetables = new ProductCard(new List<Product>() { cucumbers, tomatoes, pepper }, "Овощи");
 
-            var listCard = new List<ProductCard> { milkProduct, fruits, vegetables };
+            List<ProductCard> listCards = new List<ProductCard> { milkProducts, fruits, vegetables };
+            FilteringCard filteringCard = new FilteringCard(listCards);
+            return listCards;
+        }
 
-            var dictionary = listCard.ToDictionary(x => x.CategoryName, x => x.Products.Select(x => x.Title));
+        public static void Main()
+        {
+            var milkProduct = CreateProduct();
 
-            var dictionaryLoc = new Dictionary<string, Dictionary<string, string>>()
+
+            foreach (var item in milkProduct)
             {
+                foreach (var item2 in item)
                 {
-                    "item_milk", new Dictionary<string, string>()
-                    {
-                        { "ru", "Молоко" },
-                        { "en", "Milk" }
-                    }
-                },
-                {
-                    "item_cheese", new Dictionary<string, string>()
-                    {
-                        { "ru", "Сыр" },
-                        { "en", "Cheese" }
-                    }
-                },
-                {
-                    "item_curd", new Dictionary<string, string>()
-                    {
-                        { "ru", "Творог" },
-                        { "en", "Curd" }
-                    }
-                }
-            };
-
-            // var dictionaryLoc = new Dictionary<string, string>()
-            // {
-            //     { "Milk", "Молоко" },
-            //     { "Cheese", "Сыр" },
-            //     { "Curd", "Творог" }
-            // };
-
-            foreach (var item in milkProduct.Products)
-            {
-                dictionaryLoc[item.Title].TryGetValue("DE", out string a);
-                Console.WriteLine($"{item.Title} - {a}");
-            }
-
-            return;
-
-            var dictonary2 = new Dictionary<string, string>();
-
-            foreach (var item in dictionary)
-            {
-                Console.WriteLine($"Категория: {item.Key}");
-                foreach (var name in item.Value)
-                {
-                    Console.WriteLine($"- {name}");
-
-                    dictonary2.Add(item.ToString(), name);
+                    _localization.GetLocalization()[item2].TryGetValue("en", out string a);
+                    Console.WriteLine($"{item.Title} - {a}");
                 }
 
-                Console.WriteLine();
             }
-
-            // var dic = listCard.Select(x => x.CategoryName)
-            //     .ToList();
-            //
-            //
-            // var nameProductCard = listCard.Select(x => x.CategoryName)
-            //     .ToList();
-            //
-            //
-            // var aaaa = listCard.SelectMany(x => x.Products)
-            //     .ElementAtOrDefault(7);
-            //
-            // var prods = listCard.SelectMany(x => x.Products)
-            //     .Where(x => x.Price > 50 && x.Price < 100)
-            //     .OrderBy(x => x.Price)
-            //     .Select(x => x.Title)
-            //     .ToList();
-            //
-            // var prods2 = listCard.SelectMany(x => x.Products)
-            //     .GroupBy(x => x.Price)
-            //     .Select(x => new { Price = x.Key, Count = x.Count() })
-            //     .ToList();
-            //
-            // var prods3 = listCard.SelectMany(x => x.Products)
-            //     .ToList();
-
-
-            return;
-
-
-            // Выбрать такие корзины,в которых сумма всех продуктов больше 500
-            var sumCardMore100 = listCard.Where(x => x.Products.Sum(x => x.Price) > 500)
-                .ToList();
-
-            // Выбрать для каждой корзины продукт с максимальной ценой в рамках данной корзины
-            var productMaxPriceInCard = listCard.Select(x => x.Products.Max(x => x.Price))
-                .ToList();
-
-            // Посчитать сумму всех продуктов в рамках каждой корзины
-            var sums = listCard.Select(x => x.Products.Sum(x => x.Price))
-                .ToList();
-
-            // Выбрать такие корзины, у которых более 4 продуктов 
-            var cardMoreFourProducts = listCard.Where(x => x.Products.Count > 3)
-                .SelectMany(x => x.Products)
-                .ToList();
-
-            // Выбрать такие продукты, у которых название длинее 5 символов и цена больше 60
-            var productsTitleMore5AndPriceMore60 = listCard.SelectMany(x => x.Products)
-                .Where(x => x.Price > 60 && x.Title.Length > 5)
-                .ToList();
-
-            // Выбрать продукты из всех корзин, у которых цена в интервале от 10 до 100
-            var sumCardPrice = listCard.SelectMany(x => x.Products)
-                .Where(x => x.Price > 10 && x.Price < 100)
-                .ToList();
-
-            // Посчитать сумму всех продуктов для всех корзин суммарно
-            var sumAllPrice = listCard.SelectMany(x => x.Products)
-                .Sum(x => x.Price);
-
 
             var card = new ProductCard(NotifyMagnit, NotifyOfSale, CalculateSaleMagnit, obj => true);
             card.ProductAddedEvent += cardOnProductAddedEvent();
-            ;
-            /*card.AddProducts(new []{pr1,pr2,pr3});*/
             card.ProductAddedEvent -= cardOnProductAddedEvent();
         }
-
 
         public static void NotifyPerekrestok(Product product)
         {
