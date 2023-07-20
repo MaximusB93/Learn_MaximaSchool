@@ -17,60 +17,39 @@ namespace LINQ2
             //     абитуриентов, затем фамилию). Сведения о каждой школе выводить на новой строке и упорядочивать
             // по возрастанию номеров школ.*/
 
-            var universityEntrant = new UniversityEntrant("Макаров", 2020, 53);
-            var universityEntrant2 = new UniversityEntrant("Антипов", 2019, 48);
-            var universityEntrant3 = new UniversityEntrant("Лавочкина", 2021, 21);
-            var universityEntrant4 = new UniversityEntrant("Мишина", 2020, 48);
-            var universityEntrant5 = new UniversityEntrant("Лепешкин", 2019, 53);
-            var universityEntrant6 = new UniversityEntrant("Зайцев", 2021, 48);
-            var universityEntrant7 = new UniversityEntrant("Чубайс", 2020, 21);
-            var universityEntrant8 = new UniversityEntrant("Навальная", 2021, 48);
 
-            var universityEntrantAll = new School(new List<UniversityEntrant>()
+            List<UniversityEntrant> universityEntrantAll = new List<UniversityEntrant>
             {
-                universityEntrant,
-                universityEntrant2,
-                universityEntrant3,
-                universityEntrant4,
-                universityEntrant5,
-                universityEntrant6,
-                universityEntrant7,
-                universityEntrant8
-            });
-             var universityEntrantAll2 = new List<School>() { universityEntrantAll };
-             
-             // Группируем абитуриентов по номеру школы и выводим результаты
-             
-             var groupedStudents = universityEntrantAll.UniversityEntrant2.GroupBy(s => s.NumberSchool)
-                 .OrderBy(g => g.Key);
-             foreach (var group in groupedStudents)
-             {
-                 int totalCount = group.Count();
-                 string firstStudentLastName = group.First().Surname;
-                 
-                 Console.WriteLine($"Школа: {group.Key}, Количество абитуриентов: {totalCount}, Первый абитуриент: {firstStudentLastName}");
-             }
-            
-            return;
-            
-            
-            
-            
-            // var School53 = universityEntrantAll2.Select(x => x.UniversityEntrant2.Where(x => x.NumberSchool == 53))
-            //     .ToList();
+                new UniversityEntrant("Макаров", 2020, 53, 2),
+                new UniversityEntrant("Антипов", 2019, 48, 1),
+                new UniversityEntrant("Лавочкина", 2021, 21, 2),
+                new UniversityEntrant("Мишина", 2020, 48, 2),
+                new UniversityEntrant("Лепешкин", 2019, 53, 1),
+                new UniversityEntrant("Зайцев", 2021, 48, 3),
+                new UniversityEntrant("Чубайс", 2020, 21, 1),
+                new UniversityEntrant("Навальная", 2021, 48, 4)
+            };
 
-            // var School48 = universityEntrantAll.UniversityEntrant2.Select(x => x)
-            //     .Where(x => x.NumberSchool == 48)
-            //     .ToList();
-            //
-            // var School21 = universityEntrantAll.UniversityEntrant2.Select(x => x)
-            //     .Where(x => x.NumberSchool == 21)
-            //     .ToList();
-
-            var aaa = universityEntrantAll2.Select(x=>x.UniversityEntrant2.Min(x=>x.Surname))
+            var schoolStats = universityEntrantAll.GroupBy(x => x.NumberSchool)
+                .OrderBy(x => x.Key)
+                .Select(x => new
+                {
+                    numberSchool = x.Key,
+                    TotalApplicants = x.Count(),
+                    FirstApplicantSurName = x.First().Surname
+                })
                 .ToList();
-        }
 
+            foreach (var stat in schoolStats)
+            {
+                Console.WriteLine($"Школа - {stat.numberSchool}");
+                Console.WriteLine($"Количество абитуриентов - {stat.TotalApplicants}");
+                Console.WriteLine($"Первый абитуриент - {stat.FirstApplicantSurName}");
+                Console.WriteLine($"-------------------------------------------------");
+            }
+
+            return;
+        }
 
         private static void GetDifferenceA()
         {
