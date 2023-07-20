@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace Products
@@ -81,5 +82,16 @@ namespace Products
             };
             return dictionaryLoc;
         }
+
+        public void ViewLocalization()
+        {
+            var getLocalization = GetLocalization();
+            foreach (var item in getLocalization)
+            {
+                GetLocalization()[item.ToString()].TryGetValue("en", out string a);
+                Console.WriteLine($"{item.Value} - {a}");
+            }
+        }
+
     }
 }

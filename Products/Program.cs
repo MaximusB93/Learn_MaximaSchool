@@ -48,11 +48,9 @@ namespace Products
 
             foreach (var item in milkProduct)
             {
-                foreach (var item2 in item)
-                {
+
                     _localization.GetLocalization()[item2].TryGetValue("en", out string a);
                     Console.WriteLine($"{item.Title} - {a}");
-                }
 
             }
 
