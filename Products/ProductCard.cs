@@ -10,7 +10,6 @@ namespace Products
         public List<Product> Products { get; }
         public string CategoryName { get; }
 
-
         private readonly Action<Product> _notifyAdddedProduct;
 
         private readonly Action<decimal, decimal> _nitifyOfSalePercent;
@@ -23,7 +22,6 @@ namespace Products
         {
             ProductAddedEvent?.Invoke(this, new ProductAddEventArgs(addedProduct));
         }
-
 
         public ProductCard(Action<Product> notifyAdddedProduct, Action<decimal, decimal> nitifyOfSalePercent,
             Func<decimal, decimal> calculateSaleFunc, Predicate<decimal> presentGift)
@@ -55,7 +53,6 @@ namespace Products
                 AddProductCard(product);
             }
         }
-
 
         public void GetTotalSumm()
         {

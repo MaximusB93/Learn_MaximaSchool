@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Products
 {
@@ -80,6 +81,7 @@ namespace Products
                     }
                 }
             };
+
             return dictionaryLoc;
         }
 
@@ -88,10 +90,10 @@ namespace Products
             var getLocalization = GetLocalization();
             foreach (var item in getLocalization)
             {
-                GetLocalization()[item.ToString()].TryGetValue("en", out string a);
-                Console.WriteLine($"{item.Value} - {a}");
+                getLocalization[item.Key].TryGetValue("en", out string en);
+                getLocalization[item.Key].TryGetValue("ru", out string ru);
+                Console.WriteLine($"{item.Key} - {en}, {ru}");
             }
         }
-
     }
 }

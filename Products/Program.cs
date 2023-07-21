@@ -9,6 +9,7 @@ namespace Products
     public class Program
     {
         private static Localization _localization = new Localization();
+
         public static EventHandler<ProductAddEventArgs> cardOnProductAddedEvent()
         {
             return (sender, eventArgs) =>
@@ -17,6 +18,7 @@ namespace Products
                 Console.WriteLine($"Добавлен продукт - {product}");
             };
         }
+
         public static List<ProductCard> CreateProduct()
         {
             var milk = new Product(60, "item_milk");
@@ -43,16 +45,7 @@ namespace Products
 
         public static void Main()
         {
-            var milkProduct = CreateProduct();
-
-
-            foreach (var item in milkProduct)
-            {
-
-                    _localization.GetLocalization()[item2].TryGetValue("en", out string a);
-                    Console.WriteLine($"{item.Title} - {a}");
-
-            }
+            _localization.ViewLocalization();
 
             var card = new ProductCard(NotifyMagnit, NotifyOfSale, CalculateSaleMagnit, obj => true);
             card.ProductAddedEvent += cardOnProductAddedEvent();
