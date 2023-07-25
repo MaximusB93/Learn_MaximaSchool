@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Products
@@ -8,6 +9,7 @@ namespace Products
     public class ProductCard : IEnumerable
     {
         public List<Product> Products { get; }
+        public List<ProductCard> ListCard { get; }
         public string CategoryName { get; }
 
         private readonly Action<Product> _notifyAdddedProduct;
@@ -37,6 +39,11 @@ namespace Products
         {
             Products = products;
             CategoryName = categoryName;
+        }
+
+        public ProductCard(List<ProductCard> listCard)
+        {
+            ListCard = listCard;
         }
 
         public void AddProductCard(Product product)
@@ -73,6 +80,21 @@ namespace Products
 
             _nitifyOfSalePercent(sale, summOfSale);
         }
+
+
+        // public void GetSumCard()
+        // {
+        //     var aaa = ListCard.Select(x => x.Products.Sum(x => x.Price)).ToList();
+        //     foreach (var product in ListCard)
+        //     {
+        //         product.Products.Sum(x => x.Price);
+        //     }
+        //
+        //     for (int i = 0; i < UPPER; i++)
+        //     {
+        //         
+        //     }
+        // }
 
         public string PrintAllProducts()
         {

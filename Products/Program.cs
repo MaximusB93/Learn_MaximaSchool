@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Xml.XPath;
 
 namespace Products
@@ -39,17 +40,21 @@ namespace Products
             var vegetables = new ProductCard(new List<Product>() { cucumbers, tomatoes, pepper }, "Овощи");
 
             List<ProductCard> listCards = new List<ProductCard> { milkProducts, fruits, vegetables };
-            FilteringCard filteringCard = new FilteringCard(listCards);
+            
             return listCards;
         }
 
         public static void Main()
         {
-            _localization.ViewLocalization();
+            ThreadCard threadCard = new ThreadCard(CreateProduct());
+            threadCard.CreateThreadCard();
+            
 
-            var card = new ProductCard(NotifyMagnit, NotifyOfSale, CalculateSaleMagnit, obj => true);
-            card.ProductAddedEvent += cardOnProductAddedEvent();
-            card.ProductAddedEvent -= cardOnProductAddedEvent();
+            
+
+            // var card = new ProductCard(NotifyMagnit, NotifyOfSale, CalculateSaleMagnit, obj => true);
+            // card.ProductAddedEvent += cardOnProductAddedEvent();
+            // card.ProductAddedEvent -= cardOnProductAddedEvent();
         }
 
         public static void NotifyPerekrestok(Product product)
