@@ -5,31 +5,31 @@ namespace TransportPayment
 {
     public class PaymentHistory
     {
-        static readonly List<decimal> ListPaymentHistory = new List<decimal>();
+        private static readonly List<decimal> _listPaymentHistory = new List<decimal>();
 
         public static void AddPayInHistory(decimal fare)
         {
-            ListPaymentHistory.Add(fare);
-            ListPaymentHistory.Clear();
+            _listPaymentHistory.Add(fare);
+            _listPaymentHistory.Clear();
         }
 
         public static void ViewHistory()
         {
-            if (ListPaymentHistory.Count == 0)
+            if (_listPaymentHistory.Count == 0)
             {
                 Console.WriteLine("Список оплат пуст");
             }
             else
             {
-                for (int i = 0; i < ListPaymentHistory.Count; i++)
+                for (int i = 0; i < _listPaymentHistory.Count; i++)
                 {
-                    Console.WriteLine($"{i + 1}) Оплачено - {ListPaymentHistory[i]} руб.");
+                    Console.WriteLine($"{i + 1}) Оплачено - {_listPaymentHistory[i]} руб.");
                 }
             }
         }
         public static void RemoveHistory()
         {
-            ListPaymentHistory.RemoveAll(null);
+            _listPaymentHistory.RemoveAll(null);
         }
         
     }
