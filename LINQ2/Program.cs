@@ -20,14 +20,14 @@ namespace LINQ2
 
             List<UniversityEntrant> universityEntrantAll = new List<UniversityEntrant>
             {
-                new UniversityEntrant("Макаров", 2020, 53, 2),
-                new UniversityEntrant("Антипов", 2019, 48, 1),
-                new UniversityEntrant("Лавочкина", 2021, 21, 2),
-                new UniversityEntrant("Мишина", 2020, 48, 2),
-                new UniversityEntrant("Лепешкин", 2019, 53, 1),
-                new UniversityEntrant("Зайцев", 2021, 48, 3),
-                new UniversityEntrant("Чубайс", 2020, 21, 1),
-                new UniversityEntrant("Навальная", 2021, 48, 4)
+                new UniversityEntrant("Макаров", 2020, 53),
+                new UniversityEntrant("Антипов", 2019, 48),
+                new UniversityEntrant("Лавочкина", 2021, 21),
+                new UniversityEntrant("Мишина", 2020, 48),
+                new UniversityEntrant("Лепешкин", 2019, 53),
+                new UniversityEntrant("Зайцев", 2021, 48),
+                new UniversityEntrant("Чубайс", 2020, 21),
+                new UniversityEntrant("Навальная", 2021, 48)
             };
 
             var schoolStats = universityEntrantAll.GroupBy(x => x.NumberSchool)
@@ -37,8 +37,10 @@ namespace LINQ2
                     numberSchool = x.Key,
                     TotalApplicants = x.Count(),
                     FirstApplicantSurName = x.First().Surname
+                    // FirstApplicantSurName = x.OrderBy(x => x.YearAdmission).First().Surname - Первый по поступлению
                 })
                 .ToList();
+
 
             foreach (var stat in schoolStats)
             {
