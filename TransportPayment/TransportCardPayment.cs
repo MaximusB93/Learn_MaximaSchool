@@ -1,3 +1,5 @@
+using System.Threading;
+
 namespace TransportPayment
 {
     public partial class TransportCard
@@ -14,7 +16,10 @@ namespace TransportPayment
             {
                 Balance -= fare;
                 NotifyOperation?.Invoke(fare, Balance);
-                _paymentHistory.AddPayInHistory(fare, transport);
+                Thread threadPay = new Thread(() => _paymentHistory.AddPayInHistory(fare, transport));
+                threadPay.Start();
+                Thread threadPay2 = new Thread(() => _paymentHistory.AddPayInHistory(fare, transport));
+                threadPay2.Start();
                 GetCashback(fare);
             }
         }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using TransportPayment;
 
 namespace TransportPayment
@@ -36,7 +37,10 @@ namespace TransportPayment
             switch (selectingItem)
             {
                 case 1:
-                    ViewHistory();
+                    Thread threadView = new Thread(ViewHistory);
+                    threadView.Start();
+                    Thread threadView2 = new Thread(ViewHistory);
+                    threadView2.Start();
                     break;
                 case 2:
                     ClearHistory();
@@ -52,24 +56,32 @@ namespace TransportPayment
             }
         }
 
+
         public void AddPayInHistory(decimal fare, string transport)
         {
-            ListPaymentHistory.Add(new Transport()
-                { Fare = fare, TypeTransport = transport }); //Сохраняем платеж в лист
-            StackPaymentHistory.Push(fare); //Сохраняем платеж в стэк
+            lock (ListPaymentHistory)
+            {
+                ListPaymentHistory.Add(new Transport()
+                    { Fare = fare, TypeTransport = transport }); //Сохраняем платеж в лист
+                StackPaymentHistory.Push(fare); //Сохраняем платеж в стэк
+            }
         }
 
         public void ViewHistory()
         {
-            if (ListPaymentHistory.Count == 0)
+            lock (ListPaymentHistory)
             {
-                Console.WriteLine("Список оплат пуст");
-            }
-            else
-            {
-                for (int i = 0; i < ListPaymentHistory.Count; i++)
+                if (ListPaymentHistory.Count == 0)
                 {
-                    Console.WriteLine($"{i + 1}) Оплачено - {ListPaymentHistory[i]} руб.");
+                    Console.WriteLine("Список оплат пуст");
+                }
+                else
+                {
+                    for (int i = 0; i < ListPaymentHistory.Count; i++)
+                    {
+                        Console.WriteLine(
+                            $"{i + 1}) Оплачено {ListPaymentHistory[i].TypeTransport} - {ListPaymentHistory[i].Fare} руб.");
+                    }
                 }
             }
         }
