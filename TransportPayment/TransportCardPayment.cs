@@ -2,7 +2,9 @@ namespace TransportPayment
 {
     public partial class TransportCard
     {
-        public void Payment(decimal fare)
+        private PaymentHistory _paymentHistory = new PaymentHistory();
+
+        public void Payment(decimal fare, string transport)
         {
             if (Balance < fare)
             {
@@ -12,7 +14,7 @@ namespace TransportPayment
             {
                 Balance -= fare;
                 NotifyOperation?.Invoke(fare, Balance);
-                PaymentHistory.AddPayInHistory(fare);
+                _paymentHistory.AddPayInHistory(fare, transport);
                 GetCashback(fare);
             }
         }
