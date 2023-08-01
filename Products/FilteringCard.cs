@@ -5,14 +5,14 @@ namespace Products
 {
     public class FilteringCard
     {
-        public List<ProductCard> listCard { get; }
+        public List<ProductCart> listCard { get; }
 
-        public FilteringCard(List<ProductCard> listCard)
+        public FilteringCard(List<ProductCart> listCard)
         {
             this.listCard = listCard;
         }
 
-        private List<ProductCard> GetSumCardMore100()
+        private List<ProductCart> GetSumCardMore100()
         {
             // Выбрать такие корзины,в которых сумма всех продуктов больше 500
             var sumCardMore100 = listCard.Where(x => x.Products.Sum(x => x.Price) > 500)

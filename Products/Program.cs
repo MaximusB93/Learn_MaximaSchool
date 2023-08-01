@@ -20,7 +20,7 @@ namespace Products
             };
         }
 
-        public static List<ProductCard> CreateProduct()
+        public static List<ProductCart> CreateProduct()
         {
             var milk = new Product(60, "item_milk");
             var cheese = new Product(75, "item_cheese");
@@ -35,24 +35,21 @@ namespace Products
             var tomatoes = new Product(200, "item_tomatoes");
             var pepper = new Product(350, "item_pepper");
 
-            var milkProducts = new ProductCard(new List<Product>() { milk, cheese, curd }, "Молочная продукция");
-            var fruits = new ProductCard(new List<Product>() { bananas, apples, pears, orange }, "Фрукты");
-            var vegetables = new ProductCard(new List<Product>() { cucumbers, tomatoes, pepper }, "Овощи");
+            var milkProducts = new ProductCart(new List<Product>() { milk, cheese, curd }, "Молочная продукция");
+            var fruits = new ProductCart(new List<Product>() { bananas, apples, pears, orange }, "Фрукты");
+            var vegetables = new ProductCart(new List<Product>() { cucumbers, tomatoes, pepper }, "Овощи");
 
-            List<ProductCard> listCards = new List<ProductCard> { milkProducts, fruits, vegetables };
-            
-            return listCards;
+            List<ProductCart> listCarts = new List<ProductCart> { milkProducts, fruits, vegetables };
+
+            return listCarts;
         }
 
         public static void Main()
         {
-            ThreadCard threadCard = new ThreadCard(CreateProduct());
-            threadCard.CreateThreadCard();
-            
+            ThreadCart threadCart = new ThreadCart(CreateProduct());
+            threadCart.CalculateSum();
 
-            
-
-            // var card = new ProductCard(NotifyMagnit, NotifyOfSale, CalculateSaleMagnit, obj => true);
+            // var card = new ProductCart(NotifyMagnit, NotifyOfSale, CalculateSaleMagnit, obj => true);
             // card.ProductAddedEvent += cardOnProductAddedEvent();
             // card.ProductAddedEvent -= cardOnProductAddedEvent();
         }

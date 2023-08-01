@@ -6,10 +6,10 @@ using System.Text;
 
 namespace Products
 {
-    public class ProductCard : IEnumerable
+    public class ProductCart : IEnumerable
     {
         public List<Product> Products { get; }
-        public List<ProductCard> ListCard { get; }
+        public List<ProductCart> ListCard { get; }
         public string CategoryName { get; }
 
         private readonly Action<Product> _notifyAdddedProduct;
@@ -25,7 +25,7 @@ namespace Products
             ProductAddedEvent?.Invoke(this, new ProductAddEventArgs(addedProduct));
         }
 
-        public ProductCard(Action<Product> notifyAdddedProduct, Action<decimal, decimal> nitifyOfSalePercent,
+        public ProductCart(Action<Product> notifyAdddedProduct, Action<decimal, decimal> nitifyOfSalePercent,
             Func<decimal, decimal> calculateSaleFunc, Predicate<decimal> presentGift)
         {
             Products = new List<Product>();
@@ -35,13 +35,13 @@ namespace Products
             _presentGift = presentGift;
         }
 
-        public ProductCard(List<Product> products, string categoryName)
+        public ProductCart(List<Product> products, string categoryName)
         {
             Products = products;
             CategoryName = categoryName;
         }
 
-        public ProductCard(List<ProductCard> listCard)
+        public ProductCart(List<ProductCart> listCard)
         {
             ListCard = listCard;
         }
@@ -82,7 +82,7 @@ namespace Products
         }
 
 
-        // public void GetSumCard()
+        // public void GetSumCart()
         // {
         //     var aaa = ListCard.Select(x => x.Products.Sum(x => x.Price)).ToList();
         //     foreach (var product in ListCard)
