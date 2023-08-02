@@ -5,7 +5,7 @@ namespace TransportPayment
     public partial class TransportCard
     {
         private PaymentHistory _paymentHistory = new PaymentHistory();
-        private static CreateThread _createThread = new CreateThread();
+        private static Threads _threads = new Threads();
 
         public void Payment(decimal fare, string transport)
         {
@@ -17,7 +17,7 @@ namespace TransportPayment
             {
                 Balance -= fare;
                 NotifyOperation?.Invoke(fare, Balance);
-                _createThread.StartingThreads(() => _paymentHistory.AddPayInHistory(fare, transport));
+                _threads.StartThreads(() => _paymentHistory.AddPayInHistory(fare, transport));
                 GetCashback(fare);
             }
         }

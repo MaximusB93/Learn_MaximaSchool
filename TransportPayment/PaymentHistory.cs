@@ -12,8 +12,7 @@ namespace TransportPayment
         private static Notifications _notifications = new Notifications();
         private static TransportCard _transportCard = new TransportCard();
         private static NavigationMenu _navigationMenu = new NavigationMenu();
-        private static CreateThread _createThread = new CreateThread();
-
+        private static Threads _threads = new Threads();
 
         /*static List<decimal> ListPaymentHistory = new List<decimal>();*/
         static List<Transport> ListPaymentHistory = new List<Transport>();
@@ -40,7 +39,7 @@ namespace TransportPayment
             switch (selectingItem)
             {
                 case 1:
-                    _createThread.StartingThreads(ViewHistory);
+                    _threads.StartThreads(ViewHistory);
                     break;
                 case 2:
                     ClearHistory();
