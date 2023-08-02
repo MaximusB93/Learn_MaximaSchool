@@ -8,9 +8,12 @@ namespace TransportPayment
 {
     public class PaymentHistory
     {
+        private object _lockObj = new object();
         private static Notifications _notifications = new Notifications();
         private static TransportCard _transportCard = new TransportCard();
         private static NavigationMenu _navigationMenu = new NavigationMenu();
+        private static CreateThread _createThread = new CreateThread();
+
 
         /*static List<decimal> ListPaymentHistory = new List<decimal>();*/
         static List<Transport> ListPaymentHistory = new List<Transport>();
@@ -37,10 +40,7 @@ namespace TransportPayment
             switch (selectingItem)
             {
                 case 1:
-                    Thread threadView = new Thread(ViewHistory);
-                    threadView.Start();
-                    Thread threadView2 = new Thread(ViewHistory);
-                    threadView2.Start();
+                    _createThread.StartingThreads(ViewHistory);
                     break;
                 case 2:
                     ClearHistory();
@@ -59,7 +59,7 @@ namespace TransportPayment
 
         public void AddPayInHistory(decimal fare, string transport)
         {
-            lock (ListPaymentHistory)
+            lock (_lockObj)
             {
                 ListPaymentHistory.Add(new Transport()
                     { Fare = fare, TypeTransport = transport }); //Сохраняем платеж в лист
@@ -69,7 +69,7 @@ namespace TransportPayment
 
         public void ViewHistory()
         {
-            lock (ListPaymentHistory)
+            lock (_lockObj)
             {
                 if (ListPaymentHistory.Count == 0)
                 {

@@ -39,7 +39,7 @@ namespace TransportPayment
                     _transportCard.NotifyOperation += _notifications.NotifyPayment;
                     _transportCard.NotifyCashback += _notifications.NotifyCashback;
                     var transport = _transport.GetTransport();
-                    _transportCard.Payment(transport.Item1,transport.Item2);
+                    _transportCard.Payment(transport.Item1, transport.Item2);
                     _transportCard.NotifyError -= _notifications.NotifyЕrror;
                     _transportCard.NotifyOperation -= _notifications.NotifyPayment;
                     _transportCard.NotifyCashback -= _notifications.NotifyCashback;
