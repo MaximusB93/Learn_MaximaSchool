@@ -1,50 +1,61 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading.Tasks;
 
 namespace TaskApp
 {
+    // Написать программу.Дан список чисел(одномерный массив).Нужно в количестве равном N создать
+    //     таски, внутри которых будет расчет факториалов для каждого числа из заданного списка.То есть параллельно
+    //     пробежаться по списку чисел и распораллелить вычисление факториалов.
+    //
+    // Измерить время выполнения
+    //     для однопоточной обработки списка(N = 1) и для N = 4(степень параллелизма)
+
     class Program
     {
+        private static int[] array = new[] { 5, 6, 7, 8 };
+        private static object _sync = new object();
+
+        //static List<Task<int>> tasksList = new List<Task<int>>();
+        static public Task[] tasksList = new Task [array.Length];
+        static int result;
+
         static void Main(string[] args)
         {
-            // Написать программу.Дан список чисел(одномерный массив).Нужно в количестве равном N создать
-            //     таски, внутри которых будет расчет факториалов для каждого числа из заданного списка.То есть параллельно
-            //     пробежаться по списку чисел и распораллелить вычисление факториалов.
-            //
-            // Измерить время выполнения
-            //     для однопоточной обработки списка(N = 1) и для N = 4(степень параллелизма)
+            Stopwatch time = new Stopwatch();
+            time.Start();
 
-
-            int[] array = new[] { 5, 6, 7, 8 };
-            List<Task<int>> tasksList = new List<Task<int>>();
-            int result = 1;
             for (int i = 0; i < array.Length; i++)
             {
-               
-                tasksList.Add(CalculateFactorial);
+                lock (_sync)
+                {
+                    result = 1;
+                    Task<int> task = new Task<int>(() => CalculateFactorial(i));
+                    tasksList[i] = task;
+                    //tasksList.Add(task);
+                    tasksList[i].Start();
+                }
+            }
 
+            Task.WaitAll(tasksList);
+            time.Stop();
+            Console.WriteLine();
+            Console.WriteLine(time.ElapsedMilliseconds);
+        }
 
+        public static int CalculateFactorial(int i)
+        {
+            lock (_sync)
+            {
                 for (int y = 2; y < array[i] + 1; y++)
                 {
                     result *= y;
                 }
-
-                Console.WriteLine(result);
-                result = 1;
             }
-        }
 
-        public async Task MyTaskFunction(int id)
-        {
-            // Ваш код для выполнения в задаче
-            await Task.Delay(1000);
-            Console.WriteLine($"Задача {id} завершена.");
-        }
-
-        public static async Task<int> CalculateFactorial()
-        {
-            return 5;
+            Console.WriteLine(result);
+            return result;
         }
     }
 }
