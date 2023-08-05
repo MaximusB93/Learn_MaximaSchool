@@ -14,13 +14,13 @@ namespace TaskApp
 
     class Program
     {
-        //private static int[] array = new[] { 11, 7, 8, 10, 5, 15 };
+        private static int[] array = new[] { 11, 7, 8, 10 };
 
         static void Main(string[] args)
         {
-            MultiThread multiThread = new MultiThread();
+            MultiThread multiThread = new MultiThread(array);
             multiThread.Start();
-            SingleThread singleThread = new SingleThread();
+            SingleThread singleThread = new SingleThread(array);
             singleThread.Start();
         }
     }
