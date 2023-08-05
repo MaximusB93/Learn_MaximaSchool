@@ -4,8 +4,12 @@ namespace TransportPayment
 {
     public class NavigationMenu
     {
-        private TransportCard _transportCard = new TransportCard();
-        private Notifications _notifications = new Notifications();
+        private TransportCard _transportCard;
+
+        public NavigationMenu(TransportCard card)
+        {
+            _transportCard = card;
+        }
 
         readonly string[] _arrayMenu = new[]
         {
@@ -28,25 +32,17 @@ namespace TransportPayment
             switch (selectingItem)
             {
                 case 1:
-                    _transportCard.NotifyOperation += _notifications.NotifyAdd;
                     _transportCard.Add(_transportCard.DepositАmount());
-                    _transportCard.NotifyOperation -= _notifications.NotifyAdd;
                     break;
                 case 2:
-                    _transportCard.NotifyError += _notifications.NotifyЕrror;
-                    _transportCard.NotifyOperation += _notifications.NotifyPayment;
-                    _transportCard.NotifyCashback += _notifications.NotifyCashback;
                     _transportCard.Payment(30);
-                    _transportCard.NotifyError -= _notifications.NotifyЕrror;
-                    _transportCard.NotifyOperation -= _notifications.NotifyPayment;
-                    _transportCard.NotifyCashback -= _notifications.NotifyCashback;
                     break;
                 case 3:
                     PaymentHistory.ViewHistory();
                     break;
                 default:
                     Console.Clear();
-                    _notifications.NotifyReturnToMenu();
+                    Notifications.OnReturnToMenu?.Invoke();
                     Navigation();
                     break;
             }
@@ -65,7 +61,7 @@ namespace TransportPayment
                     Navigation();
                     break;
                 default:
-                    _notifications.NotifyReturnToMenu();
+                    Notifications.OnReturnToMenu?.Invoke();
                     Navigation();
                     break;
             }

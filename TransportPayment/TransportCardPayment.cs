@@ -11,7 +11,7 @@ namespace TransportPayment
             else
             {
                 Balance -= fare;
-                NotifyOperation?.Invoke(fare, Balance);
+                NotifyPayment?.Invoke(fare, Balance);
                 PaymentHistory.AddPayInHistory(fare);
                 GetCashback(fare);
             }
