@@ -10,6 +10,8 @@ namespace TransportPayment
         public event NotifyOperationDelegate NotifyPayment;
         public event Action<decimal> NotifyError;
         public event Action<decimal, decimal> NotifyCashback;
+        public Action OnReturnToMenu;
+        public Action CancelLastPayment;
 
         public decimal Balance { get; set; }
 

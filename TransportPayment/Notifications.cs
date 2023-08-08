@@ -4,7 +4,7 @@ namespace TransportPayment
 {
     public class Notifications
     {
-        public static Action OnReturnToMenu;
+        //public static Action OnReturnToMenu;
         private TransportCard _transportCard;
 
         public Notifications(TransportCard card)
@@ -18,7 +18,9 @@ namespace TransportPayment
             _transportCard.NotifyError += NotifyЕrror;
             _transportCard.NotifyPayment += NotifyPayment;
             _transportCard.NotifyCashback += NotifyCashback;
-            OnReturnToMenu += NotifyReturnToMenu;
+            _transportCard.CancelLastPayment += NotifyCancelLastPayment;
+            _transportCard.OnReturnToMenu += NotifyReturnToMenu;
+            
         }
 
         public void NotifyAdd(decimal amount, decimal balance)
@@ -44,6 +46,10 @@ namespace TransportPayment
         public void NotifyReturnToMenu()
         {
             Console.WriteLine($"Команда не распознана, возврат в меню.\r\n");
+        }
+        public void NotifyCancelLastPayment()
+        {
+            Console.WriteLine($"Последний платеж отменен.\r\n");
         }
     }
 }

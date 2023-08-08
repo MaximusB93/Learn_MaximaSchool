@@ -1,4 +1,7 @@
-﻿namespace TransportPayment
+﻿using System;
+using System.Linq;
+
+namespace TransportPayment
 {
     class StartedProgram
     {
@@ -7,8 +10,8 @@
             var card = new TransportCard();
             new Notifications(card).Subscribe();
             new NavigationMenu(card).Navigation();
-            
-            //_navigationMenu.Navigation();
         }
     }
+
+  
 }

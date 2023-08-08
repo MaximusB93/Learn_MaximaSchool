@@ -5,6 +5,7 @@ namespace TransportPayment
     public class NavigationMenu
     {
         private TransportCard _transportCard;
+        private PaymentHistory _paymentHistory;
 
         public NavigationMenu(TransportCard card)
         {
@@ -15,7 +16,8 @@ namespace TransportPayment
         {
             "Пополнить карту",
             "Оплатить проезд",
-            "Просмотр истории платежей"
+            "Просмотр истории платежей",
+            "Отмена последнего платежа"
         };
 
         public void Navigation()
@@ -40,9 +42,13 @@ namespace TransportPayment
                 case 3:
                     PaymentHistory.ViewHistory();
                     break;
+                case 4:
+                    _paymentHistory.CancelHistory();
+                    _transportCard.CancelLastPayment?.Invoke();
+                    break;
                 default:
                     Console.Clear();
-                    Notifications.OnReturnToMenu?.Invoke();
+                    _transportCard.OnReturnToMenu?.Invoke();
                     Navigation();
                     break;
             }
@@ -61,7 +67,7 @@ namespace TransportPayment
                     Navigation();
                     break;
                 default:
-                    Notifications.OnReturnToMenu?.Invoke();
+                    _transportCard.OnReturnToMenu?.Invoke();
                     Navigation();
                     break;
             }

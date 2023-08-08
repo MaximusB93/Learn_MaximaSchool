@@ -5,7 +5,7 @@ namespace TransportPayment
 {
     public class PaymentHistory
     {
-        static readonly List<decimal> ListPaymentHistory = new List<decimal>();
+        public static readonly List<decimal> ListPaymentHistory = new List<decimal>();
 
         public static void AddPayInHistory(decimal fare)
         {
