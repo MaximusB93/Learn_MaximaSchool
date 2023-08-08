@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lock2", "Lock2\Lock2.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SemaphoreExample", "SemaphoreExample\SemaphoreExample.csproj", "{18876E97-2421-47FD-BA9B-17D2E8EEF46A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsyncTestUI", "AsyncTestUI\AsyncTestUI.csproj", "{47BC4171-3DF6-45E7-870C-E6693DE25208}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,10 @@ Global
 		{18876E97-2421-47FD-BA9B-17D2E8EEF46A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{18876E97-2421-47FD-BA9B-17D2E8EEF46A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{18876E97-2421-47FD-BA9B-17D2E8EEF46A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47BC4171-3DF6-45E7-870C-E6693DE25208}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47BC4171-3DF6-45E7-870C-E6693DE25208}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47BC4171-3DF6-45E7-870C-E6693DE25208}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47BC4171-3DF6-45E7-870C-E6693DE25208}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
