@@ -9,6 +9,8 @@
     <StackPanel>
         <Button Width="100" Margin="5" Height="40" Content="Синхронно" Click="ButtonBase_OnClick" />
         <Button Width="100" Margin="5" Height="40" Content="Parallel.ForEach" Click="Parallel_OnClick" />
+        <Button Width="100" Margin="5" Height="40" Content="Tasks" Click="Tasks_OnClick" x:Name="ButtonTask" />
+        <Button Width="100" Margin="5" Height="40" Content="Cancel" Click="Cancel_OnClick" IsEnabled="False" x:Name="ButtonCancel" />
         <TextBlock x:Name="StatusLogTextBlock" Text="Start Load" />
     </StackPanel>
 </Window>
