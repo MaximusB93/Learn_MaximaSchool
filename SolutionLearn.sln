@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SemaphoreExample", "Semapho
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsyncTestUI", "AsyncTestUI\AsyncTestUI.csproj", "{47BC4171-3DF6-45E7-870C-E6693DE25208}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestDBConnection", "TestDBConnection\TestDBConnection.csproj", "{6425D16B-E396-43C1-A612-E0E40F0E8BA3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{47BC4171-3DF6-45E7-870C-E6693DE25208}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{47BC4171-3DF6-45E7-870C-E6693DE25208}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{47BC4171-3DF6-45E7-870C-E6693DE25208}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6425D16B-E396-43C1-A612-E0E40F0E8BA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6425D16B-E396-43C1-A612-E0E40F0E8BA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6425D16B-E396-43C1-A612-E0E40F0E8BA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6425D16B-E396-43C1-A612-E0E40F0E8BA3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
