@@ -13,4 +13,4 @@ WHERE  gdp > 10000 AND gdp < 100000000
 --Посчитать кол-во стран, у которых ввп больше площади большее чем в 10 раз
 SELECT COUNT(name) as сount_сountry
 FROM world
-WHERE gdp > area*10
+WHERE gdp > area*1
