@@ -9,14 +9,13 @@ namespace TransportPayment
     public class PaymentHistory
     {
         private object _lockObj = new object();
-        private static Notifications _notifications = new Notifications();
+        private static Notifications _notifications = new Notifications(_transportCard);
         private static TransportCard _transportCard = new TransportCard();
-        private static NavigationMenu _navigationMenu = new NavigationMenu();
+        private static NavigationMenu _navigationMenu;
         private static TasksManager _tasksManager = new TasksManager();
 
-        /*static List<decimal> ListPaymentHistory = new List<decimal>();*/
-        static List<Transport> ListPaymentHistory = new List<Transport>();
-        static Stack<decimal> StackPaymentHistory = new Stack<decimal>();
+        public static List<Transport> ListPaymentHistory = new List<Transport>();
+        public static Stack<decimal> StackPaymentHistory = new Stack<decimal>();
 
         private readonly string[] _historyMenu =
         {
@@ -24,6 +23,7 @@ namespace TransportPayment
             "Очистить историю",
             "Отменить последний платеж"
         };
+
 
         public void GetHistory()
         {
@@ -49,7 +49,7 @@ namespace TransportPayment
                     break;
                 default:
                     Console.Clear();
-                    _notifications.NotifyReturnToMenu();
+                    _transportCard.OnReturnToMenu();
                     _navigationMenu.Navigation();
                     break;
             }
@@ -96,8 +96,7 @@ namespace TransportPayment
                 var lastPayment = StackPaymentHistory.Pop(); //Извлекаем из стека последний элемент
                 ListPaymentHistory.Last();
                 ListPaymentHistory.Remove(new Transport()); //Удаляем этот элемент из листа
-                _notifications.NotifyCancelLastPayment(lastPayment);
-                /*_transportCard.NotifyError?.Invoke(lastPayment);*/
+                _transportCard.NotifyError?.Invoke(lastPayment);
             }
         }
 
@@ -105,7 +104,7 @@ namespace TransportPayment
         {
             ListPaymentHistory.Clear();
             StackPaymentHistory.Clear();
-            _notifications.NotifyClearHistoryPayment();
+            _transportCard.ClearHistoryPayment?.Invoke();
         }
     }
 }

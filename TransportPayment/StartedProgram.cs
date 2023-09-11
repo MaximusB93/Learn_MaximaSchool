@@ -12,6 +12,4 @@ namespace TransportPayment
             new NavigationMenu(card).Navigation();
         }
     }
-
-  
 }

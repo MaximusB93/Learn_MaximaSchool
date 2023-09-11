@@ -4,8 +4,8 @@ namespace TransportPayment
 {
     public class Transport
     {
-        private static NavigationMenu _navigationMenu = new NavigationMenu();
-        private static Notifications _notifications = new Notifications();
+        private static NavigationMenu _navigationMenu;
+        private static Notifications _notifications;
 
         public string TypeTransport { get; set; }
         public decimal Fare { get; set; }

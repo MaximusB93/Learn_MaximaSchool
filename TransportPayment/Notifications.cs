@@ -20,7 +20,7 @@ namespace TransportPayment
             _transportCard.NotifyCashback += NotifyCashback;
             _transportCard.CancelLastPayment += NotifyCancelLastPayment;
             _transportCard.OnReturnToMenu += NotifyReturnToMenu;
-            
+            _transportCard.ClearHistoryPayment += NotifyClearHistoryPayment;
         }
 
         public void NotifyAdd(decimal amount, decimal balance)
@@ -47,9 +47,15 @@ namespace TransportPayment
         {
             Console.WriteLine($"Команда не распознана, возврат в меню.\r\n");
         }
-        public void NotifyCancelLastPayment()
+
+        public void NotifyCancelLastPayment(decimal lastPayment)
         {
-            Console.WriteLine($"Последний платеж отменен.\r\n");
+            Console.WriteLine($"Последний платеж {lastPayment} руб. отменен.\r\n");
+        }
+
+        public void NotifyClearHistoryPayment()
+        {
+            Console.WriteLine($"История платежей очищена.\r\n");
         }
     }
 }
