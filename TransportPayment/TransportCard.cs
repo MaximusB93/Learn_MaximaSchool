@@ -6,11 +6,13 @@ namespace TransportPayment
     {
         public delegate void NotifyOperationDelegate(decimal amount, decimal balance);
 
-        public NotifyOperationDelegate NotifyOperation;
+        public event NotifyOperationDelegate NotifyAdd;
+        public event NotifyOperationDelegate NotifyPayment;
+        public event Action<decimal> NotifyError;
+        public event Action<decimal, decimal> NotifyCashback;
+        public Action OnReturnToMenu;
+        public Action CancelLastPayment;
 
-        public Action<decimal> NotifyError;
-
-        public Action<decimal, decimal> NotifyCashback;
         public decimal Balance { get; set; }
 
         public decimal DepositАmount()
@@ -23,7 +25,7 @@ namespace TransportPayment
         public void Add(decimal amount)
         {
             Balance += amount;
-            NotifyOperation?.Invoke(amount, Balance);
+            NotifyAdd?.Invoke(amount, Balance);
         }
     }
 }

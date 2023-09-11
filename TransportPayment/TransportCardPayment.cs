@@ -1,13 +1,8 @@
-using System.Threading;
-
 namespace TransportPayment
 {
     public partial class TransportCard
     {
-        private PaymentHistory _paymentHistory = new PaymentHistory();
-        private static TasksManager _tasksManager = new TasksManager();
-
-        public void Payment(decimal fare, string transport)
+        public void Payment(decimal fare)
         {
             if (Balance < fare)
             {
@@ -16,8 +11,8 @@ namespace TransportPayment
             else
             {
                 Balance -= fare;
-                NotifyOperation?.Invoke(fare, Balance);
-                _tasksManager.StartTasks(() => _paymentHistory.AddPayInHistory(fare, transport));
+                NotifyPayment?.Invoke(fare, Balance);
+                PaymentHistory.AddPayInHistory(fare);
                 GetCashback(fare);
             }
         }

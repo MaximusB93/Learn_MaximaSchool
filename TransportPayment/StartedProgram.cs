@@ -1,12 +1,17 @@
-﻿namespace TransportPayment
+﻿using System;
+using System.Linq;
+
+namespace TransportPayment
 {
     class StartedProgram
     {
-        private static NavigationMenu _navigationMenu = new NavigationMenu();
-
         static void Main()
         {
-            _navigationMenu.Navigation();
+            var card = new TransportCard();
+            new Notifications(card).Subscribe();
+            new NavigationMenu(card).Navigation();
         }
     }
+
+  
 }
