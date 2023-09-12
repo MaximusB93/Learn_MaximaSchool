@@ -17,8 +17,9 @@ namespace Project1
 {
     internal class Program
     {
-        static bool execute = false;
         private static object _sync = new object();
+        private static CancellationTokenSource _cancellationTokenSource = new CancellationTokenSource();
+        private static CancellationToken _token = _cancellationTokenSource.Token;
 
         private static string[] _url = new[]
         {
@@ -29,9 +30,6 @@ namespace Project1
             "https://youtube.com",
             "https://ya.ru"
         };
-
-        private static CancellationTokenSource _cancellationTokenSource = new CancellationTokenSource();
-        private static CancellationToken _token = _cancellationTokenSource.Token;
 
         static void Main(string[] args)
         {
