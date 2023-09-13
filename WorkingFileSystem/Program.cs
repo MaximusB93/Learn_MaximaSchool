@@ -14,23 +14,61 @@ namespace WorkingFileSystem
     //     Задание на FileStream. Считать из файла№1 только ту порцию информации, где хранятся числа от 10 до 20. Перезаписать их на числа от 200 до 210.
     internal class Program
     {
-        private static CreatingDirectoryAndFile _creatingDirectoryAndFile = new CreatingDirectoryAndFile();
+        private static string disk = "C";
+        private static string path = "Directory";
+        private static string subpath = "Subdirectory";
+
+        public static string[] arrayNameFile =
+        {
+            "array.txt",
+            "date.txt",
+            "subDirectory.txt"
+        };
+
+        private static CreateEntities _createEntities = new CreateEntities();
         private static GetInfo _getInfo = new GetInfo();
         private static WriteFile _writeFile = new WriteFile();
+        private static Reading _reading = new Reading();
+        private static Transfer _transfer = new Transfer();
+
 
         static void Main(string[] args)
         {
-            //_creatingDirectoryAndFile.CreateDirectory();
-            List<string> Data = new List<string>(_getInfo.GetAllData());
+            StartProgram();
+        }
 
-            for (int i = 0; i < _creatingDirectoryAndFile.arrayNameFile.Length; i++)
+        static void StartProgram()
+        {
+            //Создание директорий
+            _createEntities.CreateDirectory(@$"{disk}:\{path}");
+
+            //Агрегирование полученой информации 
+            List<string> Data = new List<string>(_getInfo.GetAllData(1, 100));
+
+            //Создание файлов и запись информации в них
+            for (int i = 0; i < arrayNameFile.Length; i++)
             {
-                _creatingDirectoryAndFile.CreateFile(_creatingDirectoryAndFile.fullpath,
-                    _creatingDirectoryAndFile.arrayNameFile[i]);
-                _writeFile.WritingСontent(_creatingDirectoryAndFile.fullpath,_creatingDirectoryAndFile.arrayNameFile[i], Data[i]);
+                _createEntities.CreateFile(@$"{disk}:\{path}", arrayNameFile[i]);
+                _writeFile.WritingСontent(@$"{disk}:\{path}", arrayNameFile[i], Data[i]);
             }
-            
-            Console.WriteLine("Created files");
+
+            //Считывание информации из файлов
+            for (int i = 0; i < arrayNameFile.Length; i++)
+            {
+                string text = _reading.ReadingFiles(path, arrayNameFile[i]).ToString();
+                View.ViewConsole(text);
+            }
+
+            //Перенос папок и файлов
+            string newPath = "Directory2";
+            _createEntities.CreateDirectory(@$"{disk}:\{newPath}");
+            _transfer.TransferFile(@$"{disk}:\{path}", @$"{disk}:\{newPath}", arrayNameFile[1]);
+            _transfer.TransferDirectory(@$"{disk}:\{path}", @$"{disk}:\{newPath}\{path}");
+
+            //Считываение части информации и ее перезапись
+            _reading.ReadingFileStream(@$"{disk}:\{newPath}\{path}", arrayNameFile[0]);
+            string newArray = _getInfo.GenerationArray(200, 10);
+            _writeFile.WritingFileStream(@$"{disk}:\{newPath}\{path}", arrayNameFile[0], newArray);
         }
     }
 }

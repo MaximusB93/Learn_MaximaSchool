@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -9,25 +10,31 @@ namespace WorkingFileSystem
     {
         private List<string> Data = new List<string>();
 
-        public List<string> GetAllData()
+        public List<string> GetAllData(int start, int count)
         {
             Data.AddRange(new[]
             {
-                GenerationArray(),
+                GenerationArray(start, count),
                 GetNowDate(),
                 GetDirectory()
             });
             return Data;
         }
 
-        public string GenerationArray()
+        public string GenerationArray(int start, int count)
         {
-            int[] array = Enumerable.Range(1, 100).ToArray();
+            int[] array = Enumerable.Range(start, count).ToArray();
             StringBuilder sb = new StringBuilder();
-            foreach (var item in array)
+            for (int i = 0; i < array.Length; i++)
             {
-                sb.Append(item);
+                sb.Append(array[i]);
+
+                if (i < array.Length - 1)
+                {
+                    sb.Append("\n\r");
+                }
             }
+
             return sb.ToString();
         }
 
@@ -38,7 +45,25 @@ namespace WorkingFileSystem
 
         public string GetDirectory()
         {
-            return "Каталог";
+            string path = @"C:\Program Files";
+            StringBuilder sb = new StringBuilder();
+            if (Directory.Exists(path))
+            {
+                Console.WriteLine("Subdirectories");
+                string[] arraySubdirectories = Directory.GetDirectories(path);
+
+                for (int i = 0; i < arraySubdirectories.Length; i++)
+                {
+                    sb.Append(arraySubdirectories[i]);
+
+                    if (i < arraySubdirectories.Length - 1)
+                    {
+                        sb.Append("\n\r");
+                    }
+                }
+            }
+
+            return sb.ToString();
         }
     }
 }
