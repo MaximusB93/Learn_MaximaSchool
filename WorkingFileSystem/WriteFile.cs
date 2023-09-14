@@ -1,20 +1,21 @@
 using System;
 using System.IO;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace WorkingFileSystem
 {
     public class WriteFile
     {
-        public void WritingСontent(string pathFile, string fileName, string text)
+        public async Task WritingСontent(string pathFile, string fileName, string text)
         {
-            using (StreamWriter writer = new(@$"{pathFile}\{fileName}", true))
+            using (StreamWriter writer = new StreamWriter(@$"{pathFile}\{fileName}", true))
             {
-                writer.WriteLineAsync(text);
-            }
+                 await writer.WriteLineAsync(text);
+            }   
         }
 
-        public async void WritingFileStream(string pathFile, string fileName, string newText)
+        public async Task WritingFileStream(string pathFile, string fileName, string newText)
         {
             using (FileStream fileStream = new FileStream(@$"{pathFile}\{fileName}", FileMode.OpenOrCreate))
             {

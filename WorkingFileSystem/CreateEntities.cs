@@ -17,19 +17,15 @@ namespace WorkingFileSystem
             {
                 Console.WriteLine("Directory exists");
             }
-            /*var createDir = directoryInfo.CreateSubdirectory(subpath);
-
-            if (createDir.Exists)
-            {
-                Console.WriteLine("Create subdirectory");
-            }*/
         }
 
         public void CreateFile(string path, string fileName)
         {
             FileInfo fileInfo = new FileInfo(@$"{path}\{fileName}");
-            fileInfo.Create();
-            Console.WriteLine($"Create file - {fileInfo.Name}");
+            using (fileInfo.Create())
+            {
+                Console.WriteLine($"Create file - {fileInfo.Name}");
+            }
         }
     }
 }

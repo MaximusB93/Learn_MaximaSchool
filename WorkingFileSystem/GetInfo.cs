@@ -29,7 +29,7 @@ namespace WorkingFileSystem
             {
                 sb.Append(array[i]);
 
-                if (i < array.Length - 1)
+                if (i < array.Length - 2)
                 {
                     sb.Append("\n\r");
                 }
@@ -49,14 +49,13 @@ namespace WorkingFileSystem
             StringBuilder sb = new StringBuilder();
             if (Directory.Exists(path))
             {
-                Console.WriteLine("Subdirectories");
                 string[] arraySubdirectories = Directory.GetDirectories(path);
 
                 for (int i = 0; i < arraySubdirectories.Length; i++)
                 {
                     sb.Append(arraySubdirectories[i]);
 
-                    if (i < arraySubdirectories.Length - 1)
+                    if (i < arraySubdirectories.Length - 2)
                     {
                         sb.Append("\n\r");
                     }
