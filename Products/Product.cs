@@ -6,16 +6,13 @@ namespace Products
     {
         public int Price { get; }
         public string Title { get; }
+        // public string Category { get; }
 
         public Product(int price, string title)
         {
             Price = price;
             Title = title;
-        }
-
-        public Product(int price)
-        {
-            throw new System.NotImplementedException();
+            // Category = category;
         }
 
         public override string ToString()

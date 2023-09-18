@@ -3,11 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Products.Discounts;
 
 namespace Products
 {
     public class ProductCart : IEnumerable
     {
+        public IDiscounts _discounts { get; set; }
         public List<Product> Products { get; }
         public List<ProductCart> ListCard { get; }
         public string CategoryName { get; }
@@ -39,6 +41,12 @@ namespace Products
         {
             Products = products;
             CategoryName = categoryName;
+        }
+        
+        public ProductCart(List<Product> products, IDiscounts discounts)
+        {
+            Products = products;
+            _discounts = discounts;
         }
 
         public ProductCart(List<ProductCart> listCard)
@@ -111,6 +119,11 @@ namespace Products
         public IEnumerator GetEnumerator()
         {
             throw new NotImplementedException();
+        }
+
+        public decimal CalculatorDiscounts(decimal sum, int countProduct)
+        {
+            return _discounts.CalculatorDiscounts(sum, countProduct);
         }
     }
 }
