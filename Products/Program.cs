@@ -16,13 +16,12 @@ namespace Products
             //Создаем продукт
             Product product = new Product(50, "Milk", "Молочная продукция", new InventoryItem(500, "MSK"));
 
+            TransformationJson transformationJson = new TransformationJson();
             //Конвертируем в JSON
-            string json = JsonConvert.SerializeObject(product);
-            Console.WriteLine(json);
+            string json = transformationJson.InJson(product);
 
             //Конвертируем из JSON в класс Product
-            Product productFromJson = JsonConvert.DeserializeObject<Product>(json);
-            Console.ReadLine();
+            Product productFromJson = transformationJson.FromJson(json);
         }
     }
 }

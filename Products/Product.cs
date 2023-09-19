@@ -18,6 +18,7 @@ namespace Products
             Category = category;
             InventoryItem = inventoryItem;
         }
+
         public Product(int price, string title)
         {
             Price = price;
@@ -29,7 +30,7 @@ namespace Products
             return $"{Title}: {Price:C0}";
         }
     }
-    
+
     public class InventoryItem
     {
         public InventoryItem(int quantity, string location)
