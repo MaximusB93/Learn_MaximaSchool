@@ -10,48 +10,44 @@ namespace Products
 {
     public class Program
     {
-        /*public static List<ProductCart> CreateProduct()
-        {
-            var milk = new Product(60, "item_milk");
-            var cheese = new Product(75, "item_cheese");
-            var curd = new Product(90, "item_curd");
+        public static ProductCart milkProducts =
+            new ProductCart(
+                new List<Product>()
+                {
+                    StoreProducts.milk, StoreProducts.cheese, StoreProducts.curd, StoreProducts.bananas,
+                    StoreProducts.bananas
+                }, new DiscountsQuantityProducts());
 
-            var bananas = new Product(90, "item_bananas");
-            var apples = new Product(120, "item_apples");
-            var pears = new Product(200, "item_pears");
-            var orange = new Product(130, "item_orange");
+        public static decimal sum = milkProducts.Products.Sum(product => product.Price);
+        public static decimal sum2 = milkProducts.Products.Sum(product => product.Price);
+        public static int count = milkProducts.Products.Count;
 
-            var cucumbers = new Product(160, "item_cucumbers");
-            var tomatoes = new Product(200, "item_tomatoes");
-            var pepper = new Product(350, "item_pepper");
-
-            var milkProducts = new ProductCart(new List<Product>() { milk, cheese, curd }, "Молочная продукция");
-            var fruits = new ProductCart(new List<Product>() { bananas, apples, pears, orange }, "Фрукты");
-            var vegetables = new ProductCart(new List<Product>() { cucumbers, tomatoes, pepper }, "Овощи");
-
-            List<ProductCart> listCarts = new List<ProductCart> { milkProducts, fruits, vegetables };
-
-            return listCarts;
-        }*/
-        public static List<ProductCart> CreateProduct;
 
         public static void Main()
         {
-            ProductCart milkProducts =
-                new ProductCart(new List<Product>() { StoreProducts.milk, StoreProducts.cheese, StoreProducts.curd }, new DiscountsQuantityProducts());
-            decimal sum = milkProducts.Products.Sum(product => product.Price);
-            int count = milkProducts.Products.Count;
-            //milkProducts._discounts = new DiscountsQuantityProducts();
-            var sum2 = milkProducts.CalculatorDiscounts(sum,count);
-            Console.ReadLine();
+            //Суммирование скидок
+            decimal sum = SummingDiscounts();
+            Console.WriteLine(sum);
 
+            //Смена скидочной стратегии
+            sum = SingleDiscounts();
+            Console.WriteLine(sum);
+        }
 
-//ThreadCart threadCart = new ThreadCart(CreateProduct());
-//threadCart.CalculateSum();
+        public static decimal SummingDiscounts()
+        {
+            sum = milkProducts.CalculatorDiscounts(sum, count);
+            milkProducts._discounts = new DiscoutnsSumProduct();
+            sum = milkProducts.CalculatorDiscounts(sum, count);
+            return sum;
+        }
 
-// var card = new ProductCart(NotifyMagnit, NotifyOfSale, CalculateSaleMagnit, obj => true);
-// card.ProductAddedEvent += cardOnProductAddedEvent();
-// card.ProductAddedEvent -= cardOnProductAddedEvent();
+        public static decimal SingleDiscounts()
+        {
+            decimal sumDiscount = milkProducts.CalculatorDiscounts(sum2, count);
+            milkProducts._discounts = new DiscoutnsSumProduct();
+            sumDiscount = milkProducts.CalculatorDiscounts(sum2, count);
+            return sumDiscount;
         }
     }
 }
