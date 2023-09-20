@@ -1,8 +1,10 @@
 using System;
+using GeometryLibrary.DirAttribute;
 using GeometryLibrary.Figures.Abstract;
 
 namespace GeometryLibrary.Figures
 {
+    [Author("Maksim", "20.09.2023")]
     public class Triangle<T> : ITwoDimensionFigures<T>
     {
         private const int Angles = 3;
@@ -31,10 +33,10 @@ namespace GeometryLibrary.Figures
         public double Area => throw new Exception("Не умею");
         public double Perimeter => _a + _b + _c;
 
+        [Custom("Получение площади квадрата")]
         public double GetSquare()
         {
             return Area;
         }
     }
-    
 }
