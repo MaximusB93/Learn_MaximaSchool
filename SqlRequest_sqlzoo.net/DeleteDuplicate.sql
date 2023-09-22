@@ -13,7 +13,7 @@
 
 
 
-
+  
 --Добавляем в таблицу второй столбец с уникальным ID
 ALTER TABLE "TableName"
 ADD COLUMN Id SERIAL PRIMARY KEY;
