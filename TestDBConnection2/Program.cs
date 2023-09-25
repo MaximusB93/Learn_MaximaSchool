@@ -8,25 +8,45 @@ var connectionString = "Host=localhost;Username=postgres;Password=admin;Database
 
 await using var dataSource = NpgsqlDataSource.Create(connectionString);
 
-await using (var cmd = dataSource.CreateCommand("SELECT * FROM \"Table1\""))
+await using (var cmd = dataSource.CreateCommand(CommandSQL()))
 await using (var reader = await cmd.ExecuteReaderAsync())
 {
     while (await reader.ReadAsync())
     {
-        var PersonID = reader.GetInt32(0);
-        var FirstName = reader.GetString(1);
-        var LastName = reader.GetString(2);
-        var Address = reader.GetString(3);
-        var City = reader.GetString(4);
-        var Gender = reader.GetString(5);
-        persons.Add(new Person(PersonID, FirstName, LastName, Address, City, Gender));
+        int PersonID = reader.GetInt32(0);
+        var FirstName = SafeGetString(reader, 1);
+        var LastName = SafeGetString(reader, 2);
+        var Address = SafeGetString(reader, 3);
+        var City = SafeGetString(reader, 4);
+        var Gender = SafeGetString(reader, 5);
+        //persons.Add(new Person(PersonID, FirstName, LastName, Address, City, Gender));
 
-        Console.WriteLine(reader.GetString(1));
+        Console.WriteLine(FirstName + LastName.Result);
     }
 }
 
 
 Console.ReadLine();
+
+
+//Проверка на null
+async Task<string?> SafeGetString(NpgsqlDataReader reader, int ordinal)
+{
+    return await reader.IsDBNullAsync(ordinal) ? null : await reader.GetFieldValueAsync<string>(ordinal);
+}
+
+
+string CommandSQL()
+{
+    string filterGender = "SELECT * FROM \"Table1\" WHERE \"Gender\"= 'F'"; //Выбор списка клиентов по полу
+    string UpdateClient =
+        "UPDATE \"Table1\" SET \"LastName\"='Zaharova' WHERE \"PersonID\" = 5"; //Апдейт клиента по айди
+    string deleteClient = "DELETE FROM \"Table1\" WHERE \"City\"='SPB' "; //Удаление всех клиентов из конкретного города
+    string insertClient =
+        "INSERT INTO \"Table1\" (\"PersonID\",\"FirstName\",\"LastName\",\"Address\",\"City\",\"Gender\") VALUES (55,'Anastasya','Lapova','USA','KZN','F')"; //Добавление нового клиента
+
+    return insertClient;
+}
 
 
 class Person
