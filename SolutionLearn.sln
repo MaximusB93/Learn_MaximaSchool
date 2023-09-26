@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlRequest_sqlzoo.net", "Sq
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestDBConnection2", "TestDBConnection2\TestDBConnection2.csproj", "{6D9B6291-9975-4548-A48C-D142456E5115}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFExample", "EFExample\EFExample.csproj", "{C72F4861-97C6-4B9C-BDC6-CE35136169DB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{6D9B6291-9975-4548-A48C-D142456E5115}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6D9B6291-9975-4548-A48C-D142456E5115}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6D9B6291-9975-4548-A48C-D142456E5115}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C72F4861-97C6-4B9C-BDC6-CE35136169DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C72F4861-97C6-4B9C-BDC6-CE35136169DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C72F4861-97C6-4B9C-BDC6-CE35136169DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C72F4861-97C6-4B9C-BDC6-CE35136169DB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
