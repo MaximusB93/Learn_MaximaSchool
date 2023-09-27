@@ -4,7 +4,7 @@
 Вызвать из c# запросы select, update, delete, insert для своей локальной базы.
 Примеры запросов - выбор списка клиентов по полу, апдейт клиента по айди, удаление всех клиентов из конкретного города и так далее.*/
 List<Person> persons = new List<Person>();
-var connectionString = "Host=localhost;Username=postgres;Password=admin;Database=postgres";
+var connectionString = "Host=localhost;Username=postgres;Password=admin;Database=Learn_MaximaSchool";
 
 await using var dataSource = NpgsqlDataSource.Create(connectionString);
 
@@ -13,7 +13,7 @@ await using (var reader = await cmd.ExecuteReaderAsync())
 {
     while (await reader.ReadAsync())
     {
-        int PersonID = reader.GetInt32(0);
+        int id = reader.GetInt32(0);
         var FirstName = SafeGetString(reader, 1);
         var LastName = SafeGetString(reader, 2);
         var Address = SafeGetString(reader, 3);
@@ -21,7 +21,7 @@ await using (var reader = await cmd.ExecuteReaderAsync())
         var Gender = SafeGetString(reader, 5);
         //persons.Add(new Person(PersonID, FirstName, LastName, Address, City, Gender));
 
-        Console.WriteLine(FirstName + LastName.Result);
+        //Console.WriteLine(FirstName + LastName.Result);
     }
 }
 
@@ -38,14 +38,14 @@ async Task<string?> SafeGetString(NpgsqlDataReader reader, int ordinal)
 
 string CommandSQL()
 {
-    string filterGender = "SELECT * FROM \"Table1\" WHERE \"Gender\"= 'F'"; //Выбор списка клиентов по полу
+    string filterGender = "SELECT * FROM \"Users\""; //Выбор списка клиентов по полу
     string UpdateClient =
         "UPDATE \"Table1\" SET \"LastName\"='Zaharova' WHERE \"PersonID\" = 5"; //Апдейт клиента по айди
     string deleteClient = "DELETE FROM \"Table1\" WHERE \"City\"='SPB' "; //Удаление всех клиентов из конкретного города
     string insertClient =
         "INSERT INTO \"Table1\" (\"PersonID\",\"FirstName\",\"LastName\",\"Address\",\"City\",\"Gender\") VALUES (55,'Anastasya','Lapova','USA','KZN','F')"; //Добавление нового клиента
 
-    return insertClient;
+    return filterGender;
 }
 
 
