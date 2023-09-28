@@ -7,7 +7,9 @@ namespace EFExample;
 
 public class AppDbContext : DbContext
 {
-    private const string ConnectionString = "Host=localhost;Username=postgres;Password=admin;Database=Learn_MaximaSchool";
+    static string CSHome = "Host=localhost;Username=postgres;Password=admin;Database=Learn_MaximaSchool";
+    static string CSWork = "Host=localhost;Username=postgres;Password=admin;Database=postgres";
+    private static readonly string ConnectionString = CSWork;
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
