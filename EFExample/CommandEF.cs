@@ -8,7 +8,7 @@ public class CommandEF
     private Verification _verification = new Verification();
     private Notification _notification = new Notification();
     
-    internal async Task<string> SelectUserById(User[] users, DbSet<User> dbUsers, int userId)
+    internal async Task SelectUserById(User[] users, DbSet<User> dbUsers, int userId)
     {
         
         

@@ -2,6 +2,8 @@ using EFExample.Model;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
+using Microsoft.EntityFrameworkCore.Diagnostics;
+using Microsoft.Extensions.Logging;
 
 namespace EFExample;
 
@@ -14,6 +16,12 @@ public class AppDbContext : DbContext
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         optionsBuilder.UseNpgsql(ConnectionString);
+        
+#if DEBUG
+        optionsBuilder.EnableSensitiveDataLogging();
+#endif
+        
+        optionsBuilder.LogTo(Console.WriteLine, LogLevel.Information);
     }
 
     public DbSet<User> Users { get; set; }
