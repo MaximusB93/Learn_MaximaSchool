@@ -1,6 +1,8 @@
+using System.Collections;
+
 namespace TestDBConnection2;
 
-public class Person
+public class Person : IEnumerable
 {
     public int PersonID { get; set; }
     public string FirstName { get; set; }
@@ -17,5 +19,14 @@ public class Person
         Address = address;
         City = city;
         Gender = gender;
+    }
+    public Person()
+    {
+
+    }
+
+    public IEnumerator GetEnumerator()
+    {
+        throw new NotImplementedException();
     }
 }

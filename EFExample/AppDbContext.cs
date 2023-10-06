@@ -13,16 +13,29 @@ public class AppDbContext : DbContext
     static string CSWork = "Host=localhost;Username=postgres;Password=admin;Database=postgres";
     private static readonly string ConnectionString = CSWork;
 
+    /*public AppDbContext()
+    {
+        Database.EnsureDeleted();
+        Database.EnsureCreated();
+    }*/
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         optionsBuilder.UseNpgsql(ConnectionString);
-        
+
 #if DEBUG
         optionsBuilder.EnableSensitiveDataLogging();
 #endif
-        
+
         optionsBuilder.LogTo(Console.WriteLine, LogLevel.Information);
     }
 
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<User>().HasKey(x => x.Id);
+        base.OnModelCreating(modelBuilder);
+    }
+
     public DbSet<User> Users { get; set; }
+    public DbSet<School> Schools { get; set; }
 }

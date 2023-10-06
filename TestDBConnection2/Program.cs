@@ -5,31 +5,30 @@ using TestDBConnection2;
 Вызвать из c# запросы select, update, delete, insert для своей локальной базы.
 Примеры запросов - выбор списка клиентов по полу, апдейт клиента по айди, удаление всех клиентов из конкретного города и так далее.*/
 
+Check check = new Check();
 List<Person> persons = new List<Person>();
-string connectionString = "Host=localhost;Username=postgres;Password=admin;Database=Learn_MaximaSchool";
-string table = "\"TableName\"";
+string connectionString = "Host=localhost;Username=postgres;Password=admin;Database=postgres";
+string table = "\"Table1\"";
+
+
 
 await using var dataSource = NpgsqlDataSource.Create(connectionString);
 
-await using (var cmd = dataSource.CreateCommand(CommandSQL.FilterUsers()))
+
+//await using (var cmd = dataSource.CreateCommand(CommandSQL.FilterUsers(table, "\"Gender\"", "\'F\'")))
+await using (var cmd = dataSource.CreateCommand(CommandSQL.InsertUsers(table, new Person())))
 await using (var reader = await cmd.ExecuteReaderAsync())
 {
     while (await reader.ReadAsync())
     {
         int PersonID = reader.GetInt32(0);
-        var FirstName = SafeGetString(reader, 1);
-        var LastName = SafeGetString(reader, 2);
-        var Address = SafeGetString(reader, 3);
-        var City = SafeGetString(reader, 4);
-        var Gender = SafeGetString(reader, 5);
+        var FirstName = check.SafeGetString(reader, 1);
+        var LastName = check.SafeGetString(reader, 2);
+        var Address = check.SafeGetString(reader, 3);
+        var City = check.SafeGetString(reader, 4);
+        var Gender = check.SafeGetString(reader, 5);
         persons.Add(new Person(PersonID, await FirstName, await LastName, await Address, await City, await Gender));
 
         Console.WriteLine(FirstName + LastName.Result);
     }
-}
-
-//Проверка на null
-async Task<string?> SafeGetString(NpgsqlDataReader reader, int ordinal)
-{
-    return await reader.IsDBNullAsync(ordinal) ? null : await reader.GetFieldValueAsync<string>(ordinal);
 }

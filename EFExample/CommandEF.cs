@@ -7,11 +7,9 @@ public class CommandEF
 {
     private Verification _verification = new Verification();
     private Notification _notification = new Notification();
-    
+
     internal async Task SelectUserById(User[] users, DbSet<User> dbUsers, int userId)
     {
-        
-        
         var checkUser = _verification.GetUserId(users, userId);
         if (checkUser != null)
 
@@ -19,6 +17,7 @@ public class CommandEF
         else
             _notification.notFoundUser?.Invoke();
     }
+
     internal async Task InsertUser(User user, User[] users, DbSet<User> dbUsers)
     {
         var checkUser = _verification.GetUserId(users, user.Id);
@@ -27,7 +26,7 @@ public class CommandEF
             dbUsers.Add(user);
             _notification.addUser?.Invoke();
         }
-            
+
         else
             _notification.foundUser?.Invoke();
     }
