@@ -11,7 +11,7 @@ string table = "\"TableName\"";
 
 await using var dataSource = NpgsqlDataSource.Create(connectionString);
 
-await using (var cmd = dataSource.CreateCommand(CommandSQL.FilterUsers()))
+await using (var cmd = dataSource.CreateCommand(CommandSQL.FilterUsers(table)))
 await using (var reader = await cmd.ExecuteReaderAsync())
 {
     while (await reader.ReadAsync())

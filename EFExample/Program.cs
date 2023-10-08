@@ -14,7 +14,7 @@ foreach (var user in users)
     userAge = user.Age += 1;
 }
 
-await _commandEf.InsertUser(new User(77,"Dfyz",85),users,dbUsers);
+await _commandEf.InsertUser(new User(77, "Dfyz", 85), users, dbUsers);
 await _saveTable.Save(dbContext);
 //await RemoveUserById(3);
 //await InsertUser(users, dbUsers);

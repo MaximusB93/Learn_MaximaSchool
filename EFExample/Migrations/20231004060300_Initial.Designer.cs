@@ -11,7 +11,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace EFExample.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230929124915_Initial")]
+    [Migration("20231004060300_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -34,6 +34,14 @@ namespace EFExample.Migrations
 
                     b.Property<int>("Age")
                         .HasColumnType("integer");
+
+                    b.Property<string>("Gender")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Gender2")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<string>("Name")
                         .IsRequired()

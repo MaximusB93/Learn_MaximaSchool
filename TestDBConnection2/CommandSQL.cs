@@ -7,7 +7,7 @@ public class CommandSQL
     public string where { get; set; }
 
 
-    public static string FilterUsers()
+    public static string FilterUsers(string table)
     {
         string filterUsers = $"SELECT * FROM {table} WHERE \"Gender\"= 'F'"; //Выбор списка клиентов по полу
         return filterUsers;
@@ -20,14 +20,14 @@ public class CommandSQL
         return updateUsers;
     }
 
-    public static string RemoveUsers()
+    public static string RemoveUsers(string table)
     {
         string removeUsers =
             $"DELETE FROM {table} WHERE \"City\"='SPB' "; //Удаление всех клиентов из конкретного города
         return removeUsers;
     }
 
-    public static string InsertUsers()
+    public static string InsertUsers(string table)
     {
         string insertUsers =
             $"INSERT INTO {table} (\"PersonID\",\"FirstName\",\"LastName\",\"Address\",\"City\",\"Gender\") VALUES (55,'Anastasya','Lapova','USA','KZN','F')"; //Добавление нового клиента
