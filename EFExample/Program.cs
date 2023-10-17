@@ -6,8 +6,20 @@ using Microsoft.EntityFrameworkCore;
 CommandEF _commandEf = new CommandEF();
 SaveTable _saveTable = new SaveTable();
 
+
 await using (var dbContext = new AppDbContext())
 {
+    var sql = "SELECT * FROM \"Users\"";
+
+    string insert = "INSERT INTO \"Users\" (\"Id\", \"Name\", \"Age\", \"SchoolId\")" +
+                    "VALUES (24, 'Mana',10,2)";
+    
+    var a = await dbContext.Database.ExecuteSqlRawAsync(insert);
+    
+    dbContext.SaveChangesAsync();
+
+    //var user =  dbContext.Users.FromSqlRaw(sql).ToList();
+    Console.ReadLine();
     /*School school1 = new School(1, "School 2", "MSK");
     School school2 = new School(2, "School 1", "SPB");
 
@@ -24,10 +36,10 @@ await using (var dbContext = new AppDbContext())
 
     dbContext.SaveChanges();*/
 
-    var data = dbContext.Users
+    /*var data = dbContext.Users
         //.Include(x => x.Id)
         .Where(x => x.School != null)
-        .Select(x => new { x.Name, x.School.City });
+        .Select(x => new { x.Name, x.School.City });*/
 }
 
 

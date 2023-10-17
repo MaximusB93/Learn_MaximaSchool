@@ -33,6 +33,11 @@ public class AppDbContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<User>().HasKey(x => x.Id);
+        modelBuilder.Entity<User>().HasOne(x => x.School)
+            .WithMany(c => c.users)
+            .OnDelete(DeleteBehavior.Cascade);
+            
+        
         base.OnModelCreating(modelBuilder);
     }
 
